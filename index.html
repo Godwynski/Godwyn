@@ -3,11 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Sarcastic Overkill</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
 </head>
-<body>
-    <h>
-        testing
-    </h>
+<body class="bg-gray-900 text-white h-screen flex flex-col items-center justify-center">
+    <h1 id="title" class="text-6xl font-extrabold opacity-0">Welcome to the Most Pointless Website Ever</h1>
+    <p id="subtitle" class="text-xl mt-4 opacity-0">(Because the internet needed more sarcasm)</p>
+    
+    <button id="useless-btn" class="mt-10 px-6 py-3 bg-pink-500 text-white font-bold text-xl rounded-full shadow-lg opacity-0 hover:scale-110 transition-all">
+        Click Me (If You Dare)
+    </button>
+
+    <div class="absolute top-5 right-5 animate-spin" style="animation: spin 3s linear infinite;">
+        🚀
+    </div>
+
+    <script>
+        gsap.to("#title", { duration: 1, opacity: 1, y: -20, ease: "bounce.out" });
+        gsap.to("#subtitle", { duration: 1.2, opacity: 1, y: -20, ease: "elastic.out(1, 0.5)", delay: 0.5 });
+        gsap.to("#useless-btn", { duration: 1.5, opacity: 1, y: -10, ease: "power2.out", delay: 1 });
+        
+        document.getElementById("useless-btn").addEventListener("click", function() {
+            gsap.to(this, { duration: 0.2, scale: 1.5, ease: "back.out(2)" });
+            setTimeout(() => {
+                gsap.to(this, { duration: 0.5, scale: 1, ease: "elastic.out(1, 0.5)" });
+                alert("Congratulations! You clicked a button that does nothing.");
+            }, 300);
+        });
+    </script>
 </body>
 </html>
