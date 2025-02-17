@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sarcastic Overkill</title>
+    <title>Welcome... Or Whatever</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <style>
@@ -14,29 +14,74 @@
     </style>
 </head>
 <body class="bg-gray-900 text-white h-screen flex flex-col items-center justify-center">
-    <h1 id="title" class="text-6xl font-extrabold opacity-0">Welcome to the Most Pointless Website Ever</h1>
-    <p id="subtitle" class="text-xl mt-4 opacity-0">(Because the internet needed more sarcasm)</p>
+    <h1 id="title" class="text-6xl font-extrabold opacity-0">Oh, you're here? What a shock.</h1>
+    <p id="subtitle" class="text-xl mt-4 opacity-0">We were definitely expecting you. No really, we were.</p>
     
-    <button id="useless-btn" class="mt-10 px-6 py-3 bg-pink-500 text-white font-bold text-xl rounded-full shadow-lg opacity-0 hover:scale-110 transition-all">
-        Click Me (If You Dare)
+    <button id="explore-btn" class="mt-10 px-6 py-3 bg-pink-500 text-white font-bold text-xl rounded-full shadow-lg opacity-0 hover:scale-110 transition-all">
+        Explore (if you must)
+    </button>
+    <button id="leave-btn" class="mt-4 px-6 py-3 bg-gray-500 text-white font-bold text-xl rounded-full shadow-lg opacity-0 hover:scale-110 transition-all">
+        Go ahead, leave if you want. It's fine.
     </button>
 
-    <div class="absolute top-5 right-5 animate-spin" style="animation: spin 3s linear infinite;">
-        🚀
-    </div>
+    <section class="mt-20 text-center">
+        <h2 class="text-4xl font-bold">Our Totally Amazing Story</h2>
+        <h3 class="text-2xl mt-2">We're the best at... well, something.</h3>
+        <p class="mt-4 max-w-xl mx-auto">Started by people who definitely knew exactly what they were doing, we decided to create something groundbreaking... like everyone else on the internet. We're revolutionizing the way things get done, but you probably wouldn't understand. It’s okay, not everyone has the vision.</p>
+        <button class="mt-6 px-6 py-3 bg-yellow-500 text-white font-bold text-xl rounded-full shadow-lg">
+            See how revolutionary we are (or don't)
+        </button>
+    </section>
 
-    <script>
-        gsap.to("#title", { duration: 1, opacity: 1, y: -20, ease: "bounce.out" });
-        gsap.to("#subtitle", { duration: 1.2, opacity: 1, y: -20, ease: "elastic.out(1, 0.5)", delay: 0.5 });
-        gsap.to("#useless-btn", { duration: 1.5, opacity: 1, y: -10, ease: "power2.out", delay: 1 });
-        
-        document.getElementById("useless-btn").addEventListener("click", function() {
-            gsap.to(this, { duration: 0.2, scale: 1.5, ease: "back.out(2)" });
-            setTimeout(() => {
-                gsap.to(this, { duration: 0.5, scale: 1, ease: "elastic.out(1, 0.5)" });
-                alert("Congratulations! You clicked a button that does nothing.");
-            }, 300);
-        });
-    </script>
+    <section class="mt-20 text-center">
+        <h2 class="text-4xl font-bold">What We Can Do (For You, Because You’re Clearly Very Important)</h2>
+        <h3 class="text-2xl mt-2">We offer stuff. You’re welcome.</h3>
+        <ul class="mt-4 space-y-4">
+            <li>We’ll create your website, because your brand identity obviously needs a makeover.</li>
+            <li>SEO. Because everyone on the planet can’t stop talking about it.</li>
+            <li>Social Media Management. We’ll make your brand look like it actually has a personality. Maybe.</li>
+        </ul>
+        <button class="mt-6 px-6 py-3 bg-green-500 text-white font-bold text-xl rounded-full shadow-lg">
+            Get started (we guess)
+        </button>
+    </section>
+
+    <section class="mt-20 text-center">
+        <h2 class="text-4xl font-bold">So You Can See the ‘Masterpieces’ We’ve Created</h2>
+        <h3 class="text-2xl mt-2">Look at all the things we’ve ‘done.’ Aren’t you impressed?</h3>
+        <p class="mt-4">Here are some projects we might have poured our blood, sweat, and tears into. Or maybe we just showed up to work. Who can say?</p>
+        <ul class="mt-4 space-y-4">
+            <li>A website for a coffee shop that definitely changed the world.</li>
+            <li>A branding overhaul for a company that never asked for it. You're welcome.</li>
+            <li>We totally didn’t forget this one. Check it out.</li>
+        </ul>
+        <button class="mt-6 px-6 py-3 bg-blue-500 text-white font-bold text-xl rounded-full shadow-lg">
+            Look at more stuff (or skip it, whatever)
+        </button>
+    </section>
+
+    <section class="mt-20 text-center">
+        <h2 class="text-4xl font-bold">Let’s Make This Official</h2>
+        <h3 class="text-2xl mt-2">You want to reach out? Sure. Whatever.</h3>
+        <p class="mt-4">We might respond, or we might not. Depends on how much coffee we’ve had today.</p>
+        <form class="mt-4">
+            <input type="text" placeholder="I guess we should know who you are." class="block p-2 mb-2 w-80 border border-gray-600 bg-gray-800">
+            <input type="email" placeholder="Can we spam you? Hopefully." class="block p-2 mb-2 w-80 border border-gray-600 bg-gray-800">
+            <textarea placeholder="Tell us why you think you deserve our time." class="block p-2 mb-2 w-80 border border-gray-600 bg-gray-800"></textarea>
+            <button class="mt-6 px-6 py-3 bg-red-500 text-white font-bold text-xl rounded-full shadow-lg">
+                Send (but no promises, okay?)
+            </button>
+        </form>
+    </section>
+
+    <footer class="mt-20 text-center text-gray-500">
+        <p>No One Reads This Anyway</p>
+        <ul class="mt-4 space-y-2">
+            <li>Privacy Policy (like that matters)</li>
+            <li>Terms & Conditions (good luck with that)</li>
+            <li>Social Icons (because we have to)</li>
+        </ul>
+        <p class="mt-4">We totally hope you have a great day. Or don’t. Who are we to tell you what to do?</p>
+    </footer>
 </body>
 </html>
