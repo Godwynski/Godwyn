@@ -3,64 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personality Quiz</title>
+    <title>Website Animation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+            font-size: 2em;
+        }
+        .section {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .section:nth-child(odd) {
+            background-color: #f9f9f9;
+        }
+        .section:nth-child(even) {
+            background-color: #444;
+            color: white;
+        }
+        .content {
+            text-align: center;
+            animation: fadeIn 2s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h2>Personality Quiz</h2>
-    <form id="quiz-form">
-        <div id="questions"></div>
-        <button type="button" onclick="calculateResult()">See Results</button>
-    </form>
-    <h3>Results:</h3>
-    <div id="results"></div>
-    
+    <header>
+        Welcome to My Animated Website
+    </header>
+
+    <div class="section" data-aos="fade-up">
+        <div class="content">
+            <h1>Section 1</h1>
+            <p>This section has a cool scroll animation effect!</p>
+        </div>
+    </div>
+
+    <div class="section" data-aos="fade-right">
+        <div class="content">
+            <h1>Section 2</h1>
+            <p>This section fades in from the right!</p>
+        </div>
+    </div>
+
+    <div class="section" data-aos="fade-left">
+        <div class="content">
+            <h1>Section 3</h1>
+            <p>Scroll down to see more smooth animations!</p>
+        </div>
+    </div>
+
+    <div class="section" data-aos="zoom-in">
+        <div class="content">
+            <h1>Section 4</h1>
+            <p>Zoom-in effect here! Pretty neat, huh?</p>
+        </div>
+    </div>
+
+    <footer>
+        <p style="text-align: center; padding: 20px; background-color: #333; color: white;">Created with love by You</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
-        const questions = [
-            { text: "Do you prefer deep conversations or casual chit-chat?", category: "Introvert-Extrovert" },
-            { text: "How do you handle failure? Analyze and move on or feel deeply affected?", category: "Logical-Emotional" },
-            { text: "Do you plan ahead or go with the flow?", category: "Planner-Spontaneous" },
-            { text: "Do you work better alone or in a team?", category: "Independent-Team-Oriented" },
-            { text: "Would you break a small rule for a big reward?", category: "Risk-Taker-Cautious" },
-            { text: "Do you handle stress well or get overwhelmed easily?", category: "Resilient-Sensitive" },
-            { text: "Do you believe things always work out or do you prepare for the worst?", category: "Optimist-Realist" },
-            { text: "Do you take charge in group settings or prefer following?", category: "Leader-Follower" },
-            { text: "Do you value luxury and status or simplicity?", category: "Materialistic-Minimalist" },
-            { text: "Do you prefer familiar traditions or exploring new ideas?", category: "Traditional-Open-Minded" }
-        ];
-
-        const questionsDiv = document.getElementById("questions");
-
-        questions.forEach((q, index) => {
-            const div = document.createElement("div");
-            div.innerHTML = `
-                <p>${q.text}</p>
-                <select name="q${index}" data-category="${q.category}">
-                    <option value="1">Option 1 (Low Score)</option>
-                    <option value="2">Neutral</option>
-                    <option value="3">Option 3 (High Score)</option>
-                </select>
-            `;
-            questionsDiv.appendChild(div);
+        // Initialize AOS library
+        AOS.init({
+            duration: 1000, // animation duration
+            easing: 'ease-in-out',
+            once: true // Animation happens once
         });
 
-        function calculateResult() {
-            const form = document.getElementById("quiz-form");
-            const resultsDiv = document.getElementById("results");
-            let categories = {};
-
-            form.querySelectorAll("select").forEach(select => {
-                const category = select.getAttribute("data-category");
-                const value = parseInt(select.value);
-                if (!categories[category]) categories[category] = 0;
-                categories[category] += value;
-            });
-
-            resultsDiv.innerHTML = "";
-            Object.keys(categories).forEach(category => {
-                let level = categories[category] < 6 ? 'Low' : categories[category] < 9 ? 'Moderate' : 'High';
-                resultsDiv.innerHTML += `<p>${category}: ${level}</p>`;
-            });
-        }
+        // GSAP animation example
+        gsap.from("header", {
+            opacity: 0,
+            y: -100,
+            duration: 1,
+            ease: "bounce.out"
+        });
     </script>
 </body>
 </html>
