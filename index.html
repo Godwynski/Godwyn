@@ -3,39 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Website Animation</title>
+    <title>Animated Website with Pictures</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
         }
+
         header {
             background-color: #333;
             color: white;
             text-align: center;
-            padding: 100px 0;
-            font-size: 2em;
+            padding: 120px 0;
+            font-size: 2.5em;
+            position: relative;
+            overflow: hidden;
         }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('https://picsum.photos/1200/600?random=3');
+            background-size: cover;
+            filter: brightness(50%);
+            z-index: -1;
+        }
+
+        header h1 {
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+
         .section {
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
+            padding: 20px;
+            position: relative;
         }
+
         .section:nth-child(odd) {
             background-color: #f9f9f9;
         }
+
         .section:nth-child(even) {
             background-color: #444;
             color: white;
         }
+
+        .section img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .section img:hover {
+            transform: scale(1.05);
+        }
+
         .content {
             text-align: center;
             animation: fadeIn 2s ease-in-out;
         }
+
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -44,62 +83,108 @@
                 opacity: 1;
             }
         }
+
+        .button {
+            padding: 15px 30px;
+            background-color: #ff6f61;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #e75f53;
+        }
+
+        footer {
+            padding: 20px;
+            background-color: #333;
+            color: white;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
     <header>
-        Welcome to My Animated Website
+        Welcome to My Enhanced Animated Website
     </header>
 
     <div class="section" data-aos="fade-up">
         <div class="content">
             <h1>Section 1</h1>
-            <p>This section has a cool scroll animation effect!</p>
+            <p>Check out this amazing scroll animation with cool effects!</p>
+            <img src="https://picsum.photos/200/300?random=1" alt="Random Image 1" />
         </div>
     </div>
 
     <div class="section" data-aos="fade-right">
         <div class="content">
             <h1>Section 2</h1>
-            <p>This section fades in from the right!</p>
+            <p>This section slides in from the right as you scroll.</p>
+            <img src="https://picsum.photos/200/300?random=2" alt="Random Image 2" />
         </div>
     </div>
 
     <div class="section" data-aos="fade-left">
         <div class="content">
             <h1>Section 3</h1>
-            <p>Scroll down to see more smooth animations!</p>
+            <p>Here we have a fade-in effect from the left.</p>
+            <img src="https://picsum.photos/200/300?random=3" alt="Random Image 3" />
         </div>
     </div>
 
     <div class="section" data-aos="zoom-in">
         <div class="content">
             <h1>Section 4</h1>
-            <p>Zoom-in effect here! Pretty neat, huh?</p>
+            <p>Watch as the content zooms in when you scroll down!</p>
+            <img src="https://picsum.photos/200/300?random=4" alt="Random Image 4" />
         </div>
     </div>
 
+    <div class="section" data-aos="flip-up">
+        <div class="content">
+            <h1>Section 5</h1>
+            <p>This section flips up for a more dynamic animation.</p>
+            <img src="https://picsum.photos/200/300?random=5" alt="Random Image 5" />
+        </div>
+    </div>
+
+    <div style="text-align: center; margin: 40px 0;">
+        <button class="button" onclick="scrollToTop()">Back to Top</button>
+    </div>
+
     <footer>
-        <p style="text-align: center; padding: 20px; background-color: #333; color: white;">Created with love by You</p>
+        <p>Created with ❤️ by You</p>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
-        // Initialize AOS library
+        // Initialize AOS for animations
         AOS.init({
-            duration: 1000, // animation duration
+            duration: 1200, // Time in milliseconds for animation duration
             easing: 'ease-in-out',
-            once: true // Animation happens once
+            once: true // Animation happens once on scroll
         });
 
-        // GSAP animation example
+        // GSAP animation for header
         gsap.from("header", {
             opacity: 0,
             y: -100,
-            duration: 1,
-            ease: "bounce.out"
+            duration: 1.5,
+            ease: "power3.out"
         });
+
+        // Back to top button
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
     </script>
 </body>
 </html>
