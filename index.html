@@ -3,24 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Animated Website with Pictures</title>
+    <title>Dynamic Animated Website</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <style>
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: #f3f4f9;
+            color: #333;
         }
 
         header {
-            background-color: #333;
+            background-color: #a2c2e6;
             color: white;
             text-align: center;
             padding: 120px 0;
             font-size: 2.5em;
             position: relative;
             overflow: hidden;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
         }
 
         header::before {
@@ -37,7 +39,7 @@
         }
 
         header h1 {
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
         }
 
         .section {
@@ -47,15 +49,16 @@
             align-items: center;
             padding: 20px;
             position: relative;
+            background-color: #f9f1f6;
+            transition: background-color 0.5s ease-in-out;
         }
 
         .section:nth-child(odd) {
-            background-color: #f9f9f9;
+            background-color: #f1d0e1;
         }
 
         .section:nth-child(even) {
-            background-color: #444;
-            color: white;
+            background-color: #e6c9d6;
         }
 
         .section img {
@@ -63,11 +66,12 @@
             max-width: 400px;
             border-radius: 15px;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease-in-out;
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease;
         }
 
         .section img:hover {
             transform: scale(1.05);
+            opacity: 0.9;
         }
 
         .content {
@@ -86,7 +90,7 @@
 
         .button {
             padding: 15px 30px;
-            background-color: #ff6f61;
+            background-color: #ff8fa3;
             color: white;
             border: none;
             border-radius: 5px;
@@ -96,7 +100,7 @@
         }
 
         .button:hover {
-            background-color: #e75f53;
+            background-color: #f08c7e;
         }
 
         footer {
@@ -104,51 +108,52 @@
             background-color: #333;
             color: white;
             text-align: center;
+            font-size: 1em;
         }
     </style>
 </head>
 <body>
     <header>
-        Welcome to My Enhanced Animated Website
+        <h1>My Dynamic Animated Website</h1>
     </header>
 
-    <div class="section" data-aos="fade-up">
+    <div class="section" data-aos="fade-up" data-aos-duration="1000">
         <div class="content">
             <h1>Section 1</h1>
-            <p>Check out this amazing scroll animation with cool effects!</p>
-            <img src="https://picsum.photos/200/300?random=1" alt="Random Image 1" />
+            <p>Check out this scroll animation with an elegant fade-in effect!</p>
+            <img src="https://picsum.photos/200/300?random=1" alt="Random Image 1">
         </div>
     </div>
 
-    <div class="section" data-aos="fade-right">
+    <div class="section" data-aos="fade-right" data-aos-duration="1200">
         <div class="content">
             <h1>Section 2</h1>
-            <p>This section slides in from the right as you scroll.</p>
-            <img src="https://picsum.photos/200/300?random=2" alt="Random Image 2" />
+            <p>This section fades in from the right side!</p>
+            <img src="https://picsum.photos/200/300?random=2" alt="Random Image 2">
         </div>
     </div>
 
-    <div class="section" data-aos="fade-left">
+    <div class="section" data-aos="fade-left" data-aos-duration="1400">
         <div class="content">
             <h1>Section 3</h1>
-            <p>Here we have a fade-in effect from the left.</p>
-            <img src="https://picsum.photos/200/300?random=3" alt="Random Image 3" />
+            <p>Now the content fades in from the left.</p>
+            <img src="https://picsum.photos/200/300?random=3" alt="Random Image 3">
         </div>
     </div>
 
-    <div class="section" data-aos="zoom-in">
+    <div class="section" data-aos="zoom-in" data-aos-duration="1500">
         <div class="content">
             <h1>Section 4</h1>
-            <p>Watch as the content zooms in when you scroll down!</p>
-            <img src="https://picsum.photos/200/300?random=4" alt="Random Image 4" />
+            <p>Zoom-in effect for a cool appearance.</p>
+            <img src="https://picsum.photos/200/300?random=4" alt="Random Image 4">
         </div>
     </div>
 
-    <div class="section" data-aos="flip-up">
+    <div class="section" data-aos="flip-up" data-aos-duration="1600">
         <div class="content">
             <h1>Section 5</h1>
-            <p>This section flips up for a more dynamic animation.</p>
-            <img src="https://picsum.photos/200/300?random=5" alt="Random Image 5" />
+            <p>This section flips up for an exciting reveal!</p>
+            <img src="https://picsum.photos/200/300?random=5" alt="Random Image 5">
         </div>
     </div>
 
@@ -167,7 +172,8 @@
         AOS.init({
             duration: 1200, // Time in milliseconds for animation duration
             easing: 'ease-in-out',
-            once: true // Animation happens once on scroll
+            once: false, // Allow animations to trigger again when scrolling up
+            offset: 200, // Trigger animation when the element is 200px away from the viewport
         });
 
         // GSAP animation for header
