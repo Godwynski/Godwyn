@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz App</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: 'Poppins', sans-serif; }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-pink-200 via-purple-200 to-blue-200 text-gray-900 min-h-screen flex flex-col">
+  <nav class="bg-white bg-opacity-50 p-4 shadow-lg backdrop-blur-md fixed w-full top-0 left-0 z-50 flex justify-between items-center">
+    <a href="index.html" class="text-gray-900 text-lg font-bold px-4 py-2 rounded-lg hover:bg-gray-200 transition">Home</a>
+    <span class="text-xl font-semibold text-gray-900">Quiz: General Knowledge</span>
+    <div class="w-16"></div>
+  </nav>
+
+<div class="flex-grow flex items-center justify-center mt-16">
+  <div id="quiz-container" class="bg-white bg-opacity-90 p-8 rounded-xl shadow-2xl text-center backdrop-blur-lg max-w-md w-full transform transition duration-300 hover:shadow-xl">
+    <h2 id="question" class="text-2xl font-bold mb-4 text-gray-900">Question goes here</h2>
+    <ul id="options" class="space-y-3">
+      <li class="option bg-gray-200 hover:bg-gray-300 cursor-pointer p-4 rounded transition duration-200">Option 1</li>
+      <li class="option bg-gray-200 hover:bg-gray-300 cursor-pointer p-4 rounded transition duration-200">Option 2</li>
+      <li class="option bg-gray-200 hover:bg-gray-300 cursor-pointer p-4 rounded transition duration-200">Option 3</li>
+      <li class="option bg-gray-200 hover:bg-gray-300 cursor-pointer p-4 rounded transition duration-200">Option 4</li>
+    </ul>
+    <p id="result" class="mt-4 font-semibold text-lg text-gray-800"></p>
+    <p id="progress" class="text-sm text-gray-600 mt-2"></p>
+    <button id="retry-btn" onclick="startRetake()" class="hidden mt-4 bg-pink-400 text-white px-4 py-2 rounded-full hover:bg-pink-500 transition duration-200">
+      Retry Incorrect Questions
+    </button>
+    <p id="retake-total" class="hidden"></p>
+    <p id="score" class="mt-4 font-semibold text-lg text-gray-800"></p>
+  </div>
+</div>
+  
+  <script>
+    const originalQuiz = [
+      { question: "What is the capital of France?", options: ["Berlin", "Madrid", "Paris", "Rome"], answer: "Paris" },
+      { question: "What is 2 + 2?", options: ["3", "4", "5", "6"], answer: "4" },
+      { question: "Which planet is known as the Red Planet?", options: ["Earth", "Mars", "Jupiter", "Venus"], answer: "Mars" }
+    ];
+    
+    let currentQuiz = [...originalQuiz];
+    let currentQuestionIndex = 0;
+    let firstTakeScore = 0;
+    let retakeScore = 0;
+    let firstAttempt = true;
+    let incorrectQuestions = [];
+
+    function shuffle(array) {
+      return array.sort(() => Math.random() - 0.5);
+    }
+    
+    function loadQuestion() {
+      document.getElementById("completion-message")?.remove();
+      document.getElementById("score").innerText = "";
+
+      if (currentQuestionIndex >= currentQuiz.length) {
+        if (incorrectQuestions.length === 0) {
+          document.getElementById("score").innerText = `Final Score: ${firstTakeScore} out of ${originalQuiz.length}`;
+        } else {
+          document.getElementById("retry-btn").classList.remove("hidden");
+          document.getElementById("retake-total").classList.remove("hidden");
+          document.getElementById("retake-total").innerText = `Incorrect Questions: ${incorrectQuestions.length} Total correct first try attempts: ${firstTakeScore}`;
+        }
+        return;
+      }
+      
+      firstAttempt = true;
+      const currentItem = currentQuiz[currentQuestionIndex];
+      document.getElementById("question").innerText = currentItem.question;
+      document.getElementById("progress").innerText = `Question ${currentQuestionIndex + 1} of ${currentQuiz.length}`;
+      document.getElementById("result").innerText = "";
+      
+      const optionsList = document.getElementById("options");
+      optionsList.innerHTML = "";
+      
+      shuffle([...currentItem.options]).forEach(option => {
+        const button = document.createElement("button");
+        button.innerText = option;
+        button.className = "w-full bg-gray-300 text-gray-900 px-4 py-2 rounded-full hover:bg-gray-400 transition font-semibold focus:outline-none focus:ring-2 focus:ring-pink-500";
+        button.onclick = () => checkAnswer(button, option);
+        const li = document.createElement("li");
+        li.appendChild(button);
+        optionsList.appendChild(li);
+      });
+    }
+    
+    function disableOptions() {
+      document.querySelectorAll("#options button").forEach(btn => btn.disabled = true);
+    }
+    
+    function checkAnswer(button, selected) {
+      const currentItem = currentQuiz[currentQuestionIndex];
+
+      if (selected === currentItem.answer) {
+        disableOptions();
+        button.classList.replace("bg-gray-300", "bg-green-500");
+        button.classList.replace("hover:bg-gray-400", "hover:bg-green-600");
+        button.classList.add("text-white");
+        document.getElementById("result").innerText = "Correct!";
+
+        if (firstAttempt) {
+          firstTakeScore++;
+          incorrectQuestions = incorrectQuestions.filter(q => q.question !== currentItem.question);
+        }
+
+        setTimeout(() => {
+          currentQuestionIndex++;
+          loadQuestion();
+        }, 1000);
+      } else {
+        button.disabled = true;
+        button.classList.replace("bg-gray-300", "bg-red-500");
+        button.classList.replace("hover:bg-gray-400", "hover:bg-red-600");
+        button.classList.add("text-white");
+        document.getElementById("result").innerText = "Wrong! Try again.";
+        firstAttempt = false;
+
+        if (!incorrectQuestions.some(q => q.question === currentItem.question)) {
+          incorrectQuestions.push(currentItem);
+        }
+      }
+    }
+    
+    function startRetake() {
+      if (incorrectQuestions.length > 0) {
+        currentQuiz = [...incorrectQuestions];
+        incorrectQuestions = [];
+        currentQuestionIndex = 0;
+        retakeScore = 0;
+        document.getElementById("retry-btn").classList.add("hidden");
+        document.getElementById("retake-total").classList.add("hidden");
+        document.getElementById("completion-message")?.remove();
+        loadQuestion();
+      }
+    }
+    
+    loadQuestion();
+  </script>
+</body>
+</html>
