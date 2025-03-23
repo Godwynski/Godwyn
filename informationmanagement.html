@@ -41,11 +41,28 @@
   
   
   <script>
-    const originalQuiz = [
-      { question: "What is the capital of France?", options: ["Berlin", "Madrid", "Paris", "Rome"], answer: "Paris" },
-      { question: "What is 2 + 2?", options: ["3", "4", "5", "6"], answer: "4" },
-      { question: "Which planet is known as the Red Planet?", options: ["Earth", "Mars", "Jupiter", "Venus"], answer: "Mars" }
-    ];
+const originalQuiz = [
+  { question: "What is a primary key?", options: ["A set of attributes that uniquely identify a row.", "A unique identifier for a row in a table.", "A primary key from another table, used to establish relationships.", "An attribute used for searching but not a primary key."], answer: "A unique identifier for a row in a table." },
+  { question: "What is a foreign key?", options: ["A unique identifier for a row in a table.", "A primary key from another table, used to establish relationships.", "A key that could be a primary key but isn’t selected.", "A set of attributes that uniquely identify a row."], answer: "A primary key from another table, used to establish relationships." },
+  { question: "What is a candidate key?", options: ["A primary key from another table, used to establish relationships.", "A set of attributes that uniquely identify a row.", "A key that could be a primary key but isn’t selected.", "An attribute used for searching but not a primary key."], answer: "A key that could be a primary key but isn’t selected." },
+  { question: "What is a superkey?", options: ["A key that could be a primary key but isn’t selected.", "A set of attributes that uniquely identify a row.", "A unique identifier for a row in a table.", "A primary key from another table, used to establish relationships."], answer: "A key that could be a primary key but isn’t selected." },
+  { question: "What is a secondary key?", options: ["An attribute used for searching but not a primary key.", "A unique identifier for a row in a table.", "A set of attributes that uniquely identify a row.", "A primary key from another table, used to establish relationships."], answer: "An attribute used for searching but not a primary key." },
+  { question: "What is a tuple in a database?", options: ["A column in a table.", "A set of valid values for an attribute.", "A row in a table.", "A two-dimensional structure consisting of rows and columns."], answer: "A row in a table." },
+  { question: "What is an attribute in a database?", options: ["A row in a table.", "A set of valid values for an attribute.", "A column in a table.", "A two-dimensional structure consisting of rows and columns."], answer: "A column in a table." },
+  { question: "What is a domain in a database?", options: ["A set of valid values for an attribute.", "A row in a table.", "A column in a table.", "A two-dimensional structure consisting of rows and columns."], answer: "A set of valid values for an attribute." },
+  { question: "What is a table in a database?", options: ["A unique identifier for a row in a table.", "A set of valid values for an attribute.", "A two-dimensional structure consisting of rows and columns.", "A primary key from another table, used to establish relationships."], answer: "A two-dimensional structure consisting of rows and columns." },
+  { question: "What is a data anomaly?", options: ["Issues that arise due to data redundancy.", "Unnecessary duplication of data.", "A process of organizing data to reduce redundancy.", "When one attribute uniquely determines another."], answer: "Issues that arise due to data redundancy." },
+  { question: "What is data redundancy?", options: ["Issues that arise due to data redundancy.", "Unnecessary duplication of data.", "A process of organizing data to reduce redundancy.", "When one attribute uniquely determines another."], answer: "Unnecessary duplication of data." },
+  { question: "What is functional dependence?", options: ["Issues that arise due to data redundancy.", "Unnecessary duplication of data.", "When one attribute uniquely determines another.", "A process of organizing data to reduce redundancy."], answer: "When one attribute uniquely determines another." },
+  { question: "What is normalization in databases?", options: ["A process of organizing data to reduce redundancy.", "Combining tables for performance optimization.", "A unique identifier for a row in a table.", "A set of valid values for an attribute."], answer: "A process of organizing data to reduce redundancy." },
+  { question: "What is denormalization?", options: ["A process of organizing data to reduce redundancy.", "Combining tables for performance optimization.", "A unique identifier for a row in a table.", "A set of valid values for an attribute."], answer: "Combining tables for performance optimization." },
+  { question: "What does 1NF (First Normal Form) eliminate?", options: ["Partial dependencies.", "Multi-valued dependencies.", "Repeating groups.", "Transitive dependencies."], answer: "Repeating groups." },
+  { question: "What does 2NF (Second Normal Form) remove?", options: ["Partial dependencies.", "Transitive dependencies.", "Multi-valued dependencies.", "Repeating groups."], answer: "Partial dependencies." },
+  { question: "What does 3NF (Third Normal Form) remove?", options: ["Partial dependencies.", "Transitive dependencies.", "Multi-valued dependencies.", "Repeating groups."], answer: "Transitive dependencies." },
+  { question: "What is BCNF (Boyce-Codd Normal Form)?", options: ["A weaker form of 3NF.", "A stronger form of 3NF.", "A process of organizing data to reduce redundancy.", "A set of valid values for an attribute."], answer: "A stronger form of 3NF." },
+  { question: "What does 4NF (Fourth Normal Form) remove?", options: ["Repeating groups.", "Partial dependencies.", "Multi-valued dependencies.", "Transitive dependencies."], answer: "Multi-valued dependencies." }
+];
+
     
     let currentQuiz = [...originalQuiz];
     let currentQuestionIndex = 0;
