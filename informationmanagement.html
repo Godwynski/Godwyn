@@ -42,26 +42,79 @@
   
   <script>
 const originalQuiz = [
-  { question: "What is a primary key?", options: ["A set of attributes that uniquely identify a row.", "A unique identifier for a row in a table.", "A primary key from another table, used to establish relationships.", "An attribute used for searching but not a primary key."], answer: "A unique identifier for a row in a table." },
-  { question: "What is a foreign key?", options: ["A unique identifier for a row in a table.", "A primary key from another table, used to establish relationships.", "A key that could be a primary key but isn’t selected.", "A set of attributes that uniquely identify a row."], answer: "A primary key from another table, used to establish relationships." },
-  { question: "What is a candidate key?", options: ["A primary key from another table, used to establish relationships.", "A set of attributes that uniquely identify a row.", "A key that could be a primary key but isn’t selected.", "An attribute used for searching but not a primary key."], answer: "A key that could be a primary key but isn’t selected." },
-  { question: "What is a superkey?", options: ["A key that could be a primary key but isn’t selected.", "A set of attributes that uniquely identify a row.", "A unique identifier for a row in a table.", "A primary key from another table, used to establish relationships."], answer: "A key that could be a primary key but isn’t selected." },
-  { question: "What is a secondary key?", options: ["An attribute used for searching but not a primary key.", "A unique identifier for a row in a table.", "A set of attributes that uniquely identify a row.", "A primary key from another table, used to establish relationships."], answer: "An attribute used for searching but not a primary key." },
-  { question: "What is a tuple in a database?", options: ["A column in a table.", "A set of valid values for an attribute.", "A row in a table.", "A two-dimensional structure consisting of rows and columns."], answer: "A row in a table." },
-  { question: "What is an attribute in a database?", options: ["A row in a table.", "A set of valid values for an attribute.", "A column in a table.", "A two-dimensional structure consisting of rows and columns."], answer: "A column in a table." },
-  { question: "What is a domain in a database?", options: ["A set of valid values for an attribute.", "A row in a table.", "A column in a table.", "A two-dimensional structure consisting of rows and columns."], answer: "A set of valid values for an attribute." },
-  { question: "What is a table in a database?", options: ["A unique identifier for a row in a table.", "A set of valid values for an attribute.", "A two-dimensional structure consisting of rows and columns.", "A primary key from another table, used to establish relationships."], answer: "A two-dimensional structure consisting of rows and columns." },
-  { question: "What is a data anomaly?", options: ["Issues that arise due to data redundancy.", "Unnecessary duplication of data.", "A process of organizing data to reduce redundancy.", "When one attribute uniquely determines another."], answer: "Issues that arise due to data redundancy." },
-  { question: "What is data redundancy?", options: ["Issues that arise due to data redundancy.", "Unnecessary duplication of data.", "A process of organizing data to reduce redundancy.", "When one attribute uniquely determines another."], answer: "Unnecessary duplication of data." },
-  { question: "What is functional dependence?", options: ["Issues that arise due to data redundancy.", "Unnecessary duplication of data.", "When one attribute uniquely determines another.", "A process of organizing data to reduce redundancy."], answer: "When one attribute uniquely determines another." },
-  { question: "What is normalization in databases?", options: ["A process of organizing data to reduce redundancy.", "Combining tables for performance optimization.", "A unique identifier for a row in a table.", "A set of valid values for an attribute."], answer: "A process of organizing data to reduce redundancy." },
-  { question: "What is denormalization?", options: ["A process of organizing data to reduce redundancy.", "Combining tables for performance optimization.", "A unique identifier for a row in a table.", "A set of valid values for an attribute."], answer: "Combining tables for performance optimization." },
-  { question: "What does 1NF (First Normal Form) eliminate?", options: ["Partial dependencies.", "Multi-valued dependencies.", "Repeating groups.", "Transitive dependencies."], answer: "Repeating groups." },
-  { question: "What does 2NF (Second Normal Form) remove?", options: ["Partial dependencies.", "Transitive dependencies.", "Multi-valued dependencies.", "Repeating groups."], answer: "Partial dependencies." },
-  { question: "What does 3NF (Third Normal Form) remove?", options: ["Partial dependencies.", "Transitive dependencies.", "Multi-valued dependencies.", "Repeating groups."], answer: "Transitive dependencies." },
-  { question: "What is BCNF (Boyce-Codd Normal Form)?", options: ["A weaker form of 3NF.", "A stronger form of 3NF.", "A process of organizing data to reduce redundancy.", "A set of valid values for an attribute."], answer: "A stronger form of 3NF." },
-  { question: "What does 4NF (Fourth Normal Form) remove?", options: ["Repeating groups.", "Partial dependencies.", "Multi-valued dependencies.", "Transitive dependencies."], answer: "Multi-valued dependencies." }
+  { question: "What is a primary key?", options: ["A set of attributes that uniquely identify a row", "A unique identifier for a row in a table", "A primary key from another table, used to establish relationships", "An attribute used for searching but not a primary key"], answer: "A unique identifier for a row in a table" },
+  
+  { question: "What is a foreign key?", options: ["A unique identifier for a row in a table", "A primary key from another table, used to establish relationships", "A key that could be a primary key but isn’t selected", "A set of attributes that uniquely identify a row"], answer: "A primary key from another table, used to establish relationships" },
+
+  { question: "What is a candidate key?", options: ["A primary key from another table, used to establish relationships", "A set of attributes that uniquely identify a row", "A key that could be a primary key but isn’t selected", "An attribute used for searching but not a primary key"], answer: "A key that could be a primary key but isn’t selected" },
+
+  { question: "What is a superkey?", options: ["A key that could be a primary key but isn’t selected", "A set of attributes that uniquely identify a row", "A unique identifier for a row in a table", "A primary key from another table, used to establish relationships"], answer: "A set of attributes that uniquely identify a row" },
+
+  { question: "What is a secondary key?", options: ["An attribute used for searching but not a primary key", "A unique identifier for a row in a table", "A set of attributes that uniquely identify a row", "A primary key from another table, used to establish relationships"], answer: "An attribute used for searching but not a primary key" },
+
+  { question: "What is a tuple in a database?", options: ["A column in a table", "A set of valid values for an attribute", "A row in a table", "A two-dimensional structure consisting of rows and columns"], answer: "A row in a table" },
+
+  { question: "What is an attribute in a database?", options: ["A row in a table", "A set of valid values for an attribute", "A column in a table", "A two-dimensional structure consisting of rows and columns"], answer: "A column in a table" },
+
+  { question: "What is a domain in a database?", options: ["A set of valid values for an attribute", "A row in a table", "A column in a table", "A two-dimensional structure consisting of rows and columns"], answer: "A set of valid values for an attribute" },
+
+  { question: "What is a table in a database?", options: ["A unique identifier for a row in a table", "A set of valid values for an attribute", "A two-dimensional structure consisting of rows and columns", "A primary key from another table, used to establish relationships"], answer: "A two-dimensional structure consisting of rows and columns" },
+
+  { question: "What is a data anomaly?", options: ["Issues that arise due to data redundancy", "Unnecessary duplication of data", "A process of organizing data to reduce redundancy", "When one attribute uniquely determines another"], answer: "Issues that arise due to data redundancy" },
+
+  { question: "What is data redundancy?", options: ["Issues that arise due to data redundancy", "Unnecessary duplication of data", "A process of organizing data to reduce redundancy", "When one attribute uniquely determines another"], answer: "Unnecessary duplication of data" },
+
+  { question: "What is functional dependence?", options: ["Issues that arise due to data redundancy", "Unnecessary duplication of data", "When one attribute uniquely determines another", "A process of organizing data to reduce redundancy"], answer: "When one attribute uniquely determines another" },
+
+  { question: "What is normalization in databases?", options: ["A process of organizing data to reduce redundancy", "Combining tables for performance optimization", "A unique identifier for a row in a table", "A set of valid values for an attribute"], answer: "A process of organizing data to reduce redundancy" },
+
+  { question: "What is denormalization?", options: ["A process of organizing data to reduce redundancy", "Combining tables for performance optimization", "A unique identifier for a row in a table", "A set of valid values for an attribute"], answer: "Combining tables for performance optimization" },
+
+  { question: "What does 1NF (First Normal Form) eliminate?", options: ["Partial dependencies", "Multi-valued dependencies", "Repeating groups", "Transitive dependencies"], answer: "Repeating groups" },
+
+  { question: "What does 2NF (Second Normal Form) remove?", options: ["Partial dependencies", "Transitive dependencies", "Multi-valued dependencies", "Repeating groups"], answer: "Partial dependencies" },
+
+  { question: "What does 3NF (Third Normal Form) remove?", options: ["Partial dependencies", "Transitive dependencies", "Multi-valued dependencies", "Repeating groups"], answer: "Transitive dependencies" },
+
+  { question: "What is BCNF (Boyce-Codd Normal Form)?", options: ["A weaker form of 3NF", "A stronger form of 3NF", "A process of organizing data to reduce redundancy", "A set of valid values for an attribute"], answer: "A stronger form of 3NF" },
+
+  { question: "What does 4NF (Fourth Normal Form) remove?", options: ["Repeating groups", "Partial dependencies", "Multi-valued dependencies", "Transitive dependencies"], answer: "Multi-valued dependencies" },
+
+  { question: "How is an entity represented in an Entity-Relationship Diagram (ERD)?", options: ["As a diamond", "As a rectangle", "As an oval", "As an arrow"], answer: "As a rectangle" },
+
+  { question: "How is a relationship represented in an ERD?", options: ["As an oval", "As a rectangle", "As a diamond", "As a line"], answer: "As a diamond" },
+
+  { question: "How are attributes represented in an ERD?", options: ["As a rectangle", "As a diamond", "As an oval", "As a line"], answer: "As an oval" },
+
+  { question: "How is a primary key represented in an ERD?", options: ["Underlined", "Bolded", "Connected to another table", "A rectangle with a dashed line"], answer: "Underlined" },
+
+  { question: "How is a foreign key represented in an ERD?", options: ["Underlined", "Bolded", "Connected to another table", "A rectangle with a dashed line"], answer: "Connected to another table" },
+
+  { question: "How are required attributes represented in Crow's Foot notation?", options: ["Bolded", "Underlined", "In italics", "As a rectangle"], answer: "Bolded" },
+
+  { question: "What does the Union (U) operation do in SQL?", options: ["Combines all rows from two tables", "Retrieves common rows between tables", "Retrieves rows in one table but not the other", "Combines all possible row pairs"], answer: "Combines all rows from two tables" },
+
+  { question: "What does the Intersection (n) operation do in SQL?", options: ["Combines all rows from two tables", "Retrieves common rows between tables", "Retrieves rows in one table but not the other", "Combines all possible row pairs"], answer: "Retrieves common rows between tables" },
+
+  { question: "What does the Difference (-) operation do in SQL?", options: ["Combines all rows from two tables", "Retrieves common rows between tables", "Retrieves rows in one table but not the other", "Combines all possible row pairs"], answer: "Retrieves rows in one table but not the other" },
+
+  { question: "What does the Cartesian Product (x) operation do in SQL?", options: ["Combines all rows from two tables", "Retrieves common rows between tables", "Retrieves rows in one table but not the other", "Combines all possible row pairs"], answer: "Combines all possible row pairs" },
+
+  { question: "What does the π (Projection) notation do in SQL?", options: ["Filters rows based on a condition", "Retrieves specific columns", "Refers to a table", "Refers to a column"], answer: "Retrieves specific columns" },
+
+  { question: "What does the σ (Selection) notation do in SQL?", options: ["Filters rows based on a condition", "Retrieves specific columns", "Refers to a table", "Refers to a column"], answer: "Filters rows based on a condition" },
+
+  { question: "In the notation \"EMP_MI in π EMP_MI (EMPLOYEES)\", what does EMP_MI refer to?", options: ["A column", "A table", "A relationship", "A row"], answer: "A column" },
+
+  { question: "In the notation \"STUDENTS in σ STU_NUM = 324452 (STUDENTS)\", what does STUDENTS refer to?", options: ["A column", "A table", "A relationship", "A row"], answer: "A table" },
+
+  { question: "What does entity integrity ensure?", options: ["Each row has a unique identity", "Foreign keys match primary keys in another table", "The database is normalized", "The columns are properly indexed"], answer: "Each row has a unique identity" },
+
+  { question: "What does referential integrity ensure?", options: ["Each row has a unique identity", "Foreign keys match primary keys in another table", "The database is normalized", "The columns are properly indexed"], answer: "Foreign keys match primary keys in another table" },
+
+  { question: "What are integrity rules?", options: ["Guidelines for maintaining database consistency", "Rules for managing indexing and queries", "Constraints applied to table relationships", "Techniques for denormalizing data"], answer: "Guidelines for maintaining database consistency" }
 ];
+
 
     
     let currentQuiz = [...originalQuiz];
