@@ -1,219 +1,231 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Information Management</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    body { font-family: 'Poppins', sans-serif; }
-  </style>
-</head>
-<body class="bg-gradient-to-br from-blue-50 via-purple-100 to-pink-200 text-gray-900 min-h-screen flex flex-col">
-    <!-- Navigation Bar -->
-    <nav class="bg-white bg-opacity-70 p-4 shadow-md backdrop-blur-md fixed w-full top-0 left-0 z-50 flex justify-between items-center">
-      <a href="index.html" class="text-gray-900 text-lg font-semibold px-4 py-2 rounded-lg hover:bg-gray-300 transition">Home</a>
-      <span class="text-lg md:text-xl font-bold text-gray-900 text-center">Information Management</span>
-      <div class="w-16"></div>
-    </nav>
-  
-    <!-- Quiz Container -->
-    <div class="flex-grow flex items-center justify-center mt-20 p-4">
-      <div id="quiz-container" class="bg-white bg-opacity-90 p-8 rounded-2xl shadow-lg text-center backdrop-blur-lg max-w-md w-full transform transition duration-300 hover:shadow-2xl">
-        <h2 id="question" class="text-2xl font-bold mb-6 text-gray-800">Question goes here</h2>
-        <ul id="options" class="space-y-4">
-          <li class="option bg-gray-100 hover:bg-purple-300 cursor-pointer p-4 rounded-lg transition duration-200 shadow-md text-lg font-medium text-gray-800">Option 1</li>
-          <li class="option bg-gray-100 hover:bg-purple-300 cursor-pointer p-4 rounded-lg transition duration-200 shadow-md text-lg font-medium text-gray-800">Option 2</li>
-          <li class="option bg-gray-100 hover:bg-purple-300 cursor-pointer p-4 rounded-lg transition duration-200 shadow-md text-lg font-medium text-gray-800">Option 3</li>
-          <li class="option bg-gray-100 hover:bg-purple-300 cursor-pointer p-4 rounded-lg transition duration-200 shadow-md text-lg font-medium text-gray-800">Option 4</li>
-        </ul>
-        <p id="result" class="mt-5 font-semibold text-lg text-gray-800"></p>
-        <p id="progress" class="text-sm text-gray-600 mt-2"></p>
-        
-        <button id="retry-btn" onclick="startRetake()" class="hidden mt-5 bg-purple-500 text-white px-6 py-3 rounded-full hover:bg-purple-600 transition duration-300 font-semibold shadow-md">
-          Retry Incorrect Questions
-        </button>
-        
-        <p id="retake-total" class="hidden"></p>
-        <p id="score" class="mt-4 font-semibold text-lg text-gray-800"></p>
-      </div>
-    </div>
-  
-  
-  <script>
-const originalQuiz = [
+ <html lang="en">
+ <head>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>Information Management</title>
+   <script src="https://cdn.tailwindcss.com"></script>
+   <style>
+     body {
+       font-family: 'Poppins', sans-serif;
+     }
+   </style>
+ </head>
+ <body class="bg-gradient-to-br from-blue-50 via-purple-100 to-pink-200 text-gray-900 min-h-screen flex flex-col">
+   <!-- Navigation Bar -->
+   <nav class="bg-white bg-opacity-70 p-4 shadow-md backdrop-blur-md fixed w-full top-0 left-0 z-50 flex justify-between items-center">
+     <a href="index.html" class="text-gray-900 text-lg font-semibold px-4 py-2 rounded-lg hover:bg-gray-300 transition">Home</a>
+     <span class="text-lg md:text-xl font-bold text-gray-900 text-center">Quiz: Systems Integration & Architecture</span>
+     <span class="text-lg md:text-xl font-bold text-gray-900 text-center">Information Management</span>
+     <div class="w-16"></div>
+   </nav>
+ 
+   <!-- Quiz Container -->
+   <div class="flex-grow flex items-center justify-center mt-20 p-4">
+     <div id="quiz-container" class="bg-white bg-opacity-90 p-8 rounded-2xl shadow-lg text-center backdrop-blur-lg max-w-md w-full transform transition duration-300 hover:shadow-2xl">
+       <h2 id="question" class="text-2xl font-bold mb-6 text-gray-800">Question goes here</h2>
+       <ul id="options" class="space-y-4">
+         <li class="option bg-gray-100 hover:bg-purple-300 cursor-pointer p-4 rounded-lg transition duration-200 shadow-md text-lg font-medium text-gray-800">Option 1</li>
+         <li class="option bg-gray-100 hover:bg-purple-300 cursor-pointer p-4 rounded-lg transition duration-200 shadow-md text-lg font-medium text-gray-800">Option 2</li>
+         <li class="option bg-gray-100 hover:bg-purple-300 cursor-pointer p-4 rounded-lg transition duration-200 shadow-md text-lg font-medium text-gray-800">Option 3</li>
+         <li class="option bg-gray-100 hover:bg-purple-300 cursor-pointer p-4 rounded-lg transition duration-200 shadow-md text-lg font-medium text-gray-800">Option 4</li>
+       </ul>
+       <p id="result" class="mt-5 font-semibold text-lg text-gray-800"></p>
+       <p id="progress" class="text-sm text-gray-600 mt-2"></p>
+ 
+       <button id="retry-btn" onclick="startRetake()" class="hidden mt-5 bg-purple-500 text-white px-6 py-3 rounded-full hover:bg-purple-600 transition duration-300 font-semibold shadow-md">
+         Retry Incorrect Questions
+       </button>
+ 
+       <p id="retake-total" class="hidden"></p>
+       <p id="score" class="mt-4 font-semibold text-lg text-gray-800"></p>
+     </div>
+   </div>
+ 
+   <script>
+     const originalQuiz = [
   { question: "What is a primary key?", options: ["A set of attributes that uniquely identify a row", "A unique identifier for a row in a table", "A primary key from another table, used to establish relationships", "An attribute used for searching but not a primary key"], answer: "A unique identifier for a row in a table" },
-  
-  { question: "What is a foreign key?", options: ["A unique identifier for a row in a table", "A primary key from another table, used to establish relationships", "A key that could be a primary key but isn’t selected", "A set of attributes that uniquely identify a row"], answer: "A primary key from another table, used to establish relationships" },
-
-  { question: "What is a candidate key?", options: ["A primary key from another table, used to establish relationships", "A set of attributes that uniquely identify a row", "A key that could be a primary key but isn’t selected", "An attribute used for searching but not a primary key"], answer: "A key that could be a primary key but isn’t selected" },
-
-  { question: "What is a superkey?", options: ["A key that could be a primary key but isn’t selected", "A set of attributes that uniquely identify a row", "A unique identifier for a row in a table", "A primary key from another table, used to establish relationships"], answer: "A set of attributes that uniquely identify a row" },
-
-  { question: "What is a secondary key?", options: ["An attribute used for searching but not a primary key", "A unique identifier for a row in a table", "A set of attributes that uniquely identify a row", "A primary key from another table, used to establish relationships"], answer: "An attribute used for searching but not a primary key" },
-
-  { question: "What is a tuple in a database?", options: ["A column in a table", "A set of valid values for an attribute", "A row in a table", "A two-dimensional structure consisting of rows and columns"], answer: "A row in a table" },
-
-  { question: "What is an attribute in a database?", options: ["A row in a table", "A set of valid values for an attribute", "A column in a table", "A two-dimensional structure consisting of rows and columns"], answer: "A column in a table" },
-
-  { question: "What is a domain in a database?", options: ["A set of valid values for an attribute", "A row in a table", "A column in a table", "A two-dimensional structure consisting of rows and columns"], answer: "A set of valid values for an attribute" },
-
-  { question: "What is a table in a database?", options: ["A unique identifier for a row in a table", "A set of valid values for an attribute", "A two-dimensional structure consisting of rows and columns", "A primary key from another table, used to establish relationships"], answer: "A two-dimensional structure consisting of rows and columns" },
-
-  { question: "What is a data anomaly?", options: ["Issues that arise due to data redundancy", "Unnecessary duplication of data", "A process of organizing data to reduce redundancy", "When one attribute uniquely determines another"], answer: "Issues that arise due to data redundancy" },
-
-  { question: "What is data redundancy?", options: ["Issues that arise due to data redundancy", "Unnecessary duplication of data", "A process of organizing data to reduce redundancy", "When one attribute uniquely determines another"], answer: "Unnecessary duplication of data" },
-
-  { question: "What is functional dependence?", options: ["Issues that arise due to data redundancy", "Unnecessary duplication of data", "When one attribute uniquely determines another", "A process of organizing data to reduce redundancy"], answer: "When one attribute uniquely determines another" },
-
-  { question: "What is normalization in databases?", options: ["A process of organizing data to reduce redundancy", "Combining tables for performance optimization", "A unique identifier for a row in a table", "A set of valid values for an attribute"], answer: "A process of organizing data to reduce redundancy" },
-
-  { question: "What is denormalization?", options: ["A process of organizing data to reduce redundancy", "Combining tables for performance optimization", "A unique identifier for a row in a table", "A set of valid values for an attribute"], answer: "Combining tables for performance optimization" },
-
-  { question: "What does 1NF (First Normal Form) eliminate?", options: ["Partial dependencies", "Multi-valued dependencies", "Repeating groups", "Transitive dependencies"], answer: "Repeating groups" },
-
-  { question: "What does 2NF (Second Normal Form) remove?", options: ["Partial dependencies", "Transitive dependencies", "Multi-valued dependencies", "Repeating groups"], answer: "Partial dependencies" },
-
-  { question: "What does 3NF (Third Normal Form) remove?", options: ["Partial dependencies", "Transitive dependencies", "Multi-valued dependencies", "Repeating groups"], answer: "Transitive dependencies" },
-
-  { question: "What is BCNF (Boyce-Codd Normal Form)?", options: ["A weaker form of 3NF", "A stronger form of 3NF", "A process of organizing data to reduce redundancy", "A set of valid values for an attribute"], answer: "A stronger form of 3NF" },
-
-  { question: "What does 4NF (Fourth Normal Form) remove?", options: ["Repeating groups", "Partial dependencies", "Multi-valued dependencies", "Transitive dependencies"], answer: "Multi-valued dependencies" },
-
-  { question: "How is an entity represented in an Entity-Relationship Diagram (ERD)?", options: ["As a diamond", "As a rectangle", "As an oval", "As an arrow"], answer: "As a rectangle" },
-
-  { question: "How is a relationship represented in an ERD?", options: ["As an oval", "As a rectangle", "As a diamond", "As a line"], answer: "As a diamond" },
-
-  { question: "How are attributes represented in an ERD?", options: ["As a rectangle", "As a diamond", "As an oval", "As a line"], answer: "As an oval" },
-
-  { question: "How is a primary key represented in an ERD?", options: ["Underlined", "Bolded", "Connected to another table", "A rectangle with a dashed line"], answer: "Underlined" },
-
-  { question: "How is a foreign key represented in an ERD?", options: ["Underlined", "Bolded", "Connected to another table", "A rectangle with a dashed line"], answer: "Connected to another table" },
-
-  { question: "How are required attributes represented in Crow's Foot notation?", options: ["Bolded", "Underlined", "In italics", "As a rectangle"], answer: "Bolded" },
-
-  { question: "What does the Union (U) operation do in SQL?", options: ["Combines all rows from two tables", "Retrieves common rows between tables", "Retrieves rows in one table but not the other", "Combines all possible row pairs"], answer: "Combines all rows from two tables" },
-
-  { question: "What does the Intersection (n) operation do in SQL?", options: ["Combines all rows from two tables", "Retrieves common rows between tables", "Retrieves rows in one table but not the other", "Combines all possible row pairs"], answer: "Retrieves common rows between tables" },
-
-  { question: "What does the Difference (-) operation do in SQL?", options: ["Combines all rows from two tables", "Retrieves common rows between tables", "Retrieves rows in one table but not the other", "Combines all possible row pairs"], answer: "Retrieves rows in one table but not the other" },
-
-  { question: "What does the Cartesian Product (x) operation do in SQL?", options: ["Combines all rows from two tables", "Retrieves common rows between tables", "Retrieves rows in one table but not the other", "Combines all possible row pairs"], answer: "Combines all possible row pairs" },
-
-  { question: "What does the π (Projection) notation do in SQL?", options: ["Filters rows based on a condition", "Retrieves specific columns", "Refers to a table", "Refers to a column"], answer: "Retrieves specific columns" },
-
-  { question: "What does the σ (Selection) notation do in SQL?", options: ["Filters rows based on a condition", "Retrieves specific columns", "Refers to a table", "Refers to a column"], answer: "Filters rows based on a condition" },
-
-  { question: "In the notation \"EMP_MI in π EMP_MI (EMPLOYEES)\", what does EMP_MI refer to?", options: ["A column", "A table", "A relationship", "A row"], answer: "A column" },
-
-  { question: "In the notation \"STUDENTS in σ STU_NUM = 324452 (STUDENTS)\", what does STUDENTS refer to?", options: ["A column", "A table", "A relationship", "A row"], answer: "A table" },
-
-  { question: "What does entity integrity ensure?", options: ["Each row has a unique identity", "Foreign keys match primary keys in another table", "The database is normalized", "The columns are properly indexed"], answer: "Each row has a unique identity" },
-
-  { question: "What does referential integrity ensure?", options: ["Each row has a unique identity", "Foreign keys match primary keys in another table", "The database is normalized", "The columns are properly indexed"], answer: "Foreign keys match primary keys in another table" },
-
-  { question: "What are integrity rules?", options: ["Guidelines for maintaining database consistency", "Rules for managing indexing and queries", "Constraints applied to table relationships", "Techniques for denormalizing data"], answer: "Guidelines for maintaining database consistency" }
-];
-
-
-    
-    let currentQuiz = [...originalQuiz];
-    let currentQuestionIndex = 0;
-    let firstTakeScore = 0;
-    let retakeScore = 0;
-    let firstAttempt = true;
-    let incorrectQuestions = [];
-
-    function shuffle(array) {
-      return array.sort(() => Math.random() - 0.5);
-    }
-    
-    function loadQuestion() {
-      document.getElementById("completion-message")?.remove();
-      document.getElementById("score").innerText = "";
-
-      if (currentQuestionIndex >= currentQuiz.length) {
-        if (incorrectQuestions.length === 0) {
-          document.getElementById("score").innerText = `Final Score: ${firstTakeScore} out of ${originalQuiz.length}`;
-        } else {
-          document.getElementById("retry-btn").classList.remove("hidden");
-          document.getElementById("retake-total").classList.remove("hidden");
-          document.getElementById("retake-total").innerText = `Incorrect Questions: ${incorrectQuestions.length} Total correct first try attempts: ${firstTakeScore}`;
-        }
-        return;
-      }
-      
-      firstAttempt = true;
-      const currentItem = currentQuiz[currentQuestionIndex];
-      document.getElementById("question").innerText = currentItem.question;
-      document.getElementById("progress").innerText = `Question ${currentQuestionIndex + 1} of ${currentQuiz.length}`;
-      document.getElementById("result").innerText = "";
-      
-      const optionsList = document.getElementById("options");
-      optionsList.innerHTML = "";
-      
-      shuffle([...currentItem.options]).forEach(option => {
-        const button = document.createElement("button");
-        button.innerText = option;
-        button.className = "w-full bg-gray-300 text-gray-900 px-4 py-2 rounded-full hover:bg-gray-400 transition font-semibold focus:outline-none focus:ring-2 focus:ring-pink-500";
-        button.onclick = () => checkAnswer(button, option);
-        const li = document.createElement("li");
-        li.appendChild(button);
-        optionsList.appendChild(li);
-      });
-    }
-    
-    function disableOptions() {
-      document.querySelectorAll("#options button").forEach(btn => btn.disabled = true);
-    }
-    
-    function checkAnswer(button, selected) {
-      const currentItem = currentQuiz[currentQuestionIndex];
-
-      if (selected === currentItem.answer) {
-        disableOptions();
-        button.classList.replace("bg-gray-300", "bg-green-500");
-        button.classList.replace("hover:bg-gray-400", "hover:bg-green-600");
-        button.classList.add("text-white");
-        document.getElementById("result").innerText = "Correct!";
-
-        if (firstAttempt) {
-          firstTakeScore++;
-          incorrectQuestions = incorrectQuestions.filter(q => q.question !== currentItem.question);
-        }
-
-        setTimeout(() => {
-          currentQuestionIndex++;
-          loadQuestion();
-        }, 1000);
-      } else {
-        button.disabled = true;
-        button.classList.replace("bg-gray-300", "bg-red-500");
-        button.classList.replace("hover:bg-gray-400", "hover:bg-red-600");
-        button.classList.add("text-white");
-        document.getElementById("result").innerText = "Wrong! Try again.";
-        firstAttempt = false;
-
-        if (!incorrectQuestions.some(q => q.question === currentItem.question)) {
-          incorrectQuestions.push(currentItem);
-        }
-      }
-    }
-    
-    function startRetake() {
-      if (incorrectQuestions.length > 0) {
-        currentQuiz = [...incorrectQuestions];
-        incorrectQuestions = [];
-        currentQuestionIndex = 0;
-        retakeScore = 0;
-        document.getElementById("retry-btn").classList.add("hidden");
-        document.getElementById("retake-total").classList.add("hidden");
-        document.getElementById("completion-message")?.remove();
-        loadQuestion();
-      }
-    }
-    
-    loadQuestion();
-  </script>
-</body>
-</html>
+ 
+   { question: "What is a foreign key?", options: ["A unique identifier for a row in a table", "A primary key from another table, used to establish relationships", "A key that could be a primary key but isn’t selected", "A set of attributes that uniquely identify a row"], answer: "A primary key from another table, used to establish relationships" },
+ 
+   { question: "What is a candidate key?", options: ["A primary key from another table, used to establish relationships", "A set of attributes that uniquely identify a row", "A key that could be a primary key but isn’t selected", "An attribute used for searching but not a primary key"], answer: "A key that could be a primary key but isn’t selected" },
+ 
+   { question: "What is a superkey?", options: ["A key that could be a primary key but isn’t selected", "A set of attributes that uniquely identify a row", "A unique identifier for a row in a table", "A primary key from another table, used to establish relationships"], answer: "A set of attributes that uniquely identify a row" },
+ 
+   { question: "What is a secondary key?", options: ["An attribute used for searching but not a primary key", "A unique identifier for a row in a table", "A set of attributes that uniquely identify a row", "A primary key from another table, used to establish relationships"], answer: "An attribute used for searching but not a primary key" },
+ 
+   { question: "What is a tuple in a database?", options: ["A column in a table", "A set of valid values for an attribute", "A row in a table", "A two-dimensional structure consisting of rows and columns"], answer: "A row in a table" },
+ 
+   { question: "What is an attribute in a database?", options: ["A row in a table", "A set of valid values for an attribute", "A column in a table", "A two-dimensional structure consisting of rows and columns"], answer: "A column in a table" },
+ 
+   { question: "What is a domain in a database?", options: ["A set of valid values for an attribute", "A row in a table", "A column in a table", "A two-dimensional structure consisting of rows and columns"], answer: "A set of valid values for an attribute" },
+ 
+   { question: "What is a table in a database?", options: ["A unique identifier for a row in a table", "A set of valid values for an attribute", "A two-dimensional structure consisting of rows and columns", "A primary key from another table, used to establish relationships"], answer: "A two-dimensional structure consisting of rows and columns" },
+ 
+   { question: "What is a data anomaly?", options: ["Issues that arise due to data redundancy", "Unnecessary duplication of data", "A process of organizing data to reduce redundancy", "When one attribute uniquely determines another"], answer: "Issues that arise due to data redundancy" },
+ 
+   { question: "What is data redundancy?", options: ["Issues that arise due to data redundancy", "Unnecessary duplication of data", "A process of organizing data to reduce redundancy", "When one attribute uniquely determines another"], answer: "Unnecessary duplication of data" },
+ 
+   { question: "What is functional dependence?", options: ["Issues that arise due to data redundancy", "Unnecessary duplication of data", "When one attribute uniquely determines another", "A process of organizing data to reduce redundancy"], answer: "When one attribute uniquely determines another" },
+ 
+   { question: "What is normalization in databases?", options: ["A process of organizing data to reduce redundancy", "Combining tables for performance optimization", "A unique identifier for a row in a table", "A set of valid values for an attribute"], answer: "A process of organizing data to reduce redundancy" },
+ 
+   { question: "What is denormalization?", options: ["A process of organizing data to reduce redundancy", "Combining tables for performance optimization", "A unique identifier for a row in a table", "A set of valid values for an attribute"], answer: "Combining tables for performance optimization" },
+ 
+   { question: "What does 1NF (First Normal Form) eliminate?", options: ["Partial dependencies", "Multi-valued dependencies", "Repeating groups", "Transitive dependencies"], answer: "Repeating groups" },
+ 
+   { question: "What does 2NF (Second Normal Form) remove?", options: ["Partial dependencies", "Transitive dependencies", "Multi-valued dependencies", "Repeating groups"], answer: "Partial dependencies" },
+ 
+   { question: "What does 3NF (Third Normal Form) remove?", options: ["Partial dependencies", "Transitive dependencies", "Multi-valued dependencies", "Repeating groups"], answer: "Transitive dependencies" },
+ 
+   { question: "What is BCNF (Boyce-Codd Normal Form)?", options: ["A weaker form of 3NF", "A stronger form of 3NF", "A process of organizing data to reduce redundancy", "A set of valid values for an attribute"], answer: "A stronger form of 3NF" },
+ 
+   { question: "What does 4NF (Fourth Normal Form) remove?", options: ["Repeating groups", "Partial dependencies", "Multi-valued dependencies", "Transitive dependencies"], answer: "Multi-valued dependencies" },
+ 
+   { question: "How is an entity represented in an Entity-Relationship Diagram (ERD)?", options: ["As a diamond", "As a rectangle", "As an oval", "As an arrow"], answer: "As a rectangle" },
+ 
+   { question: "How is a relationship represented in an ERD?", options: ["As an oval", "As a rectangle", "As a diamond", "As a line"], answer: "As a diamond" },
+ 
+   { question: "How are attributes represented in an ERD?", options: ["As a rectangle", "As a diamond", "As an oval", "As a line"], answer: "As an oval" },
+ 
+   { question: "How is a primary key represented in an ERD?", options: ["Underlined", "Bolded", "Connected to another table", "A rectangle with a dashed line"], answer: "Underlined" },
+ 
+   { question: "How is a foreign key represented in an ERD?", options: ["Underlined", "Bolded", "Connected to another table", "A rectangle with a dashed line"], answer: "Connected to another table" },
+ 
+   { question: "How are required attributes represented in Crow's Foot notation?", options: ["Bolded", "Underlined", "In italics", "As a rectangle"], answer: "Bolded" },
+ 
+   { question: "What does the Union (U) operation do in SQL?", options: ["Combines all rows from two tables", "Retrieves common rows between tables", "Retrieves rows in one table but not the other", "Combines all possible row pairs"], answer: "Combines all rows from two tables" },
+ 
+   { question: "What does the Intersection (n) operation do in SQL?", options: ["Combines all rows from two tables", "Retrieves common rows between tables", "Retrieves rows in one table but not the other", "Combines all possible row pairs"], answer: "Retrieves common rows between tables" },
+ 
+   { question: "What does the Difference (-) operation do in SQL?", options: ["Combines all rows from two tables", "Retrieves common rows between tables", "Retrieves rows in one table but not the other", "Combines all possible row pairs"], answer: "Retrieves rows in one table but not the other" },
+ 
+   { question: "What does the Cartesian Product (x) operation do in SQL?", options: ["Combines all rows from two tables", "Retrieves common rows between tables", "Retrieves rows in one table but not the other", "Combines all possible row pairs"], answer: "Combines all possible row pairs" },
+ 
+   { question: "What does the π (Projection) notation do in SQL?", options: ["Filters rows based on a condition", "Retrieves specific columns", "Refers to a table", "Refers to a column"], answer: "Retrieves specific columns" },
+ 
+   { question: "What does the σ (Selection) notation do in SQL?", options: ["Filters rows based on a condition", "Retrieves specific columns", "Refers to a table", "Refers to a column"], answer: "Filters rows based on a condition" },
+ 
+   { question: "In the notation \"EMP_MI in π EMP_MI (EMPLOYEES)\", what does EMP_MI refer to?", options: ["A column", "A table", "A relationship", "A row"], answer: "A column" },
+ 
+   { question: "In the notation \"STUDENTS in σ STU_NUM = 324452 (STUDENTS)\", what does STUDENTS refer to?", options: ["A column", "A table", "A relationship", "A row"], answer: "A table" },
+ 
+   { question: "What does entity integrity ensure?", options: ["Each row has a unique identity", "Foreign keys match primary keys in another table", "The database is normalized", "The columns are properly indexed"], answer: "Each row has a unique identity" },
+ 
+   { question: "What does referential integrity ensure?", options: ["Each row has a unique identity", "Foreign keys match primary keys in another table", "The database is normalized", "The columns are properly indexed"], answer: "Foreign keys match primary keys in another table" },
+ 
+   { question: "What are integrity rules?", options: ["Guidelines for maintaining database consistency", "Rules for managing indexing and queries", "Constraints applied to table relationships", "Techniques for denormalizing data"], answer: "Guidelines for maintaining database consistency" }
+ ];
+ 
+ 
+     let currentQuiz = shuffle([...originalQuiz]);
+     let currentQuestionIndex = 0;
+     let firstTakeScore = 0;
+     let retakeScore = 0;
+     let firstAttempt = true;
+     let incorrectQuestions = [];
+ 
+     function shuffle(array) {
+       return array.sort(() => Math.random() - 0.5);
+     }
+ 
+     function loadQuestion() {
+       document.getElementById("completion-message")?.remove();
+       document.getElementById("score").innerText = "";
+ 
+       if (currentQuestionIndex >= currentQuiz.length) {
+         if (incorrectQuestions.length === 0) {
+           document.getElementById("score").innerText = `Final Score: ${firstTakeScore} out of ${originalQuiz.length}`;
+         } else {
+           document.getElementById("retry-btn").classList.remove("hidden");
+           document.getElementById("retake-total").classList.remove("hidden");
+           document.getElementById("retake-total").innerText = `Incorrect Questions: ${incorrectQuestions.length} Total correct first try attempts: ${firstTakeScore}`;
+         }
+         return;
+       }
+ 
+       firstAttempt = true;
+       const currentItem = currentQuiz[currentQuestionIndex];
+       document.getElementById("question").innerText = currentItem.question;
+       document.getElementById("progress").innerText = `Question ${currentQuestionIndex + 1} of ${currentQuiz.length}`;
+       document.getElementById("result").innerText = "";
+ 
+       const optionsList = document.getElementById("options");
+       optionsList.innerHTML = "";
+ 
+       shuffle([...currentItem.options]).forEach(option => {
+         const button = document.createElement("button");
+         button.innerText = option;
+         button.className =
+           "w-full bg-gray-300 text-gray-900 px-4 py-2 rounded-full hover:bg-gray-400 transition font-semibold focus:outline-none focus:ring-2 focus:ring-pink-500";
+         button.onclick = () => checkAnswer(button, option);
+         const li = document.createElement("li");
+         li.appendChild(button);
+         optionsList.appendChild(li);
+       });
+     }
+ 
+     function disableOptions() {
+       document.querySelectorAll("#options button").forEach(btn => btn.disabled = true);
+     }
+ 
+     function checkAnswer(button, selected) {
+       const currentItem = currentQuiz[currentQuestionIndex];
+ 
+       // Reset styles for other buttons
+       document.querySelectorAll("#options button").forEach(btn => {
+         btn.classList.replace("bg-red-500", "bg-gray-300");
+         btn.classList.replace("hover:bg-red-600", "hover:bg-gray-400");
+         btn.classList.replace("bg-green-500", "bg-gray-300");
+         btn.classList.replace("hover:bg-green-600", "hover:bg-gray-400");
+         btn.classList.remove("text-white");
+         btn.disabled = false;
+       });
+ 
+       if (selected === currentItem.answer) {
+         disableOptions();
+         button.classList.replace("bg-gray-300", "bg-green-500");
+         button.classList.replace("hover:bg-gray-400", "hover:bg-green-600");
+         button.classList.add("text-white");
+         document.getElementById("result").innerText = "Correct!";
+ 
+         if (firstAttempt) {
+           firstTakeScore++;
+           incorrectQuestions = incorrectQuestions.filter(q => q.question !== currentItem.question);
+         }
+ 
+         setTimeout(() => {
+           currentQuestionIndex++;
+           loadQuestion();
+         }, 1000);
+       } else {
+         button.disabled = true;
+         button.classList.replace("bg-gray-300", "bg-red-500");
+         button.classList.replace("hover:bg-gray-400", "hover:bg-red-600");
+         button.classList.add("text-white");
+         document.getElementById("result").innerText = "Wrong! Try again.";
+         firstAttempt = false;
+ 
+         if (!incorrectQuestions.some(q => q.question === currentItem.question)) {
+           incorrectQuestions.push(currentItem);
+         }
+       }
+     }
+ 
+     function startRetake() {
+       if (incorrectQuestions.length > 0) {
+         currentQuiz = [...incorrectQuestions];
+         incorrectQuestions = [];
+         currentQuestionIndex = 0;
+         retakeScore = 0;
+         document.getElementById("retry-btn").classList.add("hidden");
+         document.getElementById("retake-total").classList.add("hidden");
+         document.getElementById("completion-message")?.remove();
+         loadQuestion();
+       }
+     }
+ 
+     loadQuestion();
+   </script>
+ </body>
+ </html>
