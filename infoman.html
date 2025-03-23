@@ -6,59 +6,61 @@
   <title>Interactive Quiz</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
     body {
       font-family: 'Poppins', sans-serif;
     }
 
-    .option:hover {
-      transform: translateY(-4px);
-    }
-
-    .option:active {
-      transform: translateY(2px);
-    }
-
-    .bounce {
-      animation: bounce 1s infinite;
-    }
-
-    @keyframes bounce {
-      0%, 100% {
-        transform: translateY(0);
+    /* Custom animations */
+    @keyframes pop {
+      0% {
+        transform: scale(0.95);
+        opacity: 0.7;
       }
-      50% {
-        transform: translateY(-10px);
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
       }
     }
   </style>
 </head>
-<body class="bg-gradient-to-br from-blue-900 via-purple-800 to-pink-700 text-white min-h-screen flex flex-col">
+<body class="bg-gradient-to-br from-pink-100 via-purple-100 to-blue-100 text-gray-800 min-h-screen flex flex-col items-center justify-center overflow-x-hidden">
   <!-- Navigation Bar -->
-  <nav class="bg-gradient-to-r from-purple-500 to-pink-500 p-4 shadow-lg fixed w-full top-0 left-0 z-50 flex justify-between items-center">
-    <a href="index.html" class="text-white text-lg font-bold px-4 py-2 rounded-lg hover:bg-purple-700 transition">Home</a>
-    <span class="text-lg md:text-xl font-extrabold text-white text-center">Information Managementin ^_^</span>
+  <nav class="fixed top-0 left-0 w-full z-50 bg-white bg-opacity-70 backdrop-blur-lg shadow-lg px-6 py-4 flex justify-between items-center rounded-b-2xl">
+    <a href="index.html" class="text-lg font-semibold text-purple-700 hover:text-purple-900 transition-all duration-300">Home</a>
+    <h1 class="text-xl md:text-2xl font-bold text-gray-800 drop-shadow">Interactive Quiz</h1>
     <div class="w-16"></div>
   </nav>
 
   <!-- Quiz Container -->
-  <div class="flex-grow flex items-center justify-center mt-20 p-4">
-    <div id="quiz-container" class="bg-gradient-to-br from-purple-600 to-pink-500 p-8 rounded-3xl shadow-2xl text-center max-w-md w-full transform transition duration-300 hover:shadow-2xl">
-      <h2 id="question" class="text-3xl font-extrabold mb-6 text-white">Question goes here</h2>
+  <div class="flex-grow flex items-center justify-center mt-20 px-4 animate-fadeIn">
+    <div id="quiz-container" class="bg-white bg-opacity-90 p-8 rounded-2xl shadow-xl backdrop-blur-md max-w-md w-full transform transition-all duration-300 hover:shadow-2xl hover:scale-105">
+      <h2 id="question" class="text-2xl font-bold mb-6 text-purple-800 drop-shadow">Question goes here</h2>
       <ul id="options" class="space-y-4">
-        <li class="option bg-gradient-to-r from-purple-300 to-pink-300 cursor-pointer p-4 rounded-xl shadow-md text-lg font-medium text-gray-900 transition-transform transform hover:scale-105">Option 1</li>
-        <li class="option bg-gradient-to-r from-purple-300 to-pink-300 cursor-pointer p-4 rounded-xl shadow-md text-lg font-medium text-gray-900 transition-transform transform hover:scale-105">Option 2</li>
-        <li class="option bg-gradient-to-r from-purple-300 to-pink-300 cursor-pointer p-4 rounded-xl shadow-md text-lg font-medium text-gray-900 transition-transform transform hover:scale-105">Option 3</li>
-        <li class="option bg-gradient-to-r from-purple-300 to-pink-300 cursor-pointer p-4 rounded-xl shadow-md text-lg font-medium text-gray-900 transition-transform transform hover:scale-105">Option 4</li>
+        <li class="option cursor-pointer p-4 bg-purple-200 rounded-xl shadow-md text-lg font-medium text-gray-800 hover:bg-purple-300 hover:shadow-lg transition-transform duration-200 transform hover:-translate-y-1">Option 1</li>
+        <li class="option cursor-pointer p-4 bg-purple-200 rounded-xl shadow-md text-lg font-medium text-gray-800 hover:bg-purple-300 hover:shadow-lg transition-transform duration-200 transform hover:-translate-y-1">Option 2</li>
+        <li class="option cursor-pointer p-4 bg-purple-200 rounded-xl shadow-md text-lg font-medium text-gray-800 hover:bg-purple-300 hover:shadow-lg transition-transform duration-200 transform hover:-translate-y-1">Option 3</li>
+        <li class="option cursor-pointer p-4 bg-purple-200 rounded-xl shadow-md text-lg font-medium text-gray-800 hover:bg-purple-300 hover:shadow-lg transition-transform duration-200 transform hover:-translate-y-1">Option 4</li>
       </ul>
-      <p id="result" class="mt-5 font-bold text-xl text-white"></p>
-      <p id="progress" class="text-sm text-gray-200 mt-2"></p>
+      <p id="result" class="mt-5 font-semibold text-lg text-gray-800"></p>
+      <p id="progress" class="text-sm text-gray-600 mt-2"></p>
 
-      <button id="retry-btn" onclick="startRetake()" class="hidden mt-5 bg-gradient-to-r from-pink-500 to-red-500 text-white px-6 py-3 rounded-full hover:bg-pink-600 transition duration-300 font-bold shadow-lg transform hover:scale-110">
+      <button id="retry-btn" onclick="startRetake()" class="hidden mt-5 bg-gradient-to-r from-purple-500 to-blue-500 text-white px-6 py-3 rounded-full hover:from-purple-600 hover:to-blue-600 transition-all duration-300 font-semibold shadow-md">
         Retry Incorrect Questions
       </button>
 
-      <p id="retake-total" class="hidden text-lg font-semibold mt-4 text-gray-200"></p>
-      <p id="score" class="mt-4 font-extrabold text-xl text-yellow-300"></p>
+      <p id="retake-total" class="hidden"></p>
+      <p id="score" class="mt-4 font-semibold text-lg text-gray-800"></p>
     </div>
   </div>
 
@@ -176,7 +178,7 @@ const originalQuiz = [
         const button = document.createElement("button");
         button.innerText = option;
         button.className =
-          "w-full bg-gradient-to-r from-purple-300 to-pink-300 text-gray-900 px-4 py-2 rounded-xl hover:scale-105 transform transition-transform font-semibold focus:outline-none focus:ring-2 focus:ring-pink-500";
+          "w-full bg-purple-200 text-gray-900 px-4 py-2 rounded-full hover:bg-purple-300 hover:shadow-lg transition-all font-semibold focus:outline-none focus:ring-2 focus:ring-purple-500";
         button.onclick = () => checkAnswer(button, option);
         const li = document.createElement("li");
         li.appendChild(button);
@@ -191,20 +193,19 @@ const originalQuiz = [
     function checkAnswer(button, selected) {
       const currentItem = currentQuiz[currentQuestionIndex];
 
-      // Reset styles for other buttons
       document.querySelectorAll("#options button").forEach(btn => {
-        btn.classList.replace("bg-red-500", "bg-gradient-to-r from-purple-300 to-pink-300");
-        btn.classList.replace("hover:bg-red-600", "hover:scale-105");
-        btn.classList.replace("bg-green-500", "bg-gradient-to-r from-purple-300 to-pink-300");
+        btn.classList.replace("bg-red-500", "bg-purple-200");
+        btn.classList.replace("hover:bg-red-600", "hover:bg-purple-300");
+        btn.classList.replace("bg-green-500", "bg-purple-200");
+        btn.classList.replace("hover:bg-green-600", "hover:bg-purple-300");
         btn.classList.remove("text-white");
         btn.disabled = false;
       });
 
       if (selected === currentItem.answer) {
         disableOptions();
-        button.classList.replace("bg-gradient-to-r", "bg-green-500");
-        button.classList.replace("from-purple-300", "");
-        button.classList.replace("to-pink-300", "");
+        button.classList.replace("bg-purple-200", "bg-green-500");
+        button.classList.replace("hover:bg-purple-300", "hover:bg-green-600");
         button.classList.add("text-white");
         document.getElementById("result").innerText = "Correct!";
 
@@ -219,9 +220,8 @@ const originalQuiz = [
         }, 1000);
       } else {
         button.disabled = true;
-        button.classList.replace("bg-gradient-to-r", "bg-red-500");
-        button.classList.replace("from-purple-300", "");
-        button.classList.replace("to-pink-300", "");
+        button.classList.replace("bg-purple-200", "bg-red-500");
+        button.classList.replace("hover:bg-purple-300", "hover:bg-red-600");
         button.classList.add("text-white");
         document.getElementById("result").innerText = "Wrong! Try again.";
         firstAttempt = false;
