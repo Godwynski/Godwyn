@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Information Management</title>
+  <title>SIA</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body {
@@ -15,7 +15,7 @@
   <!-- Navigation Bar -->
   <nav class="bg-white bg-opacity-70 p-4 shadow-md backdrop-blur-md fixed w-full top-0 left-0 z-50 flex justify-between items-center">
     <a href="index.html" class="text-gray-900 text-lg font-semibold px-4 py-2 rounded-lg hover:bg-gray-300 transition">Home</a>
-    <span class="text-lg md:text-xl font-bold text-gray-900 text-center">Information Management hihi</span>
+    <span class="text-lg md:text-xl font-bold text-gray-900 text-center">SIA</span>
     <div class="w-16"></div>
   </nav>
 
@@ -43,78 +43,280 @@
   </div>
 
   <script>
-    const originalQuiz = [
- { question: "What is a primary key?", options: ["A set of attributes that uniquely identify a row", "A unique identifier for a row in a table", "A primary key from another table, used to establish relationships", "An attribute used for searching but not a primary key"], answer: "A unique identifier for a row in a table" },
+const originalQuiz = [
+  { 
+    question: "What is the purpose of a Scheduling Agreement?", 
+    options: [
+      "To determine the delivery plant for materials", 
+      "To outline how the total material quantity is distributed over a delivery schedule", 
+      "To manage customer credit status during billing", 
+      "To define specific delivery methods for goods"
+    ], 
+    answer: "To outline how the total material quantity is distributed over a delivery schedule" 
+  },
   
-  { question: "What is a foreign key?", options: ["A unique identifier for a row in a table", "A primary key from another table, used to establish relationships", "A key that could be a primary key but isn’t selected", "A set of attributes that uniquely identify a row"], answer: "A primary key from another table, used to establish relationships" },
+  { 
+    question: "Which unit is responsible for the buying activity of a plant?", 
+    options: [
+      "Storage Location", 
+      "Purchasing Organization", 
+      "Division", 
+      "Company Code"
+    ], 
+    answer: "Purchasing Organization" 
+  },
 
-  { question: "What is a candidate key?", options: ["A primary key from another table, used to establish relationships", "A set of attributes that uniquely identify a row", "A key that could be a primary key but isn’t selected", "An attribute used for searching but not a primary key"], answer: "A key that could be a primary key but isn’t selected" },
+  { 
+    question: "What does the 'header' in a sales order contain?", 
+    options: [
+      "Storage unit details", 
+      "Billing and invoicing details", 
+      "Customer data and total order cost", 
+      "Distribution channel and plant location"
+    ], 
+    answer: "Customer data and total order cost" 
+  },
 
-  { question: "What is a superkey?", options: ["A key that could be a primary key but isn’t selected", "A set of attributes that uniquely identify a row", "A unique identifier for a row in a table", "A primary key from another table, used to establish relationships"], answer: "A set of attributes that uniquely identify a row" },
+  { 
+    question: "What does a Storage Location represent in a plant?", 
+    options: [
+      "Distribution of sales orders", 
+      "A unit differentiating various material stocks", 
+      "A process for billing customers", 
+      "A legal set of books"
+    ], 
+    answer: "A unit differentiating various material stocks" 
+  },
 
-  { question: "What is a secondary key?", options: ["An attribute used for searching but not a primary key", "A unique identifier for a row in a table", "A set of attributes that uniquely identify a row", "A primary key from another table, used to establish relationships"], answer: "An attribute used for searching but not a primary key" },
+  { 
+    question: "What is the main focus of a Division?", 
+    options: [
+      "Grouping materials, products, or services", 
+      "Managing customer credit", 
+      "Scheduling delivery quantities", 
+      "Procuring material"
+    ], 
+    answer: "Grouping materials, products, or services" 
+  },
 
-  { question: "What is a tuple in a database?", options: ["A column in a table", "A set of valid values for an attribute", "A row in a table", "A two-dimensional structure consisting of rows and columns"], answer: "A row in a table" },
+  { 
+    question: "Billing is primarily used for:", 
+    options: [
+      "Procuring material within a set time period", 
+      "Generating invoices and updating credit status", 
+      "Differentiating between material stocks", 
+      "Outlining wholesale and retail methods"
+    ], 
+    answer: "Generating invoices and updating credit status" 
+  },
 
-  { question: "What is an attribute in a database?", options: ["A row in a table", "A set of valid values for an attribute", "A column in a table", "A two-dimensional structure consisting of rows and columns"], answer: "A column in a table" },
+  { 
+    question: "Which is the smallest organizational unit where a legal set of books can be maintained?", 
+    options: [
+      "Plant", 
+      "Company Code", 
+      "Division", 
+      "Purchasing Organization"
+    ], 
+    answer: "Company Code" 
+  },
 
-  { question: "What is a domain in a database?", options: ["A set of valid values for an attribute", "A row in a table", "A column in a table", "A two-dimensional structure consisting of rows and columns"], answer: "A set of valid values for an attribute" },
+  { 
+    question: "What does a Distribution Channel define?", 
+    options: [
+      "How products or services reach the customer", 
+      "How materials are grouped in a plant", 
+      "The process for goods receipt", 
+      "The billing procedure"
+    ], 
+    answer: "How products or services reach the customer" 
+  },
 
-  { question: "What is a table in a database?", options: ["A unique identifier for a row in a table", "A set of valid values for an attribute", "A two-dimensional structure consisting of rows and columns", "A primary key from another table, used to establish relationships"], answer: "A two-dimensional structure consisting of rows and columns" },
+  { 
+    question: "What is required for procuring materials within a specific period?", 
+    options: [
+      "Goods Receipt confirmation", 
+      "Contract with specific conditions", 
+      "Scheduling agreements", 
+      "Quotation from vendors"
+    ], 
+    answer: "Contract with specific conditions" 
+  },
 
-  { question: "What is a data anomaly?", options: ["Issues that arise due to data redundancy", "Unnecessary duplication of data", "A process of organizing data to reduce redundancy", "When one attribute uniquely determines another"], answer: "Issues that arise due to data redundancy" },
+  { 
+    question: "An inquiry from a customer is:", 
+    options: [
+      "A legally binding offer to deliver products", 
+      "A request for information or quotation without obligation", 
+      "An agreement to schedule delivery quantities", 
+      "A confirmation of goods receipt"
+    ], 
+    answer: "A request for information or quotation without obligation" 
+  },
 
-  { question: "What is data redundancy?", options: ["Issues that arise due to data redundancy", "Unnecessary duplication of data", "A process of organizing data to reduce redundancy", "When one attribute uniquely determines another"], answer: "Unnecessary duplication of data" },
+  { 
+    question: "What is a quotation in the context of sales?", 
+    options: [
+      "A customer's request for information", 
+      "A legally binding offer to deliver products", 
+      "A grouping of materials or services", 
+      "A sales order detail"
+    ], 
+    answer: "A legally binding offer to deliver products" 
+  },
 
-  { question: "What is functional dependence?", options: ["Issues that arise due to data redundancy", "Unnecessary duplication of data", "When one attribute uniquely determines another", "A process of organizing data to reduce redundancy"], answer: "When one attribute uniquely determines another" },
+  { 
+    question: "Which of the following is true about Goods Receipt?", 
+    options: [
+      "It refers to products or services reaching customers", 
+      "It deals with the movement of goods accepted into the system", 
+      "It outlines specific billing processes", 
+      "It defines legal books of a company"
+    ], 
+    answer: "It deals with the movement of goods accepted into the system" 
+  },
 
-  { question: "What is normalization in databases?", options: ["A process of organizing data to reduce redundancy", "Combining tables for performance optimization", "A unique identifier for a row in a table", "A set of valid values for an attribute"], answer: "A process of organizing data to reduce redundancy" },
+  { 
+    question: "What is NOT included in a Sales Order Entry?", 
+    options: [
+      "Customer information", 
+      "Billing information", 
+      "Vendor selection", 
+      "Specific delivery dates and quantities"
+    ], 
+    answer: "Vendor selection" 
+  },
 
-  { question: "What is denormalization?", options: ["A process of organizing data to reduce redundancy", "Combining tables for performance optimization", "A unique identifier for a row in a table", "A set of valid values for an attribute"], answer: "Combining tables for performance optimization" },
+  { 
+    question: "Which step is NOT part of the Procure-to-Pay process?", 
+    options: [
+      "Vendor Selection", 
+      "Invoice Receipt", 
+      "Goods Receipt", 
+      "Customer Inquiry"
+    ], 
+    answer: "Customer Inquiry" 
+  },
 
-  { question: "What does 1NF (First Normal Form) eliminate?", options: ["Partial dependencies", "Multi-valued dependencies", "Repeating groups", "Transitive dependencies"], answer: "Repeating groups" },
+  { 
+    question: "Proposed delivery methods do NOT include:", 
+    options: [
+      "Complete delivery", 
+      "Delayed proposal", 
+      "Goods receipt", 
+      "One-time delivery"
+    ], 
+    answer: "Goods receipt" 
+  },
 
-  { question: "What does 2NF (Second Normal Form) remove?", options: ["Partial dependencies", "Transitive dependencies", "Multi-valued dependencies", "Repeating groups"], answer: "Partial dependencies" },
+  { 
+    question: "Which is a sub-criterion of Delivery performance?", 
+    options: [
+      "Quantity Reliability", 
+      "Goods Receipt confirmation", 
+      "Customer Inquiry response", 
+      "Purchase Order accuracy"
+    ], 
+    answer: "Quantity Reliability" 
+  },
+ { 
+    question: "What are the elements of a Payment Transaction?", 
+    options: [
+      "Customer information and invoice receipt", 
+      "Bank, payment method, items to be paid, calculate payment, and print payment medium", 
+      "Procurement process and scheduling agreements", 
+      "Delivery creation and total weight determination"
+    ], 
+    answer: "Bank, payment method, items to be paid, calculate payment, and print payment medium" 
+  },
 
-  { question: "What does 3NF (Third Normal Form) remove?", options: ["Partial dependencies", "Transitive dependencies", "Multi-valued dependencies", "Repeating groups"], answer: "Transitive dependencies" },
+  { 
+    question: "What is the primary responsibility of a Purchasing Organization?", 
+    options: [
+      "Sales support and billing", 
+      "Services and material procurement", 
+      "Delivery and transportation planning", 
+      "Batch determination and quality checking"
+    ], 
+    answer: "Services and material procurement" 
+  },
 
-  { question: "What is BCNF (Boyce-Codd Normal Form)?", options: ["A weaker form of 3NF", "A stronger form of 3NF", "A process of organizing data to reduce redundancy", "A set of valid values for an attribute"], answer: "A stronger form of 3NF" },
+  { 
+    question: "What are the types of SD Master Data?", 
+    options: [
+      "Customer Master, Material Master, Condition Master", 
+      "Procurement Data, Payment Data, Delivery Data", 
+      "Vendor Master, Pricing Master, Sales Master", 
+      "Invoice Data, Transportation Data, Billing Data"
+    ], 
+    answer: "Customer Master, Material Master, Condition Master" 
+  },
 
-  { question: "What does 4NF (Fourth Normal Form) remove?", options: ["Repeating groups", "Partial dependencies", "Multi-valued dependencies", "Transitive dependencies"], answer: "Multi-valued dependencies" },
+  { 
+    question: "Which of the following is NOT part of Delivery Creation?", 
+    options: [
+      "Route assignment update", 
+      "Packing proposal generation", 
+      "Sales Area determination", 
+      "Quality checking"
+    ], 
+    answer: "Sales Area determination" 
+  },
 
-  { question: "How is an entity represented in an Entity-Relationship Diagram (ERD)?", options: ["As a diamond", "As a rectangle", "As an oval", "As an arrow"], answer: "As a rectangle" },
+  { 
+    question: "What does Vendor Evaluation use as a criterion?", 
+    options: [
+      "Customer feedback", 
+      "Price Level", 
+      "Batch numbers", 
+      "Quality checking"
+    ], 
+    answer: "Price Level" 
+  },
 
-  { question: "How is a relationship represented in an ERD?", options: ["As an oval", "As a rectangle", "As a diamond", "As a line"], answer: "As a diamond" },
+  { 
+    question: "What functionality does SAP Sales and Distribution provide?", 
+    options: [
+      "Procurement and invoice receipt", 
+      "Sales support, shipping, billing, credit management, and foreign trade", 
+      "Batch determination and route assignment", 
+      "Delivery scheduling and payment processing"
+    ], 
+    answer: "Sales support, shipping, billing, credit management, and foreign trade" 
+  },
 
-  { question: "How are attributes represented in an ERD?", options: ["As a rectangle", "As a diamond", "As an oval", "As a line"], answer: "As an oval" },
+  { 
+    question: "What is a Sales Area?", 
+    options: [
+      "A legal organizational unit for accounting", 
+      "Combination of Sales Organization, Distribution Channel, and Division", 
+      "A customer-specific pricing unit", 
+      "An area for procurement and payment"
+    ], 
+    answer: "Combination of Sales Organization, Distribution Channel, and Division" 
+  },
 
-  { question: "How is a primary key represented in an ERD?", options: ["Underlined", "Bolded", "Connected to another table", "A rectangle with a dashed line"], answer: "Underlined" },
+  { 
+    question: "What does '231' represent in the given context?", 
+    options: [
+      "Total value of a batch", 
+      "Customer credit status", 
+      "Consumption for a sales order", 
+      "A payment method"
+    ], 
+    answer: "Consumption for a sales order" 
+  },
 
-  { question: "How is a foreign key represented in an ERD?", options: ["Underlined", "Bolded", "Connected to another table", "A rectangle with a dashed line"], answer: "Connected to another table" },
-
-  { question: "How are required attributes represented in Crow's Foot notation?", options: ["Bolded", "Underlined", "In italics", "As a rectangle"], answer: "Bolded" },
-
-  { question: "What does the Union (U) operation do in SQL?", options: ["Combines all rows from two tables", "Retrieves common rows between tables", "Retrieves rows in one table but not the other", "Combines all possible row pairs"], answer: "Combines all rows from two tables" },
-
-  { question: "What does the Intersection (n) operation do in SQL?", options: ["Combines all rows from two tables", "Retrieves common rows between tables", "Retrieves rows in one table but not the other", "Combines all possible row pairs"], answer: "Retrieves common rows between tables" },
-
-  { question: "What does the Difference (-) operation do in SQL?", options: ["Combines all rows from two tables", "Retrieves common rows between tables", "Retrieves rows in one table but not the other", "Combines all possible row pairs"], answer: "Retrieves rows in one table but not the other" },
-
-  { question: "What does the Cartesian Product (x) operation do in SQL?", options: ["Combines all rows from two tables", "Retrieves common rows between tables", "Retrieves rows in one table but not the other", "Combines all possible row pairs"], answer: "Combines all possible row pairs" },
-
-  { question: "What does the π (Projection) notation do in SQL?", options: ["Filters rows based on a condition", "Retrieves specific columns", "Refers to a table", "Refers to a column"], answer: "Retrieves specific columns" },
-
-  { question: "What does the σ (Selection) notation do in SQL?", options: ["Filters rows based on a condition", "Retrieves specific columns", "Refers to a table", "Refers to a column"], answer: "Filters rows based on a condition" },
-
-  { question: "In the notation \"EMP_MI in π EMP_MI (EMPLOYEES)\", what does EMP_MI refer to?", options: ["A column", "A table", "A relationship", "A row"], answer: "A column" },
-
-  { question: "In the notation \"STUDENTS in σ STU_NUM = 324452 (STUDENTS)\", what does STUDENTS refer to?", options: ["A column", "A table", "A relationship", "A row"], answer: "A table" },
-
-  { question: "What does entity integrity ensure?", options: ["Each row has a unique identity", "Foreign keys match primary keys in another table", "The database is normalized", "The columns are properly indexed"], answer: "Each row has a unique identity" },
-
-  { question: "What does referential integrity ensure?", options: ["Each row has a unique identity", "Foreign keys match primary keys in another table", "The database is normalized", "The columns are properly indexed"], answer: "Foreign keys match primary keys in another table" },
-
-  { question: "What are integrity rules?", options: ["Guidelines for maintaining database consistency", "Rules for managing indexing and queries", "Constraints applied to table relationships", "Techniques for denormalizing data"], answer: "Guidelines for maintaining database consistency" }
+  { 
+    question: "What does Condition Master data include?", 
+    options: [
+      "Batch numbers and weight information", 
+      "Prices, surcharges, discounts, freights, and taxes", 
+      "Delivery updates and payment mediums", 
+      "Quality checks and sales area conditions"
+    ], 
+    answer: "Prices, surcharges, discounts, freights, and taxes" 
+  }
 ];
 
 
