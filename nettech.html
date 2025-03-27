@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Information Management</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-blue-50 via-purple-100 to-pink-200 text-gray-900 min-h-screen flex flex-col">
+  <!-- Navigation Bar -->
+  <nav class="bg-white bg-opacity-70 p-4 shadow-md backdrop-blur-md fixed w-full top-0 left-0 z-50 flex justify-between items-center">
+    <a href="index.html" class="text-gray-900 text-lg font-semibold px-4 py-2 rounded-lg hover:bg-gray-300 transition">Home</a>
+    <span class="text-lg md:text-xl font-bold text-gray-900 text-center">Network Technology</span>
+    <div class="w-16"></div>
+  </nav>
+
+  <!-- Quiz Container -->
+  <div class="flex-grow flex items-center justify-center mt-20 p-4">
+    <div id="quiz-container" class="bg-white bg-opacity-90 p-8 rounded-2xl shadow-lg text-center backdrop-blur-lg max-w-md w-full transform transition duration-300 hover:shadow-2xl">
+      <h2 id="question" class="text-2xl font-bold mb-6 text-gray-800">Question goes here</h2>
+      <ul id="options" class="space-y-4">
+        <li class="option bg-gray-100 hover:bg-purple-300 cursor-pointer p-4 rounded-lg transition duration-200 shadow-md text-lg font-medium text-gray-800">Option 1</li>
+        <li class="option bg-gray-100 hover:bg-purple-300 cursor-pointer p-4 rounded-lg transition duration-200 shadow-md text-lg font-medium text-gray-800">Option 2</li>
+        <li class="option bg-gray-100 hover:bg-purple-300 cursor-pointer p-4 rounded-lg transition duration-200 shadow-md text-lg font-medium text-gray-800">Option 3</li>
+        <li class="option bg-gray-100 hover:bg-purple-300 cursor-pointer p-4 rounded-lg transition duration-200 shadow-md text-lg font-medium text-gray-800">Option 4</li>
+      </ul>
+      <p id="result" class="mt-5 font-semibold text-lg text-gray-800"></p>
+      <p id="progress" class="text-sm text-gray-600 mt-2"></p>
+
+      <button id="retry-btn" onclick="startRetake()" class="hidden mt-5 bg-purple-500 text-white px-6 py-3 rounded-full hover:bg-purple-600 transition duration-300 font-semibold shadow-md">
+        Retry Incorrect Questions
+      </button>
+
+      <p id="retake-total" class="hidden"></p>
+      <br>
+      <p id="score" class="mt-4 font-semibold text-lg text-gray-800"></p>
+    </div>
+  </div>
+
+  <script>
+const originalQuiz = [
+  { question: "What is a primary key?", options: ["A set of attributes that uniquely identify a row", "A unique identifier for a row in a table", "A primary key from another table, used to establish relationships", "An attribute used for searching but not a primary key"], answer: "A unique identifier for a row in a table" },
+  { question: "What are integrity rules?", options: ["Guidelines for maintaining database consistency", "Rules for managing indexing and queries", "Constraints applied to table relationships", "Techniques for denormalizing data"], answer: "Guidelines for maintaining database consistency" },
+  { question: "What is the primary function of the Trivial File Transfer Protocol (TFTP)?", options: ["Transfer files using TCP", "Transfer files using UDP", "Encrypt file transfers", "Compress files before transfer"], answer: "Transfer files using UDP" },
+  { question: "Which protocol provides secure communication by using Secure Sockets Layer (SSL)?", options: ["HTTP", "FTP", "HTTPS", "SNMP"], answer: "HTTPS" },
+  { question: "What type of transport protocol does Telnet use to establish a connection?", options: ["UDP", "ICMP", "TCP", "HTTP"], answer: "TCP" },
+  { question: "What does Telnet use to access remote hosts?", options: ["Secure Shell (SSH)", "Daemon", "Proxy Servers", "Virtual Machines"], answer: "Daemon" },
+  { question: "Which protocol translates domain names into IP addresses?", options: ["SNMP", "DNS", "POP3", "TFTP"], answer: "DNS" },
+  { question: "What is the primary role of the Post Office Protocol version 3 (POP3)?", options: ["Send emails to recipients", "Retrieve mail from the server", "Monitor network components", "Encrypt emails"], answer: "Retrieve mail from the server" },
+  { question: "What does the Simple Network Management Protocol (SNMP) do?", options: ["Encrypts file transfers", "Transfers emails between servers", "Monitors and controls the exchange of management information", "Translates domain names into IP addresses"], answer: "Monitors and controls the exchange of management information" },
+  { question: "Which of the following are components of SNMP? (Select the correct group)", options: ["Managed Devices, Daemon, Proxy", "Managed Devices, Agent, NMS", "Managed Devices, Proxy, NMS", "Managed Devices, Agent, Telnet"], answer: "Managed Devices, Agent, NMS" },
+  { question: "What type of connection does TCP use?", options: ["Connectionless", "Connection-oriented", "Best-effort", "Unreliable"], answer: "Connection-oriented" },
+  { question: "This provides reliable data delivery", options: ["Connectionless", "TCP", "Best-effort", "Unreliable"], answer: "TCP" },
+  { question: "Which protocol provides an unreliable, best-effort service?", options: ["TCP", "UDP", "HTTP", "DNS"], answer: "UDP" },
+  { question: "Which protocol is Connectionless?", options: ["TCP", "UDP", "HTTP", "DNS"], answer: "UDP" },
+  { question: "What is the purpose of the Three-way Handshake in TCP?", options: ["Encrypt data transmission", "Establish a connection between sender and receiver", "Terminate a TCP connection", "Reduce network congestion"], answer: "Establish a connection between sender and receiver" },
+  { question: "Which of the following is NOT a step in the Three-way Handshake?", options: ["SYN (Synchronize)", "ACK (Acknowledgment)", "FIN (Finish)", "NAK (Negative Acknowledgment"], answer: "NAK (Negative Acknowledgment" },
+  { question: "What mechanism in TCP requires the sender to receive an acknowledgment from the receiver after transmitting an amount of data?", options: ["Three-way Handshake", "Sliding Window Mechanism", "Congestion Control", "Flow Control"], answer: "Sliding Window Mechanism" },
+  { question: "What is the purpose of the Four-way Handshake in TCP?", options: ["Establish a connection", "Terminate a connection", "Compress transmitted data", "Monitor network components"], answer: "Terminate a connection" },
+  { question: "Which sequence of steps is involved in the TCP shutdown process?", options: ["SYN, ACK, FIN", "SYN, SYN-ACK, ACK", "FIN, ACK, FIN-ACK, ACK", "SYN-ACK, FIN, ACK, NAK"], answer: "FIN, ACK, FIN-ACK, ACK" },
+  { question: "What is the address size of IPv4?", options: ["32-bit", "64-bit", "128-bit", "16-bit"], answer: "32-bit" },
+  { question: "How many bits is the address size of IPv6?", options: ["32-bit", "64-bit", "128-bit", "256-bit"], answer: "128-bit" },
+  { question: "What does a MAC (Media Access Control) address represent?", options: ["Logical address assigned by a network administrator", "Unique physical address assigned by the manufacturer of the network interface card", "IP address assigned to a device", "Address used by routers only"], answer: "Unique physical address assigned by the manufacturer of the network interface card" },
+  { question: "What does the Organizational Unique Identifier (OUI) represent in a MAC Address?", options: ["Last 24 bits that are host-specific", "First 24 bits that are vendor-specific", "Entire MAC address", "A network protocol"], answer: "First 24 bits that are vendor-specific" },
+  { question: "What is another term for the default gateway?", options: ["Network Switch", "Firewall", "Router", "Access Point"], answer: "Router" },
+  { question: "What is the primary purpose of the default gateway?", options: ["To assign IP addresses to hosts", "To specify the nearest routing device for forward communication", "To assign MAC addresses", "To restrict access to a network"], answer: "To specify the nearest routing device for forward communication" },
+  { question: "What is subnetting?", options: ["Assigning IP addresses to devices on a network", "Process of borrowing bits from the host to form a new subnet ID field.", "Setting up firewalls on a network", "Configuring routing protocols"], answer: "Process of borrowing bits from the host to form a new subnet ID field." },
+  { question: "What class of IPv4 enables multicasting using an IP address?", options: ["Class E", "Class B", "Class C", "Class D"], answer: "Class D" },
+  { question: "What class of IPv4 directs packets with that destination to predefined groups of hosts?", options: ["Class E", "Class B", "Class C", "Class D"], answer: "Class D" },
+  { question: "What class of IPv4 is reserved for IETF for its own research?", options: ["Class E", "Class B", "Class C", "Class D"], answer: "Class E" },
+  { question: "What is the range of the Loopback Address (Localhost Address)?", options: ["0.0.0.0 - 0.255.255.255", "127.0.0.0 - 127.255.255.255", "10.0.0.0 - 10.254.254.254", "192.168.0.0 - 192.168.255.255"], answer: "127.0.0.0 - 127.255.255.255" },
+  { question: "What is the purpose of the Loopback Address?", options: ["Routing internet datagrams", "Testing and debugging programs, hardware, protocols, and connections", "Preconfigured IP addresses for network devices", "Communicating with the router"], answer: "Testing and debugging programs, hardware, protocols, and connections" },
+  { question: "What is the default network address?", options: ["127.0.0.0", "0.0.0.0", "192.168.0.0", "10.0.0.0"], answer: "0.0.0.0" },
+  { question: "What is the primary use of the default network address?", options: ["Preconfigured for network devices", "Routing internet datagrams (TCP)", "Multicasting", "Debugging hardware"], answer: "Routing internet datagrams (TCP)" },
+  { question: "Which of the following is NOT a private-use IP address range?", options: ["10.0.0.0 - 10.254.254.254", "172.16.0.0 - 172.16.254.254", "127.0.0.0 - 127.255.255.255", "192.168.0.0 - 192.168.255.255"], answer: "127.0.0.0 - 127.255.255.255" },
+  { question: "What is the purpose of private-use IP addresses?", options: ["Used for devices to extend IPv4 address spaces", "Used to host public web pages", "Used for multicasting", "Used for routing protocols"], answer: "Used for devices to extend IPv4 address spaces" },
+  { question: "What is a public IP address used for?", options: ["Debugging programs and hardware", "Testing connections", "Computers use to find each other online and exchange information.", "Communicating with the router"], answer: "Computers use to find each other online and exchange information." },
+  { question: "What is a static public IP address primarily used for?", options: ["Debugging and testing", "Hosting web pages or services on the internet", "Communicating with routers", "Multicasting"], answer: "Hosting web pages or services on the internet" },
+  { question: "How is a dynamic public IP address assigned?", options: ["It is fixed and never changes", "It is preconfigured in network devices", "It is chosen from a pool of available addresses and changes with reconnection", "It is reserved for testing purposes"], answer: "It is chosen from a pool of available addresses and changes with reconnection" },
+  { question: "What is a private IP address used for?", options: ["Testing protocols", "Communicating with the router", "Hosting websites", "Debugging hardware"], answer: "Communicating with the router" },
+  { question: "What does a Unicast Address identify?", options: ["A group of network interfaces", "Multiple interfaces", "An interface", "A node"], answer: "An interface" },
+  { question: "What does a Multicast Address identify?", options: ["A single interface", "A group of network interfaces on the same node", "Multiple interfaces", "An entire network"], answer: "Multiple interfaces" },
+  { question: "What does an Anycast Address identify?", options: ["A group of network interfaces usually on different nodes", "A single interface", "Multiple interfaces within the same network", "A broadcast domain"], answer: "A group of network interfaces usually on different nodes" }
+];
+
+
+
+    let currentQuiz = shuffle([...originalQuiz]);
+    let currentQuestionIndex = 0;
+    let firstTakeScore = 0;
+    let retakeScore = 0;
+    let firstAttempt = true;
+    let incorrectQuestions = [];
+
+    function shuffle(array) {
+      return array.sort(() => Math.random() - 0.5);
+    }
+
+    function loadQuestion() {
+      document.getElementById("completion-message")?.remove();
+      document.getElementById("score").innerText = "";
+
+      if (currentQuestionIndex >= currentQuiz.length) {
+        if (incorrectQuestions.length === 0) {
+          document.getElementById("score").innerText = `Final Score: ${firstTakeScore} out of ${originalQuiz.length}`;
+        } else {
+          document.getElementById("retry-btn").classList.remove("hidden");
+          document.getElementById("retake-total").classList.remove("hidden");
+          document.getElementById("retake-total").innerText = `Incorrect Questions: ${incorrectQuestions.length} \nTotal correct first try attempts: ${firstTakeScore}`;
+        }
+        return;
+      }
+
+      firstAttempt = true;
+      const currentItem = currentQuiz[currentQuestionIndex];
+      document.getElementById("question").innerText = currentItem.question;
+      document.getElementById("progress").innerText = `Question ${currentQuestionIndex + 1} of ${currentQuiz.length}`;
+      document.getElementById("result").innerText = "";
+
+      const optionsList = document.getElementById("options");
+      optionsList.innerHTML = "";
+
+      shuffle([...currentItem.options]).forEach(option => {
+        const button = document.createElement("button");
+        button.innerText = option;
+        button.className =
+          "w-full bg-gray-300 text-gray-900 px-4 py-2 rounded-full hover:bg-gray-400 transition font-semibold focus:outline-none focus:ring-2 focus:ring-pink-500";
+        button.onclick = () => checkAnswer(button, option);
+        const li = document.createElement("li");
+        li.appendChild(button);
+        optionsList.appendChild(li);
+      });
+    }
+
+    function disableOptions() {
+      document.querySelectorAll("#options button").forEach(btn => btn.disabled = true);
+    }
+
+    function checkAnswer(button, selected) {
+      const currentItem = currentQuiz[currentQuestionIndex];
+
+      // Reset styles for other buttons
+      document.querySelectorAll("#options button").forEach(btn => {
+        btn.classList.replace("bg-red-500", "bg-gray-300");
+        btn.classList.replace("hover:bg-red-600", "hover:bg-gray-400");
+        btn.classList.replace("bg-green-500", "bg-gray-300");
+        btn.classList.replace("hover:bg-green-600", "hover:bg-gray-400");
+        btn.classList.remove("text-white");
+        btn.disabled = false;
+      });
+
+      if (selected === currentItem.answer) {
+        disableOptions();
+        button.classList.replace("bg-gray-300", "bg-green-500");
+        button.classList.replace("hover:bg-gray-400", "hover:bg-green-600");
+        button.classList.add("text-white");
+        document.getElementById("result").innerText = "Correct!";
+
+        if (firstAttempt) {
+          firstTakeScore++;
+          incorrectQuestions = incorrectQuestions.filter(q => q.question !== currentItem.question);
+        }
+
+        setTimeout(() => {
+          currentQuestionIndex++;
+          loadQuestion();
+        }, 1000);
+      } else {
+        button.disabled = true;
+        button.classList.replace("bg-gray-300", "bg-red-500");
+        button.classList.replace("hover:bg-gray-400", "hover:bg-red-600");
+        button.classList.add("text-white");
+        document.getElementById("result").innerText = "Wrong! Try again.";
+        firstAttempt = false;
+
+        if (!incorrectQuestions.some(q => q.question === currentItem.question)) {
+          incorrectQuestions.push(currentItem);
+        }
+      }
+    }
+
+    function startRetake() {
+      if (incorrectQuestions.length > 0) {
+        currentQuiz = [...incorrectQuestions];
+        incorrectQuestions = [];
+        currentQuestionIndex = 0;
+        retakeScore = 0;
+        document.getElementById("retry-btn").classList.add("hidden");
+        document.getElementById("retake-total").classList.add("hidden");
+        document.getElementById("completion-message")?.remove();
+        loadQuestion();
+      }
+    }
+
+    loadQuestion();
+  </script>
+</body>
+</html>
