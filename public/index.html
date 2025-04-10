@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
@@ -11,34 +11,30 @@
             <div>
                 <h1>Logo Shi</h1>
             </div>
-            <button onclick="loadNav(workout.html)">Workout</button>
-            <button onclick="loadNav(finance.html)">Finance</button>
-            <button onclick="loadNav(schedule.html)">Schedule</button>
+            <button onclick="loadNav('workout.html')">Workout</button>
+            <button onclick="loadNav('finance.html')">Finance</button>
+            <button onclick="loadNav('schedule.html')">Schedule</button>
         </nav>
     </header>
-    <div id = "mainContent">
-
-    </div>
-    <footer>
-
-    </footer>
+    <div id="mainContent"></div>
+    <footer></footer>
     <script>
         function loadNav(navi) {
-            const mainContent = document.getElementById(mainContent);
-            const navdirectory = "../components/"+navi;
+            const mainContent = document.getElementById("mainContent");
+            const navdirectory = "../components/" + navi;
             fetch(navdirectory)
-                .then(Response =>{
-                    if (!Response.ok) {
-                        throw new console.error("Damn dude di nagana yung parameters mo");
-                    } 
-                    return Response.text;
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("Failed to load the navigation content.");
+                    }
+                    return response.text();
                 })
                 .then(data => {
                     mainContent.innerHTML = data;
                 })
-                .then (error => {
-                    mainContent.innerHTML = '<p>Damn it dude di nagana navigation mo perds</P>';
-                })
+                .catch(error => {
+                    mainContent.innerHTML = '<p>Error loading navigation: ' + error.message + '</p>';
+                });
         }
     </script>
 </body>
