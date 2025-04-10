@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <div>
+                <h1>Logo Shi</h1>
+            </div>
+            <ul>
+                <li onclick="loadNav(workout.html)">Workout</li>
+                <li onclick="loadNav(finance.html)">Finance</li>
+                <li onclick="loadNav(schedule.html)">Schedule</li>
+            </ul>
+        </nav>
+    </header>
+    <div id = "mainContent">
+
+    </div>
+    <footer>
+
+    </footer>
+    <script>
+        function loadNav(navi) {
+            const mainContent = document.getElementById(mainContent);
+            const navdirectory = "../components/"+navi;
+            fetch(navi)
+                .then(Response =>{
+                    if (!Response.ok) {
+                        throw new console.error("Damn dude di nagana yung parameters mo");
+                    } 
+                    return Response.text;
+                })
+                .then(data => {
+                    mainContent.innerHTML = data;
+                })
+                .then (error => {
+                    mainContent.innerHTML = '<p>Damn it dude di nagana navigation mo perds</P>';
+                })
+        }
+    </script>
+</body>
+</html>
