@@ -4,20 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
-    <header>
-        <nav>
+<body class="bg-gray-100">
+    <header class="bg-white shadow">
+        <nav class="container mx-auto flex justify-between items-center p-4">
             <div>
-                <h1>Logo Shi now</h1>
+                <h1 class="text-xl font-bold">Logo Shi</h1>
             </div>
-            <button onclick="loadNav('workout.html')">Workout</button>
-            <button onclick="loadNav('finance.html')">Finance</button>
-            <button onclick="loadNav('schedule.html')">Schedule</button>
+            <div>
+                <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" onclick="loadNav('workout.html')">Workout</button>
+                <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" onclick="loadNav('finance.html')">Finance</button>
+                <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" onclick="loadNav('schedule.html')">Schedule</button>
+            </div>
         </nav>
     </header>
-    <div id="mainContent"></div>
-    <footer></footer>
+    <main class="container mx-auto my-4">
+        <div id="mainContent" class="bg-white p-4 rounded shadow"></div>
+    </main>
+    <footer class="bg-white p-4 shadow mt-4">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2023 Your Company</p>
+        </div>
+    </footer>
     <script>
         function loadNav(navi) {
             const mainContent = document.getElementById("mainContent");
@@ -33,7 +42,7 @@
                     mainContent.innerHTML = data;
                 })
                 .catch(error => {
-                    mainContent.innerHTML = '<p>Error loading navigation: ' + error.message + '</p>';
+                    mainContent.innerHTML = '<p class="text-red-500">Error loading navigation: ' + error.message + '</p>';
                 });
         }
     </script>
