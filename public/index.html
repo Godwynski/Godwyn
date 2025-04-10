@@ -23,6 +23,7 @@
     </header>
     <main class="container mx-auto my-4">
         <div id="mainContent" class="bg-white p-4 rounded shadow"></div>
+        
     </main>
     <footer class="bg-white p-4 shadow mt-4">
         <div class="container mx-auto text-center">
@@ -30,6 +31,7 @@
         </div>
     </footer>
     <script>
+        loadNav('home.html')
         function loadNav(navi) {
             const mainContent = document.getElementById("mainContent");
             const navdirectory = "../components/" + navi;
