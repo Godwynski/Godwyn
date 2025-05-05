@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<!-- saved from url=(0140)https://bapzrjz3xyhpz8ah.canva-hosted-embed.com/codelet/AAEAEGJhcHpyanozeHlocHo4YWgAAAAAAZamiwJwPa6XCbH7XXyx4YalW4XKEEo6_iAlv6tNa1Y6f3msPYA/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Life in Numbers</title>
+    <script src="./saved_resource"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+            min-height: 100vh;
+            color: #f7fafc;
+        }
+        
+        .stat-card {
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        }
+        
+        .stat-value {
+            background: linear-gradient(90deg, #4299e1, #68d391);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .input-date::-webkit-calendar-picker-indicator {
+            filter: invert(1);
+        }
+
+        .progress-bar {
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill-day {
+            background: linear-gradient(90deg, #4299e1, #68d391);
+        }
+
+        .progress-fill-century {
+            background: linear-gradient(90deg, #4299e1, #68d391);
+        }
+        
+        .quote-card {
+            background: linear-gradient(135deg, rgba(66, 153, 225, 0.1) 0%, rgba(104, 211, 145, 0.1) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 8px;
+            border-radius: 4px;
+            background: #4a5568;
+            outline: none;
+        }
+        
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #4299e1;
+            cursor: pointer;
+            border: 2px solid white;
+        }
+        
+        .slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #4299e1;
+            cursor: pointer;
+            border: 2px solid white;
+        }
+        
+        .tab-active {
+            border-bottom: 2px solid #4299e1;
+            color: white;
+        }
+        
+        .tab {
+            border-bottom: 2px solid transparent;
+            color: #a0aec0;
+        }
+
+        #screenshot-area {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 50;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .screenshot-content {
+            max-width: 800px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            padding: 20px;
+        }
+
+        .screenshot-header {
+            position: relative;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 15px;
+        }
+
+        .close-screenshot {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.1);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .download-btn {
+            background: linear-gradient(90deg, #4299e1, #68d391);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 15px auto 0;
+        }
+        
+        /* Improved date picker styling */
+        .date-input {
+            background: rgba(45, 55, 72, 0.7);
+            border: 1px solid rgba(74, 85, 104, 0.8);
+            border-radius: 0.5rem;
+            padding: 0.75rem 1rem;
+            font-size: 1rem;
+            color: white;
+            width: 100%;
+            transition: all 0.2s;
+        }
+        
+        .date-input:focus {
+            outline: none;
+            border-color: #4299e1;
+            box-shadow: 0 0 0 2px rgba(66, 153, 225, 0.2);
+        }
+        
+        /* Native date input styling for better mobile compatibility */
+        input[type="date"] {
+            appearance: none;
+            -webkit-appearance: none;
+            background: rgba(45, 55, 72, 0.7);
+            border: 1px solid rgba(74, 85, 104, 0.8);
+            border-radius: 0.5rem;
+            padding: 0.75rem 1rem;
+            font-size: 1rem;
+            color: white;
+            width: 100%;
+            cursor: pointer;
+        }
+        
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            filter: invert(1);
+            cursor: pointer;
+        }
+        
+        input[type="date"]:focus {
+            outline: none;
+            border-color: #4299e1;
+            box-shadow: 0 0 0 2px rgba(66, 153, 225, 0.2);
+        }
+    </style>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.16 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.relative{position:relative}.col-span-1{grid-column:span 1 / span 1}.mx-auto{margin-left:auto;margin-right:auto}.mb-1\.5{margin-bottom:0.375rem}.mb-2{margin-bottom:0.5rem}.mb-3{margin-bottom:0.75rem}.mb-4{margin-bottom:1rem}.mb-8{margin-bottom:2rem}.mr-3{margin-right:0.75rem}.mr-4{margin-right:1rem}.mt-1{margin-top:0.25rem}.mt-3{margin-top:0.75rem}.mr-2{margin-right:0.5rem}.mt-1\.5{margin-top:0.375rem}.flex{display:flex}.grid{display:grid}.hidden{display:none}.h-10{height:2.5rem}.h-4{height:1rem}.h-5{height:1.25rem}.h-full{height:100%}.h-2{height:0.5rem}.w-10{width:2.5rem}.w-4{width:1rem}.w-5{width:1.25rem}.w-2{width:0.5rem}.max-w-4xl{max-width:56rem}.flex-1{flex:1 1 0%}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.flex-col{flex-direction:column}.items-start{align-items:flex-start}.items-center{align-items:center}.justify-end{justify-content:flex-end}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-2{gap:0.5rem}.gap-4{gap:1rem}.gap-6{gap:1.5rem}.gap-3{gap:0.75rem}.space-y-2 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.5rem * var(--tw-space-y-reverse))}.space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.space-y-6 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.5rem * var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.rounded-xl{border-radius:0.75rem}.border{border-width:1px}.border-b{border-bottom-width:1px}.border-blue-800\/30{border-color:rgb(30 64 175 / 0.3)}.border-gray-600{--tw-border-opacity:1;border-color:rgb(75 85 99 / var(--tw-border-opacity, 1))}.border-gray-700{--tw-border-opacity:1;border-color:rgb(55 65 81 / var(--tw-border-opacity, 1))}.bg-blue-500\/20{background-color:rgb(59 130 246 / 0.2)}.bg-blue-500\/30{background-color:rgb(59 130 246 / 0.3)}.bg-gray-600{--tw-bg-opacity:1;background-color:rgb(75 85 99 / var(--tw-bg-opacity, 1))}.bg-gray-700\/50{background-color:rgb(55 65 81 / 0.5)}.bg-gray-800\/80{background-color:rgb(31 41 55 / 0.8)}.bg-green-500\/20{background-color:rgb(34 197 94 / 0.2)}.bg-indigo-500\/20{background-color:rgb(99 102 241 / 0.2)}.bg-purple-500\/20{background-color:rgb(168 85 247 / 0.2)}.bg-red-500\/20{background-color:rgb(239 68 68 / 0.2)}.bg-yellow-500\/20{background-color:rgb(234 179 8 / 0.2)}.bg-blue-400{--tw-bg-opacity:1;background-color:rgb(96 165 250 / var(--tw-bg-opacity, 1))}.bg-gradient-to-r{background-image:linear-gradient(to right, var(--tw-gradient-stops))}.from-blue-500{--tw-gradient-from:#3b82f6 var(--tw-gradient-from-position);--tw-gradient-to:rgb(59 130 246 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-blue-900\/40{--tw-gradient-from:rgb(30 58 138 / 0.4) var(--tw-gradient-from-position);--tw-gradient-to:rgb(30 58 138 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.to-green-500{--tw-gradient-to:#22c55e var(--tw-gradient-to-position)}.to-green-900\/40{--tw-gradient-to:rgb(20 83 45 / 0.4) var(--tw-gradient-to-position)}.to-purple-900\/40{--tw-gradient-to:rgb(88 28 135 / 0.4) var(--tw-gradient-to-position)}.p-4{padding:1rem}.p-5{padding:1.25rem}.p-6{padding:1.5rem}.px-4{padding-left:1rem;padding-right:1rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.px-8{padding-left:2rem;padding-right:2rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-2\.5{padding-top:0.625rem;padding-bottom:0.625rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.text-center{text-align:center}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.font-bold{font-weight:700}.font-medium{font-weight:500}.font-semibold{font-weight:600}.italic{font-style:italic}.text-blue-200{--tw-text-opacity:1;color:rgb(191 219 254 / var(--tw-text-opacity, 1))}.text-blue-400{--tw-text-opacity:1;color:rgb(96 165 250 / var(--tw-text-opacity, 1))}.text-gray-200{--tw-text-opacity:1;color:rgb(229 231 235 / var(--tw-text-opacity, 1))}.text-gray-300{--tw-text-opacity:1;color:rgb(209 213 219 / var(--tw-text-opacity, 1))}.text-gray-400{--tw-text-opacity:1;color:rgb(156 163 175 / var(--tw-text-opacity, 1))}.text-green-400{--tw-text-opacity:1;color:rgb(74 222 128 / var(--tw-text-opacity, 1))}.text-indigo-400{--tw-text-opacity:1;color:rgb(129 140 248 / var(--tw-text-opacity, 1))}.text-purple-400{--tw-text-opacity:1;color:rgb(192 132 252 / var(--tw-text-opacity, 1))}.text-red-400{--tw-text-opacity:1;color:rgb(248 113 113 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.text-yellow-400{--tw-text-opacity:1;color:rgb(250 204 21 / var(--tw-text-opacity, 1))}.text-blue-300{--tw-text-opacity:1;color:rgb(147 197 253 / var(--tw-text-opacity, 1))}.shadow-lg{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-md{--tw-shadow:0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.transition-colors{transition-property:color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-opacity{transition-property:opacity;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.hover\:bg-blue-500\/40:hover{background-color:rgb(59 130 246 / 0.4)}.hover\:opacity-90:hover{opacity:0.9}@media (min-width: 640px){.sm\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}}@media (min-width: 768px){.md\:col-span-2{grid-column:span 2 / span 2}.md\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.md\:p-6{padding:1.5rem}.md\:text-4xl{font-size:2.25rem;line-height:2.5rem}}@media (min-width: 1024px){.lg\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}}</style><script src="./html2canvas.min.js.download"></script></head>
+<body class="p-4 md:p-6">
+    <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-8">
+            <h1 class="text-3xl md:text-4xl font-bold mb-2">🧬 Life in Numbers</h1>
+            <p class="text-base text-gray-300">A Snapshot of Your Existence</p>
+        </div>
+        
+        <div class="bg-gray-800/80 rounded-xl p-5 md:p-6 mb-8 shadow-lg border border-gray-700">
+            <div class="flex flex-col gap-6">
+                <!-- Birthday input - Simplified and more reliable -->
+                <div>
+                    <h2 class="text-lg font-medium mb-4">When were you born?</h2>
+                    
+                    <!-- Simple date input that works across devices -->
+                    <div class="relative">
+                        <input type="date" id="birthday" name="birthday" class="date-input" max="2025-05-06">
+                    </div>
+                    
+                    <p class="mt-3 text-sm text-gray-400">Your information is private and never stored.</p>
+                </div>
+                
+                <div class="flex justify-center">
+                    <button id="calculate" class="px-8 py-3 bg-gradient-to-r from-blue-500 to-green-500 text-white font-medium rounded-lg hover:opacity-90 transition-opacity shadow-md">
+                        Calculate My Life
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="results" class="space-y-6">
+            <!-- Time Machine Slider -->
+            <div class="bg-gray-800/80 rounded-xl p-5 border border-gray-700 shadow-md">
+                <h3 class="text-lg font-semibold mb-4">⏱️ Time Machine</h3>
+                <p class="text-gray-300 mb-3 text-sm">Move the slider to see your numbers at any point in time</p>
+                <div class="space-y-3">
+                    <input type="range" min="0" max="100" value="50" class="slider" id="timeSlider" data-birth-date="2004-11-02">
+                    <div class="flex justify-between text-sm text-gray-400">
+                        <span>Your Birth</span>
+                        <span id="sliderDate">Today</span>
+                        <span>+50 Years</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Birth Year Fact -->
+            <div id="birth-year-fact" class="bg-gradient-to-r from-blue-900/40 to-purple-900/40 rounded-xl p-5 border border-blue-800/30 shadow-md">
+                <h3 class="text-lg font-semibold mb-2">🎭 Your Birth Year</h3>
+                <p id="year-fact" class="text-gray-200">In 2004, Facebook was launched by Mark Zuckerberg.</p>
+            </div>
+            
+            <!-- Tabs -->
+            <div class="bg-gray-800/80 rounded-xl overflow-hidden border border-gray-700 shadow-md">
+                <div class="flex border-b border-gray-700">
+                    <button class="flex-1 py-3 text-center font-medium tab" data-tab="basic">Basic Stats</button>
+                    <button class="flex-1 py-3 text-center font-medium tab" data-tab="fun">Fun Facts</button>
+                    <button class="flex-1 py-3 text-center font-medium tab-active" data-tab="cosmic">Cosmic Perspective</button>
+                </div>
+                
+                <!-- Basic Stats Tab -->
+                <div id="basic-tab" class="p-5 hidden">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <!-- Days Lived -->
+                        <div class="stat-card bg-gray-700/50 rounded-xl p-4 border border-gray-600 shadow-md">
+                            <div class="flex items-center mb-3">
+                                <div class="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center mr-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                    </svg>
+                                </div>
+                                <h3 class="text-lg font-semibold">Days Alive</h3>
+                            </div>
+                            <div class="stat-value text-3xl font-bold" id="days">7,489</div>
+                            <p class="text-gray-400 mt-1 text-sm"><span id="years">20</span> years, <span id="months">6</span> months, <span id="extraDays">1</span> days</p>
+                        </div>
+                        
+                        <!-- Hours & Minutes -->
+                        <div class="stat-card bg-gray-700/50 rounded-xl p-4 border border-gray-600 shadow-md">
+                            <div class="flex items-center mb-3">
+                                <div class="w-10 h-10 rounded-full bg-indigo-500/20 flex items-center justify-center mr-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                </div>
+                                <h3 class="text-lg font-semibold">Hours &amp; Minutes</h3>
+                            </div>
+                            <div class="stat-value text-3xl font-bold" id="hours">179,753</div>
+                            <p class="text-gray-400 mt-1 text-sm">That's <span id="minutes">10,785,182</span> minutes</p>
+                        </div>
+                        
+                        <!-- Heartbeats -->
+                        <div class="stat-card bg-gray-700/50 rounded-xl p-4 border border-gray-600 shadow-md">
+                            <div class="flex items-center mb-3">
+                                <div class="w-10 h-10 rounded-full bg-red-500/20 flex items-center justify-center mr-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                    </svg>
+                                </div>
+                                <h3 class="text-lg font-semibold">💓 Heartbeats</h3>
+                            </div>
+                            <div class="stat-value text-3xl font-bold" id="heartbeats">754,962,740</div>
+                            <p class="text-gray-400 mt-1 text-sm">Based on average 70 beats per minute</p>
+                        </div>
+                        
+                        <!-- Breaths -->
+                        <div class="stat-card bg-gray-700/50 rounded-xl p-4 border border-gray-600 shadow-md">
+                            <div class="flex items-center mb-3">
+                                <div class="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center mr-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+                                    </svg>
+                                </div>
+                                <h3 class="text-lg font-semibold">💨 Breaths Taken</h3>
+                            </div>
+                            <div class="stat-value text-3xl font-bold" id="breaths">172,562,912</div>
+                            <p class="text-gray-400 mt-1 text-sm">Based on average 16 breaths per minute</p>
+                        </div>
+                        
+                        <!-- Steps Taken -->
+                        <div class="stat-card bg-gray-700/50 rounded-xl p-4 border border-gray-600 shadow-md">
+                            <div class="flex items-center mb-3">
+                                <div class="w-10 h-10 rounded-full bg-yellow-500/20 flex items-center justify-center mr-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                                    </svg>
+                                </div>
+                                <h3 class="text-lg font-semibold">👣 Steps Walked</h3>
+                            </div>
+                            <div class="stat-value text-3xl font-bold" id="steps">56,167,500</div>
+                            <p class="text-gray-400 mt-1 text-sm">Based on average 7,500 steps per day</p>
+                        </div>
+                        
+                        <!-- Sleep Time -->
+                        <div class="stat-card bg-gray-700/50 rounded-xl p-4 border border-gray-600 shadow-md">
+                            <div class="flex items-center mb-3">
+                                <div class="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center mr-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                                    </svg>
+                                </div>
+                                <h3 class="text-lg font-semibold">💤 Time Sleeping</h3>
+                            </div>
+                            <div class="stat-value text-3xl font-bold" id="sleep">59,912</div>
+                            <p class="text-gray-400 mt-1 text-sm">Based on average 8 hours per day</p>
+                        </div>
+                        
+                        <!-- Screen Time -->
+                        <div class="stat-card bg-gray-700/50 rounded-xl p-4 border border-gray-600 shadow-md">
+                            <div class="flex items-center mb-3">
+                                <div class="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center mr-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                    </svg>
+                                </div>
+                                <h3 class="text-lg font-semibold">📱 Screen Time</h3>
+                            </div>
+                            <div class="stat-value text-3xl font-bold" id="screenTime">26,796</div>
+                            <p class="text-gray-400 mt-1 text-sm">Based on average 4 hours per day since 2007</p>
+                        </div>
+                        
+                        <!-- Memories Formed -->
+                        <div class="stat-card bg-gray-700/50 rounded-xl p-4 border border-gray-600 shadow-md">
+                            <div class="flex items-center mb-3">
+                                <div class="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center mr-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path>
+                                    </svg>
+                                </div>
+                                <h3 class="text-lg font-semibold">🧠 Memories Formed</h3>
+                            </div>
+                            <div class="stat-value text-3xl font-bold" id="memories">37,445</div>
+                            <p class="text-gray-400 mt-1 text-sm">Based on average 5 memorable events per day</p>
+                        </div>
+                        
+                        <!-- Words Spoken -->
+                        <div class="stat-card bg-gray-700/50 rounded-xl p-4 border border-gray-600 shadow-md">
+                            <div class="flex items-center mb-3">
+                                <div class="w-10 h-10 rounded-full bg-indigo-500/20 flex items-center justify-center mr-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                                    </svg>
+                                </div>
+                                <h3 class="text-lg font-semibold">Words Spoken</h3>
+                            </div>
+                            <div class="stat-value text-3xl font-bold" id="words">119,824,000</div>
+                            <p class="text-gray-400 mt-1 text-sm">Based on average 16,000 words per day</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Fun Facts Tab -->
+                <div id="fun-tab" class="p-5 hidden">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <!-- Century Progress -->
+                        <div class="stat-card bg-gray-700/50 rounded-xl p-4 border border-gray-600 shadow-md">
+                            <h3 class="text-lg font-semibold mb-3">21st Century Progress</h3>
+                            <div class="stat-value text-3xl font-bold mb-2" id="centuryPercent">25</div>
+                            <p class="text-gray-400 text-sm">You've seen <span id="centuryYears">25</span> years of this century</p>
+                            <div class="mt-3 progress-bar bg-gray-600">
+                                <div id="centuryProgress" class="progress-fill-century h-full" style="width: 25.3%;"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Internet Age -->
+                        <div class="stat-card bg-gray-700/50 rounded-xl p-4 border border-gray-600 shadow-md">
+                            <h3 class="text-lg font-semibold mb-3">The Internet &amp; You</h3>
+                            <p class="text-gray-300 mb-2">The internet was <span id="internetAge" class="font-bold text-white">15</span> years old when you were born</p>
+                            <p class="text-gray-300">The World Wide Web was created in 1989</p>
+                        </div>
+                        
+                        <!-- Technology Timeline -->
+                        <div class="stat-card bg-gray-700/50 rounded-xl p-4 border border-gray-600 shadow-md col-span-1 md:col-span-2">
+                            <h3 class="text-lg font-semibold mb-3">Technology Timeline</h3>
+                            <div id="techTimeline" class="space-y-2 text-sm"><div class="flex items-start">
+                            <div class="w-2 h-2 rounded-full bg-blue-400 mt-1.5 mr-2"></div>
+                            <div>
+                                <span class="text-blue-300">2004 (In your birth year):</span>
+                                <span class="text-gray-300"> Facebook was founded</span>
+                            </div>
+                        </div><div class="flex items-start">
+                            <div class="w-2 h-2 rounded-full bg-blue-400 mt-1.5 mr-2"></div>
+                            <div>
+                                <span class="text-blue-300">2005 (When you were 1 year old):</span>
+                                <span class="text-gray-300"> YouTube was created</span>
+                            </div>
+                        </div><div class="flex items-start">
+                            <div class="w-2 h-2 rounded-full bg-blue-400 mt-1.5 mr-2"></div>
+                            <div>
+                                <span class="text-blue-300">2006 (When you were 2 years old):</span>
+                                <span class="text-gray-300"> Twitter was launched</span>
+                            </div>
+                        </div><div class="flex items-start">
+                            <div class="w-2 h-2 rounded-full bg-blue-400 mt-1.5 mr-2"></div>
+                            <div>
+                                <span class="text-blue-300">2007 (When you were 3 years old):</span>
+                                <span class="text-gray-300"> The first iPhone was released</span>
+                            </div>
+                        </div><div class="flex items-start">
+                            <div class="w-2 h-2 rounded-full bg-blue-400 mt-1.5 mr-2"></div>
+                            <div>
+                                <span class="text-blue-300">2008 (When you were 4 years old):</span>
+                                <span class="text-gray-300"> The App Store was launched</span>
+                            </div>
+                        </div><div class="flex items-start">
+                            <div class="w-2 h-2 rounded-full bg-blue-400 mt-1.5 mr-2"></div>
+                            <div>
+                                <span class="text-blue-300">2010 (When you were 6 years old):</span>
+                                <span class="text-gray-300"> Instagram was launched</span>
+                            </div>
+                        </div><div class="flex items-start">
+                            <div class="w-2 h-2 rounded-full bg-blue-400 mt-1.5 mr-2"></div>
+                            <div>
+                                <span class="text-blue-300">2011 (When you were 7 years old):</span>
+                                <span class="text-gray-300"> Snapchat was created</span>
+                            </div>
+                        </div><div class="flex items-start">
+                            <div class="w-2 h-2 rounded-full bg-blue-400 mt-1.5 mr-2"></div>
+                            <div>
+                                <span class="text-blue-300">2012 (When you were 8 years old):</span>
+                                <span class="text-gray-300"> Facebook reached 1 billion users</span>
+                            </div>
+                        </div><div class="flex items-start">
+                            <div class="w-2 h-2 rounded-full bg-blue-400 mt-1.5 mr-2"></div>
+                            <div>
+                                <span class="text-blue-300">2016 (When you were 12 years old):</span>
+                                <span class="text-gray-300"> Pokemon GO popularized augmented reality</span>
+                            </div>
+                        </div><div class="flex items-start">
+                            <div class="w-2 h-2 rounded-full bg-blue-400 mt-1.5 mr-2"></div>
+                            <div>
+                                <span class="text-blue-300">2020 (When you were 16 years old):</span>
+                                <span class="text-gray-300"> Remote work became mainstream due to COVID-19</span>
+                            </div>
+                        </div><div class="flex items-start">
+                            <div class="w-2 h-2 rounded-full bg-blue-400 mt-1.5 mr-2"></div>
+                            <div>
+                                <span class="text-blue-300">2022 (When you were 18 years old):</span>
+                                <span class="text-gray-300"> ChatGPT launched, bringing AI to the masses</span>
+                            </div>
+                        </div></div>
+                        </div>
+                        
+                        <!-- Life Expectancy -->
+                        <div class="stat-card bg-gray-700/50 rounded-xl p-4 border border-gray-600 shadow-md">
+                            <h3 class="text-lg font-semibold mb-3">Life Journey</h3>
+                            <div class="flex justify-between text-sm mb-1.5">
+                                <span class="text-gray-300">Time spent on Earth:</span>
+                                <span class="text-gray-300"><span id="lifePercentage">25</span>%</span>
+                            </div>
+                            <div class="progress-bar bg-gray-600 mb-3">
+                                <div id="lifeProgress" class="progress-fill-day h-full" style="width: 25%;"></div>
+                            </div>
+                            <p class="text-gray-400 text-sm">Based on a life expectancy of <span id="lifeExpectancy">80</span> years</p>
+                        </div>
+                        
+                        <!-- Historical Events -->
+                        <div class="stat-card bg-gray-700/50 rounded-xl p-4 border border-gray-600 shadow-md">
+                            <h3 class="text-lg font-semibold mb-3">Historical Context</h3>
+                            <p class="text-gray-300 mb-2" id="historicalEvent">The world was concerned about Y2K, and the International Space Station welcomed its first crew.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Cosmic Perspective Tab -->
+                <div id="cosmic-tab" class="p-5">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <!-- Mars Age -->
+                        <div class="stat-card bg-gray-700/50 rounded-xl p-4 border border-gray-600 shadow-md">
+                            <div class="flex items-center mb-3">
+                                <div class="w-10 h-10 rounded-full bg-red-500/20 flex items-center justify-center mr-3">
+                                    <span class="text-xl">🪐</span>
+                                </div>
+                                <h3 class="text-lg font-semibold">Your Age on Mars</h3>
+                            </div>
+                            <div class="stat-value text-3xl font-bold" id="marsAge">10</div>
+                            <p class="text-gray-400 mt-1 text-sm">A year on Mars is 687 Earth days</p>
+                        </div>
+                        
+                        <!-- Earth Rotations -->
+                        <div class="stat-card bg-gray-700/50 rounded-xl p-4 border border-gray-600 shadow-md">
+                            <div class="flex items-center mb-3">
+                                <div class="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center mr-3">
+                                    <span class="text-xl">🌍</span>
+                                </div>
+                                <h3 class="text-lg font-semibold">Earth Rotations</h3>
+                            </div>
+                            <div class="stat-value text-3xl font-bold" id="earthRotations">7,489</div>
+                            <p class="text-gray-400 mt-1 text-sm">Complete rotations of Earth since your birth</p>
+                        </div>
+                        
+                        <!-- Distance Traveled -->
+                        <div class="stat-card bg-gray-700/50 rounded-xl p-4 border border-gray-600 shadow-md">
+                            <div class="flex items-center mb-3">
+                                <div class="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center mr-3">
+                                    <span class="text-xl">🚀</span>
+                                </div>
+                                <h3 class="text-lg font-semibold">Distance in Space</h3>
+                            </div>
+                            <div class="stat-value text-3xl font-bold" id="spaceDistance">12,043</div>
+                            <p class="text-gray-400 mt-1 text-sm">Million miles traveled through space</p>
+                        </div>
+                        
+                        <!-- Star Perspective -->
+                        <div class="stat-card bg-gray-700/50 rounded-xl p-4 border border-gray-600 shadow-md">
+                            <div class="flex items-center mb-3">
+                                <div class="w-10 h-10 rounded-full bg-yellow-500/20 flex items-center justify-center mr-3">
+                                    <span class="text-xl">⭐</span>
+                                </div>
+                                <h3 class="text-lg font-semibold">Star Perspective</h3>
+                            </div>
+                            <p class="text-gray-300">Light from stars <span id="lightYears">20</span> light-years away is just now reaching Earth after starting its journey when you were born</p>
+                        </div>
+                        
+                        <!-- Universe Scale -->
+                        <div class="stat-card bg-gray-700/50 rounded-xl p-4 border border-gray-600 shadow-md col-span-1 md:col-span-2">
+                            <h3 class="text-lg font-semibold mb-3">Cosmic Scale</h3>
+                            <p class="text-gray-300 mb-3">If the universe's 13.8 billion year history was compressed into a single year:</p>
+                            <div class="progress-bar bg-gray-600 mb-2">
+                                <div id="cosmicProgress" class="progress-fill-century h-full" style="width: 0.001%;"></div>
+                            </div>
+                            <p class="text-gray-400 text-sm">Your entire life would be <span id="cosmicTime">less than a millisecond</span> in this cosmic year</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Motivational Quote Section -->
+            <div class="quote-card rounded-xl p-6 shadow-md">
+                <div class="flex items-start">
+                    <div class="text-4xl text-blue-400 mr-4">❝</div>
+                    <div>
+                        <p id="quote" class="text-lg italic text-gray-200 mb-3">Your time is limited, don't waste it living someone else's life. — Steve Jobs</p>
+                        <div class="flex justify-end">
+                            <button id="new-quote" class="px-4 py-2 bg-blue-500/30 hover:bg-blue-500/40 text-blue-200 rounded-lg text-sm transition-colors flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                                </svg>
+                                New Inspiration
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Value Your Life Section -->
+            <div class="bg-gradient-to-r from-blue-900/40 to-green-900/40 rounded-xl p-6 border border-blue-800/30 shadow-md text-center">
+                <h3 class="text-xl font-semibold mb-3">Make Every Moment Count</h3>
+                <p class="text-gray-300 mb-4">You have approximately <span id="daysLeft" class="font-semibold text-white">21,731</span> of days yet to come. How will you spend them?</p>
+                <button id="share-btn" class="px-6 py-2.5 bg-gradient-to-r from-blue-500 to-green-500 text-white font-medium rounded-lg hover:opacity-90 transition-opacity shadow-md">
+                    Share Your Life Numbers
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Screenshot Modal -->
+    <div id="screenshot-area" style="display: none;">
+        <div class="screenshot-content">
+            <div class="screenshot-header">
+                <h2 class="text-2xl font-bold">Your Life in Numbers</h2>
+                <div class="close-screenshot" id="close-screenshot">✕</div>
+            </div>
+            <div id="screenshot-summary" class="space-y-4">
+                    <div class="bg-gray-700/50 rounded-xl p-4 border border-gray-600">
+                        <h3 class="text-lg font-semibold mb-2">Life Statistics</h3>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <p class="text-gray-400 text-sm">Days Alive</p>
+                                <p class="text-xl font-bold text-white">7,489</p>
+                            </div>
+                            <div>
+                                <p class="text-gray-400 text-sm">Years</p>
+                                <p class="text-xl font-bold text-white">20 years, 6 months</p>
+                            </div>
+                            <div>
+                                <p class="text-gray-400 text-sm">Heartbeats</p>
+                                <p class="text-xl font-bold text-white">754,962,740</p>
+                            </div>
+                            <div>
+                                <p class="text-gray-400 text-sm">Breaths Taken</p>
+                                <p class="text-xl font-bold text-white">172,562,912</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-700/50 rounded-xl p-4 border border-gray-600">
+                        <h3 class="text-lg font-semibold mb-2">Cosmic Perspective</h3>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <p class="text-gray-400 text-sm">Mars Age</p>
+                                <p class="text-xl font-bold text-white">10.9 years</p>
+                            </div>
+                            <div>
+                                <p class="text-gray-400 text-sm">Space Travel</p>
+                                <p class="text-xl font-bold text-white">12,043 million miles</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-700/50 rounded-xl p-4 border border-gray-600">
+                        <h3 class="text-lg font-semibold mb-2">Life Journey</h3>
+                        <p class="text-gray-300 mb-2">You've lived approximately 25.0% of an average lifespan.</p>
+                        <div class="progress-bar bg-gray-600 mb-3">
+                            <div class="progress-fill-day h-full" style="width: 25.0%"></div>
+                        </div>
+                        <p class="text-gray-400 text-sm">Make the most of your remaining 21,731 days!</p>
+                    </div>
+                </div>
+            <button id="download-image" class="download-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                </svg>
+                Download Image
+            </button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set max date to today
+            const today = new Date();
+            const birthdayInput = document.getElementById('birthday');
+            const yyyy = today.getFullYear();
+            const mm = String(today.getMonth() + 1).padStart(2, '0');
+            const dd = String(today.getDate()).padStart(2, '0');
+            birthdayInput.setAttribute('max', `${yyyy}-${mm}-${dd}`);
+            
+            // Load html2canvas dynamically for screenshot functionality
+            const script = document.createElement('script');
+            script.src = 'https://html2canvas.hertzen.com/dist/html2canvas.min.js';
+            document.head.appendChild(script);
+            
+            const calculateBtn = document.getElementById('calculate');
+            const resultsDiv = document.getElementById('results');
+            const newQuoteBtn = document.getElementById('new-quote');
+            const shareBtn = document.getElementById('share-btn');
+            const timeSlider = document.getElementById('timeSlider');
+            const sliderDateDisplay = document.getElementById('sliderDate');
+            const tabs = document.querySelectorAll('[data-tab]');
+            const screenshotArea = document.getElementById('screenshot-area');
+            const closeScreenshot = document.getElementById('close-screenshot');
+            const downloadBtn = document.getElementById('download-image');
+            const yearFactElement = document.getElementById('year-fact');
+            
+            // Year facts database - interesting facts for each year from 1940 to 2023
+            const yearFacts = {
+                1940: "In 1940, the first McDonald's restaurant opened in San Bernardino, California.",
+                1941: "In 1941, Mount Rushmore was completed after 14 years of work.",
+                1942: "In 1942, the Manhattan Project began, leading to the development of the first nuclear weapons.",
+                1943: "In 1943, the Jefferson Memorial was dedicated in Washington, D.C.",
+                1944: "In 1944, D-Day (June 6) marked the Allied invasion of Normandy during World War II.",
+                1945: "In 1945, World War II ended and the United Nations was established.",
+                1946: "In 1946, the first general-purpose electronic computer, ENIAC, was unveiled.",
+                1947: "In 1947, Chuck Yeager became the first person to break the sound barrier.",
+                1948: "In 1948, the World Health Organization (WHO) was established.",
+                1949: "In 1949, NATO (North Atlantic Treaty Organization) was formed.",
+                1950: "In 1950, the first Peanuts comic strip by Charles M. Schulz was published.",
+                1951: "In 1951, the first color television broadcast took place in the United States.",
+                1952: "In 1952, Queen Elizabeth II ascended to the British throne.",
+                1953: "In 1953, James Watson and Francis Crick discovered the structure of DNA.",
+                1954: "In 1954, Roger Bannister became the first person to run a mile in under 4 minutes.",
+                1955: "In 1955, Disneyland opened in Anaheim, California.",
+                1956: "In 1956, Elvis Presley appeared on The Ed Sullivan Show, introducing rock and roll to a wide audience.",
+                1957: "In 1957, the Soviet Union launched Sputnik 1, the first artificial Earth satellite.",
+                1958: "In 1958, NASA (National Aeronautics and Space Administration) was formed.",
+                1959: "In 1959, the Barbie doll was introduced by Mattel.",
+                1960: "In 1960, the birth control pill was approved by the FDA.",
+                1961: "In 1961, Yuri Gagarin became the first human to journey into outer space.",
+                1962: "In 1962, The Beatles released their first single 'Love Me Do'.",
+                1963: "In 1963, Martin Luther King Jr. delivered his famous 'I Have a Dream' speech.",
+                1964: "In 1964, The Beatles made their first appearance on The Ed Sullivan Show.",
+                1965: "In 1965, the first commercial satellite, Early Bird, was launched.",
+                1966: "In 1966, the TV show Star Trek premiered on NBC.",
+                1967: "In 1967, the world's first heart transplant was performed by Dr. Christiaan Barnard.",
+                1968: "In 1968, the Boeing 747 'Jumbo Jet' was introduced.",
+                1969: "In 1969, Neil Armstrong and Buzz Aldrin became the first humans to walk on the Moon.",
+                1970: "In 1970, the first Earth Day was celebrated.",
+                1971: "In 1971, the microprocessor was invented by Intel.",
+                1972: "In 1972, the video game Pong was released, marking the beginning of the video game industry.",
+                1973: "In 1973, the World Trade Center in New York was completed.",
+                1974: "In 1974, the Rubik's Cube was invented by Ernő Rubik.",
+                1975: "In 1975, Microsoft was founded by Bill Gates and Paul Allen.",
+                1976: "In 1976, Apple Computer was founded by Steve Jobs and Steve Wozniak.",
+                1977: "In 1977, the first Star Wars movie was released.",
+                1978: "In 1978, the first test-tube baby, Louise Brown, was born.",
+                1979: "In 1979, Sony introduced the Walkman portable cassette player.",
+                1980: "In 1980, CNN (Cable News Network) began broadcasting as the first 24-hour news channel.",
+                1981: "In 1981, the first cases of AIDS were reported in the United States.",
+                1982: "In 1982, Michael Jackson released 'Thriller', which became the best-selling album of all time.",
+                1983: "In 1983, the internet's predecessor, ARPANET, adopted TCP/IP, marking the birth of the modern internet.",
+                1984: "In 1984, Apple introduced the Macintosh computer with its famous '1984' Super Bowl commercial.",
+                1985: "In 1985, the first version of Windows was released by Microsoft.",
+                1986: "In 1986, the Chernobyl nuclear disaster occurred in Ukraine.",
+                1987: "In 1987, 'The Simpsons' first appeared as a series of shorts on The Tracey Ullman Show.",
+                1988: "In 1988, the first major internet computer virus, the Morris worm, was released.",
+                1989: "In 1989, the Berlin Wall fell, symbolizing the end of the Cold War.",
+                1990: "In 1990, the Hubble Space Telescope was launched into orbit.",
+                1991: "In 1991, the World Wide Web was made available to the public.",
+                1992: "In 1992, the text messaging service SMS was introduced.",
+                1993: "In 1993, the European Union was established.",
+                1994: "In 1994, Amazon.com was founded by Jeff Bezos.",
+                1995: "In 1995, the DVD format was announced.",
+                1996: "In 1996, the Spice Girls released their debut single 'Wannabe'.",
+                1997: "In 1997, the first Harry Potter book was published.",
+                1998: "In 1998, Google was founded by Larry Page and Sergey Brin.",
+                1999: "In 1999, the Euro was introduced as an accounting currency.",
+                2000: "In 2000, the Y2K bug caused worldwide concern but ultimately had minimal impact.",
+                2001: "In 2001, Wikipedia was launched, revolutionizing how information is shared.",
+                2002: "In 2002, the Euro became the official currency in 12 European countries.",
+                2003: "In 2003, the Human Genome Project was completed, mapping the entire human genome.",
+                2004: "In 2004, Facebook was launched by Mark Zuckerberg.",
+                2005: "In 2005, YouTube was founded, revolutionizing video sharing online.",
+                2006: "In 2006, Twitter was launched, introducing the world to microblogging.",
+                2007: "In 2007, the first iPhone was released by Apple, revolutionizing mobile technology.",
+                2008: "In 2008, Barack Obama became the first African American elected as U.S. President.",
+                2009: "In 2009, Bitcoin, the first decentralized cryptocurrency, was created.",
+                2010: "In 2010, Instagram was launched, changing how people share photos online.",
+                2011: "In 2011, the final Harry Potter film was released, concluding the highest-grossing film series of all time.",
+                2012: "In 2012, NASA's Curiosity rover landed on Mars to explore the Gale Crater.",
+                2013: "In 2013, Pope Francis became the first pope from the Americas.",
+                2014: "In 2014, the Ice Bucket Challenge went viral, raising awareness for ALS.",
+                2015: "In 2015, same-sex marriage was legalized across all 50 U.S. states.",
+                2016: "In 2016, Pokémon GO was released, becoming a global augmented reality gaming phenomenon.",
+                2017: "In 2017, scientists detected gravitational waves from the collision of two neutron stars for the first time.",
+                2018: "In 2018, the first gene-edited babies were reportedly born in China.",
+                2019: "In 2019, the first image of a black hole was captured and released to the public.",
+                2020: "In 2020, the COVID-19 pandemic changed the world, leading to global lockdowns.",
+                2021: "In 2021, COVID-19 vaccines were distributed globally in record time.",
+                2022: "In 2022, NASA's James Webb Space Telescope began sending back unprecedented images of the universe.",
+                2023: "In 2023, artificial intelligence tools like ChatGPT became mainstream, transforming how we interact with technology."
+            };
+            
+            // Technology timeline events
+            const techEvents = [
+                { year: 1969, event: "ARPANET, the precursor to the internet, was created" },
+                { year: 1971, event: "The first email was sent" },
+                { year: 1973, event: "The first mobile phone call was made" },
+                { year: 1981, event: "The first IBM PC was released" },
+                { year: 1983, event: "The internet was officially born with TCP/IP" },
+                { year: 1989, event: "The World Wide Web was invented by Tim Berners-Lee" },
+                { year: 1991, event: "The first website went live" },
+                { year: 1993, event: "The first web browser, Mosaic, was released" },
+                { year: 1995, event: "Amazon and eBay were founded" },
+                { year: 1998, event: "Google was founded" },
+                { year: 2001, event: "Wikipedia was launched" },
+                { year: 2003, event: "MySpace became the first popular social network" },
+                { year: 2004, event: "Facebook was founded" },
+                { year: 2005, event: "YouTube was created" },
+                { year: 2006, event: "Twitter was launched" },
+                { year: 2007, event: "The first iPhone was released" },
+                { year: 2008, event: "The App Store was launched" },
+                { year: 2010, event: "Instagram was launched" },
+                { year: 2011, event: "Snapchat was created" },
+                { year: 2012, event: "Facebook reached 1 billion users" },
+                { year: 2016, event: "Pokemon GO popularized augmented reality" },
+                { year: 2020, event: "Remote work became mainstream due to COVID-19" },
+                { year: 2022, event: "ChatGPT launched, bringing AI to the masses" }
+            ];
+            
+            // Historical events for context
+            const historicalEvents = [
+                { year: 1945, event: "World War II had just ended, and the United Nations was being established." },
+                { year: 1950, event: "The Korean War had just begun, and the Cold War was intensifying." },
+                { year: 1955, event: "The Civil Rights Movement was gaining momentum with the Montgomery Bus Boycott." },
+                { year: 1960, event: "John F. Kennedy was elected as the 35th President of the United States." },
+                { year: 1965, event: "The Vietnam War was escalating, and the Civil Rights Act had recently been passed." },
+                { year: 1970, event: "The Beatles had just broken up, and environmental awareness was growing with the first Earth Day." },
+                { year: 1975, event: "The Vietnam War ended, and the personal computer revolution was just beginning." },
+                { year: 1980, event: "The world was experiencing an energy crisis, and the Cold War was still ongoing." },
+                { year: 1985, event: "Mikhail Gorbachev became leader of the Soviet Union, beginning the era of glasnost and perestroika." },
+                { year: 1990, event: "The Cold War was ending, and the World Wide Web had just been invented." },
+                { year: 1995, event: "The internet was becoming mainstream, and DVDs were just being introduced." },
+                { year: 2000, event: "The world was concerned about Y2K, and the International Space Station welcomed its first crew." },
+                { year: 2005, event: "YouTube had just launched, and social media was beginning to transform communication." },
+                { year: 2010, event: "The world was recovering from a global financial crisis, and the iPad was introduced." },
+                { year: 2015, event: "Same-sex marriage was legalized across the United States, and the Paris Climate Agreement was adopted." },
+                { year: 2020, event: "The COVID-19 pandemic was transforming global society and economics." }
+            ];
+            
+            // Inspirational quotes
+            const quotes = [
+                "Life is not measured by the number of breaths we take, but by the moments that take our breath away. — Maya Angelou",
+                "The purpose of life is not to be happy. It is to be useful, to be honorable, to be compassionate, to have it make some difference that you have lived and lived well. — Ralph Waldo Emerson",
+                "Life is 10% what happens to us and 90% how we react to it. — Charles R. Swindoll",
+                "The biggest adventure you can take is to live the life of your dreams. — Oprah Winfrey",
+                "In the end, it's not the years in your life that count. It's the life in your years. — Abraham Lincoln",
+                "Life is either a daring adventure or nothing at all. — Helen Keller",
+                "Your time is limited, don't waste it living someone else's life. — Steve Jobs",
+                "Life isn't about finding yourself. Life is about creating yourself. — George Bernard Shaw",
+                "The good life is one inspired by love and guided by knowledge. — Bertrand Russell",
+                "Life is really simple, but we insist on making it complicated. — Confucius",
+                "Life is a succession of lessons which must be lived to be understood. — Ralph Waldo Emerson",
+                "The purpose of our lives is to be happy. — Dalai Lama",
+                "Life is what happens when you're busy making other plans. — John Lennon",
+                "The unexamined life is not worth living. — Socrates",
+                "Life is a journey, not a destination. — Ralph Waldo Emerson"
+            ];
+            
+            // Display a random quote
+            function displayRandomQuote() {
+                const quoteElement = document.getElementById('quote');
+                const randomIndex = Math.floor(Math.random() * quotes.length);
+                quoteElement.textContent = quotes[randomIndex];
+            }
+            
+            // Format large numbers with commas
+            function formatNumber(num) {
+                return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            }
+            
+            // Calculate age and related statistics
+            function calculateAge(birthDate, targetDate = new Date()) {
+                const birth = new Date(birthDate);
+                
+                // Calculate difference in milliseconds
+                const diffMs = targetDate - birth;
+                
+                // Convert to days, hours, minutes
+                const days = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+                const hours = Math.floor(diffMs / (1000 * 60 * 60));
+                const minutes = Math.floor(diffMs / (1000 * 60));
+                
+                // Calculate years, months, remaining days
+                const years = Math.floor(days / 365.25);
+                const months = Math.floor((days % 365.25) / 30.44);
+                const remainingDays = Math.floor((days % 365.25) % 30.44);
+                
+                // Calculate heartbeats (70 per minute average)
+                const heartbeats = Math.floor(minutes * 70);
+                
+                // Calculate breaths (16 per minute average)
+                const breaths = Math.floor(minutes * 16);
+                
+                // Calculate steps (7,500 per day average)
+                const steps = Math.floor(days * 7500);
+                
+                // Calculate sleep time (8 hours per day average)
+                const sleepHours = Math.floor(days * 8);
+                
+                // Calculate screen time (4 hours per day since 2007)
+                const screenTimeStart = new Date('2007-01-01');
+                const screenTimeDays = Math.max(0, Math.floor((targetDate - Math.max(birth, screenTimeStart)) / (1000 * 60 * 60 * 24)));
+                const screenTimeHours = Math.floor(screenTimeDays * 4);
+                
+                // Calculate memories (5 per day average)
+                const memories = Math.floor(days * 5);
+                
+                // Calculate words spoken (16,000 per day average)
+                const words = Math.floor(days * 16000);
+                
+                // Calculate Mars age (Earth days / Mars year length in Earth days)
+                const marsAge = (days / 687).toFixed(1);
+                
+                // Calculate Earth rotations (same as days)
+                const earthRotations = days;
+                
+                // Calculate distance traveled in space
+                // Earth orbits the Sun at about 67,000 mph
+                const spaceDistance = Math.floor(hours * 67000 / 1000000);
+                
+                // Calculate light years
+                const lightYears = (years).toFixed(1);
+                
+                // Calculate 21st century progress
+                const centuryStart = new Date('2000-01-01');
+                const centuryEnd = new Date('2100-01-01');
+                let centuryProgress = 0;
+                let centuryYears = 0;
+                
+                if (targetDate > centuryStart) {
+                    const totalCenturyMs = centuryEnd - centuryStart;
+                    const elapsedCenturyMs = Math.min(targetDate - centuryStart, totalCenturyMs);
+                    centuryProgress = (elapsedCenturyMs / totalCenturyMs) * 100;
+                    centuryYears = (elapsedCenturyMs / (1000 * 60 * 60 * 24 * 365.25)).toFixed(1);
+                }
+                
+                // Calculate internet age when born
+                const internetBirth = new Date('1989-01-01'); // Using WWW creation as internet birth
+                const internetAge = Math.max(0, Math.floor((birth - internetBirth) / (1000 * 60 * 60 * 24 * 365.25)));
+                
+                // Calculate life expectancy and progress
+                const lifeExpectancy = 80; // Average global life expectancy
+                const lifeProgress = Math.min(100, (years / lifeExpectancy) * 100).toFixed(1);
+                const daysLeft = formatNumber(Math.max(0, Math.floor(lifeExpectancy * 365.25) - days));
+                
+                // Get birth year fact
+                const birthYear = birth.getFullYear();
+                const yearFact = yearFacts[birthYear] || `In ${birthYear}, you were born!`;
+                
+                // Get relevant historical context
+                let historicalEvent = "You were born during an interesting time in history.";
+                for (let i = historicalEvents.length - 1; i >= 0; i--) {
+                    if (birthYear >= historicalEvents[i].year) {
+                        historicalEvent = historicalEvents[i].event;
+                        break;
+                    }
+                }
+                
+                // Get technology timeline
+                const relevantTechEvents = techEvents.filter(event => event.year >= birthYear);
+                
+                return {
+                    days,
+                    years,
+                    months,
+                    remainingDays,
+                    hours,
+                    minutes,
+                    heartbeats,
+                    breaths,
+                    steps,
+                    sleepHours,
+                    screenTimeHours,
+                    memories,
+                    words,
+                    marsAge,
+                    earthRotations,
+                    spaceDistance,
+                    lightYears,
+                    centuryProgress,
+                    centuryYears,
+                    internetAge,
+                    lifeExpectancy,
+                    lifeProgress,
+                    daysLeft,
+                    yearFact,
+                    historicalEvent,
+                    relevantTechEvents,
+                    birthYear
+                };
+            }
+            
+            // Animate counting up for a number
+            function animateValue(element, start, end, duration) {
+                // Make sure we're working with numbers
+                start = parseInt(start.toString().replace(/,/g, ''));
+                end = parseInt(end.toString().replace(/,/g, ''));
+                
+                // Don't animate if the values are the same
+                if (start === end) {
+                    element.textContent = formatNumber(end);
+                    return;
+                }
+                
+                const range = end - start;
+                const minTimer = 50; // minimum time between updates in ms
+                let stepTime = Math.abs(Math.floor(duration / range));
+                
+                // Ensure we don't update too quickly
+                stepTime = Math.max(stepTime, minTimer);
+                
+                let startTime = new Date().getTime();
+                let endTime = startTime + duration;
+                let timer;
+                
+                function run() {
+                    let now = new Date().getTime();
+                    let remaining = Math.max((endTime - now) / duration, 0);
+                    let value = Math.round(end - (remaining * range));
+                    element.textContent = formatNumber(value);
+                    
+                    if (value === end) {
+                        clearInterval(timer);
+                    }
+                }
+                
+                timer = setInterval(run, stepTime);
+                run();
+            }
+            
+            // Update the UI with calculated statistics
+            function updateUI(stats, animate = true) {
+                const elements = {
+                    'days': stats.days,
+                    'years': stats.years,
+                    'months': stats.months,
+                    'extraDays': stats.remainingDays,
+                    'hours': stats.hours,
+                    'minutes': stats.minutes,
+                    'heartbeats': stats.heartbeats,
+                    'breaths': stats.breaths,
+                    'steps': stats.steps,
+                    'sleep': stats.sleepHours + " hours",
+                    'screenTime': stats.screenTimeHours + " hours",
+                    'memories': stats.memories,
+                    'words': stats.words,
+                    'marsAge': stats.marsAge + " years",
+                    'earthRotations': stats.earthRotations,
+                    'spaceDistance': stats.spaceDistance,
+                    'lightYears': stats.lightYears,
+                    'centuryPercent': stats.centuryProgress.toFixed(1) + "%",
+                    'centuryYears': stats.centuryYears,
+                    'internetAge': stats.internetAge,
+                    'lifeExpectancy': stats.lifeExpectancy,
+                    'lifePercentage': stats.lifeProgress,
+                    'daysLeft': stats.daysLeft
+                };
+                
+                // Update all elements with animation or directly
+                for (const [id, value] of Object.entries(elements)) {
+                    const element = document.getElementById(id);
+                    if (!element) continue;
+                    
+                    const currentValue = element.textContent.replace(/[^0-9.-]/g, '') || '0';
+                    
+                    if (animate && !isNaN(parseFloat(value))) {
+                        // For numeric values, animate
+                        const numericValue = parseFloat(value.toString().replace(/[^0-9.-]/g, ''));
+                        animateValue(element, currentValue, numericValue, 1000);
+                    } else {
+                        // For non-numeric or when not animating, set directly
+                        element.textContent = value;
+                    }
+                }
+                
+                // Update progress bars
+                document.getElementById('centuryProgress').style.width = stats.centuryProgress.toFixed(1) + "%";
+                document.getElementById('lifeProgress').style.width = stats.lifeProgress + "%";
+                
+                // Update text content
+                document.getElementById('year-fact').textContent = stats.yearFact;
+                document.getElementById('historicalEvent').textContent = stats.historicalEvent;
+                
+                // Update tech timeline
+                const techTimelineElement = document.getElementById('techTimeline');
+                techTimelineElement.innerHTML = '';
+                
+                if (stats.relevantTechEvents.length === 0) {
+                    techTimelineElement.innerHTML = '<p class="text-gray-300">No major tech events have occurred since your birth yet.</p>';
+                } else {
+                    stats.relevantTechEvents.forEach(event => {
+                        const yearsSinceBirth = event.year - stats.birthYear;
+                        const ageText = yearsSinceBirth === 0 ? 
+                            "In your birth year" : 
+                            `When you were ${yearsSinceBirth} ${yearsSinceBirth === 1 ? 'year' : 'years'} old`;
+                        
+                        const eventElement = document.createElement('div');
+                        eventElement.className = 'flex items-start';
+                        eventElement.innerHTML = `
+                            <div class="w-2 h-2 rounded-full bg-blue-400 mt-1.5 mr-2"></div>
+                            <div>
+                                <span class="text-blue-300">${event.year} (${ageText}):</span>
+                                <span class="text-gray-300"> ${event.event}</span>
+                            </div>
+                        `;
+                        techTimelineElement.appendChild(eventElement);
+                    });
+                }
+                
+                // Update cosmic time
+                const cosmicTimeElement = document.getElementById('cosmicTime');
+                const cosmicProgressElement = document.getElementById('cosmicProgress');
+                
+                // Universe is 13.8 billion years old
+                // If compressed to 1 year, calculate what percentage of that year your life represents
+                const universeAgeInYears = 13800000000;
+                const cosmicPercentage = (stats.years / universeAgeInYears) * 100;
+                cosmicProgressElement.style.width = Math.max(0.001, cosmicPercentage) + "%"; // Minimum width for visibility
+                
+                if (stats.years < 0.0001 * universeAgeInYears) {
+                    cosmicTimeElement.textContent = "less than a millisecond";
+                } else if (stats.years < 0.001 * universeAgeInYears) {
+                    cosmicTimeElement.textContent = "about a millisecond";
+                } else if (stats.years < 0.01 * universeAgeInYears) {
+                    cosmicTimeElement.textContent = "a few milliseconds";
+                } else if (stats.years < 0.1 * universeAgeInYears) {
+                    cosmicTimeElement.textContent = "less than a second";
+                } else {
+                    cosmicTimeElement.textContent = "a few seconds";
+                }
+            }
+            
+            // Create screenshot summary
+            function createScreenshotSummary(stats) {
+                const summaryElement = document.getElementById('screenshot-summary');
+                summaryElement.innerHTML = `
+                    <div class="bg-gray-700/50 rounded-xl p-4 border border-gray-600">
+                        <h3 class="text-lg font-semibold mb-2">Life Statistics</h3>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <p class="text-gray-400 text-sm">Days Alive</p>
+                                <p class="text-xl font-bold text-white">${formatNumber(stats.days)}</p>
+                            </div>
+                            <div>
+                                <p class="text-gray-400 text-sm">Years</p>
+                                <p class="text-xl font-bold text-white">${stats.years} years, ${stats.months} months</p>
+                            </div>
+                            <div>
+                                <p class="text-gray-400 text-sm">Heartbeats</p>
+                                <p class="text-xl font-bold text-white">${formatNumber(stats.heartbeats)}</p>
+                            </div>
+                            <div>
+                                <p class="text-gray-400 text-sm">Breaths Taken</p>
+                                <p class="text-xl font-bold text-white">${formatNumber(stats.breaths)}</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-700/50 rounded-xl p-4 border border-gray-600">
+                        <h3 class="text-lg font-semibold mb-2">Cosmic Perspective</h3>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <p class="text-gray-400 text-sm">Mars Age</p>
+                                <p class="text-xl font-bold text-white">${stats.marsAge} years</p>
+                            </div>
+                            <div>
+                                <p class="text-gray-400 text-sm">Space Travel</p>
+                                <p class="text-xl font-bold text-white">${formatNumber(stats.spaceDistance)} million miles</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-700/50 rounded-xl p-4 border border-gray-600">
+                        <h3 class="text-lg font-semibold mb-2">Life Journey</h3>
+                        <p class="text-gray-300 mb-2">You've lived approximately ${stats.lifeProgress}% of an average lifespan.</p>
+                        <div class="progress-bar bg-gray-600 mb-3">
+                            <div class="progress-fill-day h-full" style="width: ${stats.lifeProgress}%"></div>
+                        </div>
+                        <p class="text-gray-400 text-sm">Make the most of your remaining ${stats.daysLeft} days!</p>
+                    </div>
+                `;
+            }
+            
+            // Calculate button click handler
+            calculateBtn.addEventListener('click', function() {
+                const birthdayValue = birthdayInput.value;
+                
+                if (!birthdayValue) {
+                    alert('Please enter your birthday first.');
+                    return;
+                }
+                
+                const birthDate = new Date(birthdayValue);
+                const today = new Date();
+                
+                if (birthDate > today) {
+                    alert('Birthday cannot be in the future.');
+                    return;
+                }
+                
+                const stats = calculateAge(birthDate);
+                updateUI(stats, true); // Use animation
+                displayRandomQuote();
+                
+                resultsDiv.classList.remove('hidden');
+                
+                // Initialize time slider
+                timeSlider.value = 50; // Set to middle (today)
+                sliderDateDisplay.textContent = 'Today';
+                
+                // Store birth date for later use with the slider
+                timeSlider.dataset.birthDate = birthdayValue;
+                
+                // Scroll to results
+                resultsDiv.scrollIntoView({ behavior: 'smooth' });
+            });
+            
+            // Time slider change handler - FIXED VERSION
+            timeSlider.addEventListener('input', function() {
+                const birthDateStr = this.dataset.birthDate;
+                if (!birthDateStr) return; // Exit if no birth date is set
+                
+                const birthDate = new Date(birthDateStr);
+                const today = new Date();
+                const sliderValue = parseInt(this.value);
+                
+                let targetDate;
+                
+                // Calculate the range from birth to birth+50 years
+                const birthTimestamp = birthDate.getTime();
+                const fiftyYearsLater = new Date(birthDate);
+                fiftyYearsLater.setFullYear(fiftyYearsLater.getFullYear() + 50);
+                const maxFutureTimestamp = fiftyYearsLater.getTime();
+                
+                // Calculate where "today" falls in that range as a percentage
+                const todayPercentage = Math.min(100, Math.max(0, 
+                    ((today.getTime() - birthTimestamp) / (maxFutureTimestamp - birthTimestamp)) * 100
+                ));
+                
+                // Now use the slider value to determine the target date
+                if (sliderValue === 0) {
+                    // At 0, we're at birth date
+                    targetDate = new Date(birthDate);
+                    sliderDateDisplay.textContent = 'Birth Date';
+                } else if (sliderValue === 50) {
+                    // At 50, we're at today (or max today if today is beyond the range)
+                    targetDate = today;
+                    sliderDateDisplay.textContent = 'Today';
+                } else if (sliderValue === 100) {
+                    // At 100, we're at birth + 50 years
+                    targetDate = new Date(fiftyYearsLater);
+                    
+                    // Format the date for display
+                    const options = { year: 'numeric', month: 'short', day: 'numeric' };
+                    sliderDateDisplay.textContent = targetDate.toLocaleDateString(undefined, options);
+                } else {
+                    // For other values, interpolate
+                    const range = maxFutureTimestamp - birthTimestamp;
+                    const targetTimestamp = birthTimestamp + (range * sliderValue / 100);
+                    targetDate = new Date(targetTimestamp);
+                    
+                    // Format the date for display
+                    const options = { year: 'numeric', month: 'short', day: 'numeric' };
+                    sliderDateDisplay.textContent = targetDate.toLocaleDateString(undefined, options);
+                }
+                
+                // Calculate and update stats for the target date
+                const stats = calculateAge(birthDate, targetDate);
+                updateUI(stats, false); // Don't animate when using slider
+            });
+            
+            // New quote button handler
+            newQuoteBtn.addEventListener('click', displayRandomQuote);
+            
+            // Tab switching
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // Remove active class from all tabs
+                    tabs.forEach(t => t.classList.remove('tab-active'));
+                    tabs.forEach(t => t.classList.add('tab'));
+                    
+                    // Add active class to clicked tab
+                    this.classList.remove('tab');
+                    this.classList.add('tab-active');
+                    
+                    // Hide all tab content
+                    document.getElementById('basic-tab').classList.add('hidden');
+                    document.getElementById('fun-tab').classList.add('hidden');
+                    document.getElementById('cosmic-tab').classList.add('hidden');
+                    
+                    // Show selected tab content
+                    const tabId = this.getAttribute('data-tab');
+                    document.getElementById(`${tabId}-tab`).classList.remove('hidden');
+                });
+            });
+            
+            // Share button handler
+            shareBtn.addEventListener('click', function() {
+                const birthDate = new Date(timeSlider.dataset.birthDate);
+                const stats = calculateAge(birthDate);
+                
+                createScreenshotSummary(stats);
+                screenshotArea.style.display = 'flex';
+            });
+            
+            // Close screenshot modal
+            closeScreenshot.addEventListener('click', function() {
+                screenshotArea.style.display = 'none';
+            });
+            
+            // Download image button
+            downloadBtn.addEventListener('click', function() {
+                const summaryElement = document.getElementById('screenshot-summary');
+                
+                // Check if html2canvas is loaded
+                if (typeof html2canvas === 'undefined') {
+                    alert('Image generation is still loading. Please try again in a moment.');
+                    return;
+                }
+                
+                html2canvas(summaryElement, {
+                    backgroundColor: '#1a202c',
+                    scale: 2
+                }).then(canvas => {
+                    const link = document.createElement('a');
+                    link.download = 'my-life-in-numbers.png';
+                    link.href = canvas.toDataURL('image/png');
+                    link.click();
+                });
+            });
+            
+            // Close screenshot modal when clicking outside
+            screenshotArea.addEventListener('click', function(e) {
+                if (e.target === screenshotArea) {
+                    screenshotArea.style.display = 'none';
+                }
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'93b1cbe27748feeb',t:'MTc0NjQ2NDQ1MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><iframe height="1" width="1" style="position: absolute; top: 0px; left: 0px; border: none; visibility: hidden;" src="./saved_resource.html"></iframe>
+</body></html>
