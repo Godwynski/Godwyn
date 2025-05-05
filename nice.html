@@ -1,751 +1,640 @@
 <!DOCTYPE html>
-<!-- saved from url=(0140)https://bapavy81096kmyj0.canva-hosted-embed.com/codelet/AAEAEGJhcGF2eTgxMDk2a215ajAAAAAAAZalPtVw8k7jUFxYQd08H6Z5U580HqNjBgwzWiKVPGvIQ1fGx04/ -->
+<!-- saved from url=(0148)https://bapjxrfq3850awzm.canva-hosted-embed.com/codelet/AAEAEGJhcGp4cmZxMzg1MGF3em0AAAAAAZalvir4TpW217kCh6bIOM8JnfskppZFuVoz0_AVlx_Iuu8pC0M/#gallery -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QuizMaster</title>
+    <title>The WORST Website Ever</title>
     <script src="./saved_resource"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&family=Bungee+Shade&family=Creepster&display=swap');
+        
+        /* Horrific background */
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f0f9ff;
+            background: repeating-linear-gradient(
+                45deg,
+                #ff00ff,
+                #ff00ff 10px,
+                #00ff00 10px,
+                #00ff00 20px
+            );
+            font-family: 'Comic Neue', cursive;
+            cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>👽</text></svg>") 16 0, auto;
+            overflow-x: hidden;
         }
-        .fade-in {
-            animation: fadeIn 0.5s ease-in-out;
+        
+        /* Spinning header */
+        .spin-slow {
+            animation: spin 8s linear infinite;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        
+        .spin-fast {
+            animation: spin 2s linear infinite;
         }
-        .btn-primary {
-            transition: all 0.3s ease;
+        
+        .spin-reverse {
+            animation: spin-reverse 4s linear infinite;
         }
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
-        .choice-btn {
-            transition: all 0.2s ease;
+        
+        @keyframes spin-reverse {
+            from { transform: rotate(360deg); }
+            to { transform: rotate(0deg); }
         }
-        .choice-btn:hover:not(.correct):not(.incorrect) {
-            background-color: #dbeafe;
-            transform: translateY(-1px);
+        
+        /* Blinking text */
+        .blink {
+            animation: blink 0.5s linear infinite;
         }
-        .correct {
-            background-color: #d1fae5 !important;
-            border-color: #10b981 !important;
+        
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
         }
-        .incorrect {
-            background-color: #fee2e2 !important;
-            border-color: #ef4444 !important;
+        
+        /* Bouncing element */
+        .bounce {
+            animation: bounce 0.5s infinite alternate;
         }
-        .progress-bar {
-            transition: width 0.5s ease;
+        
+        @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-20px); }
         }
-        .quiz-card {
-            transition: all 0.3s ease;
+        
+        /* Shaking element */
+        .shake {
+            animation: shake 0.5s infinite;
         }
-        .quiz-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.1), 0 10px 10px -5px rgba(59, 130, 246, 0.04);
+        
+        @keyframes shake {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(5px, 5px) rotate(5deg); }
+            50% { transform: translate(0, 0) rotate(0deg); }
+            75% { transform: translate(-5px, 5px) rotate(-5deg); }
+            100% { transform: translate(0, 0) rotate(0deg); }
+        }
+        
+        /* Rainbow text */
+        .rainbow-text {
+            background-image: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+            -webkit-background-clip: text;
+            color: transparent;
+            animation: rainbow 2s linear infinite;
+            background-size: 200% 100%;
+        }
+        
+        @keyframes rainbow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+        
+        /* Marquee animation */
+        .marquee {
+            white-space: nowrap;
+            overflow: hidden;
+        }
+        
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 10s linear infinite;
+        }
+        
+        @keyframes marquee {
+            from { transform: translateX(100%); }
+            to { transform: translateX(-100%); }
+        }
+        
+        /* Ugly button */
+        .ugly-button {
+            background: linear-gradient(to right, #ff0000, #ffff00);
+            border: 5px dotted blue;
+            box-shadow: 0 0 15px 5px #ff00ff, inset 0 0 10px 3px #00ffff;
+            font-family: 'Creepster', cursive;
+            text-shadow: 3px 3px 0 #ff0000, -3px -3px 0 #0000ff;
+            transform-style: preserve-3d;
+            transition: all 0.3s;
+        }
+        
+        .ugly-button:hover {
+            transform: rotate(10deg) scale(1.2);
+            animation: rainbow-bg 1s linear infinite;
+        }
+        
+        @keyframes rainbow-bg {
+            0% { background: red; }
+            14% { background: orange; }
+            28% { background: yellow; }
+            42% { background: green; }
+            57% { background: blue; }
+            71% { background: indigo; }
+            85% { background: violet; }
+            100% { background: red; }
+        }
+        
+        /* Scrolling text */
+        .scroll-text {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: yellow;
+            color: red;
+            font-size: 24px;
+            padding: 10px;
+            z-index: 1000;
+        }
+        
+        /* Comic Sans everywhere */
+        * {
+            font-family: 'Comic Neue', cursive !important;
+        }
+        
+        /* Horrible nav */
+        .horrible-nav {
+            background: linear-gradient(to right, #ff0000, #00ff00, #0000ff);
+            border-bottom: 10px ridge gold;
+        }
+        
+        .horrible-nav a {
+            display: inline-block;
+            transform: skew(-15deg);
+            transition: all 0.3s;
+        }
+        
+        .horrible-nav a:hover {
+            transform: skew(15deg) scale(1.2);
+            background-color: fuchsia;
+        }
+        
+        /* Floating elements */
+        .float {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+            100% { transform: translateY(0) rotate(0deg); }
+        }
+        
+        /* Flashing background */
+        .flash-bg {
+            animation: flash-bg 1s linear infinite;
+        }
+        
+        @keyframes flash-bg {
+            0% { background-color: red; }
+            33% { background-color: yellow; }
+            66% { background-color: blue; }
+            100% { background-color: red; }
+        }
+        
+        /* Tilted elements */
+        .tilted {
+            transform: rotate(-5deg);
+        }
+        
+        /* Ugly card */
+        .ugly-card {
+            background: repeating-radial-gradient(circle, #ff0000, #00ff00 10%, #0000ff 20%);
+            border: 8px dashed yellow;
+            box-shadow: 0 0 20px 10px cyan;
+        }
+        
+        /* Visitor counter */
+        .visitor-counter {
+            font-family: 'Bungee Shade', cursive !important;
+            background-color: black;
+            color: lime;
+            display: inline-block;
+            padding: 10px;
+            border: 3px solid lime;
+            letter-spacing: 5px;
+        }
+        
+        /* Under construction */
+        .construction {
+            background: repeating-linear-gradient(
+                45deg,
+                #ffff00,
+                #ffff00 10px,
+                #000000 10px,
+                #000000 20px
+            );
+            color: red;
+            font-weight: bold;
+            padding: 20px;
+            text-align: center;
+            margin: 20px 0;
+            border: 5px solid red;
+        }
+        
+        /* Word art style heading */
+        .word-art {
+            font-family: 'Bungee Shade', cursive !important;
+            font-size: 3rem;
+            background: linear-gradient(to bottom, #ff0000 0%, #ffff00 50%, #00ff00 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 3px 3px 0 #0000ff, 6px 6px 0 #ff00ff;
+            letter-spacing: 5px;
+            transform: perspective(500px) rotateX(20deg);
+            padding: 20px;
+        }
+        
+        /* Hit counter */
+        .hit-counter {
+            font-family: 'Digital', monospace;
+            background-color: black;
+            color: red;
+            padding: 5px 10px;
+            border: 2px solid red;
+            display: inline-block;
+        }
+        
+        /* Guestbook */
+        .guestbook {
+            background-color: #ccffcc;
+            border: 3px solid #00cc00;
+            padding: 15px;
+        }
+        
+        .guestbook-entry {
+            border-bottom: 1px dotted #00cc00;
+            padding: 10px 0;
+        }
+        
+        /* Popup */
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #ffff00;
+            border: 5px solid #ff0000;
+            padding: 20px;
+            box-shadow: 0 0 50px 20px rgba(0, 0, 255, 0.5);
+            z-index: 9999;
+            animation: popup-animation 0.5s infinite alternate;
+        }
+        
+        @keyframes popup-animation {
+            from { transform: translate(-50%, -50%) scale(1); }
+            to { transform: translate(-50%, -50%) scale(1.1); }
+        }
+        
+        .close-popup {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            font-size: 24px;
+            color: #ff0000;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        /* Glitter effect */
+        .glitter {
+            position: relative;
+        }
+        
+        .glitter::after {
+            content: "✨✨✨✨✨✨✨✨✨✨";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            animation: glitter 2s linear infinite;
+            pointer-events: none;
+        }
+        
+        @keyframes glitter {
+            0% { opacity: 0; transform: translateY(0); }
+            50% { opacity: 1; }
+            100% { opacity: 0; transform: translateY(-20px); }
         }
     </style>
-<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.16 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.container{width:100%}@media (min-width: 640px){.container{max-width:640px}}@media (min-width: 768px){.container{max-width:768px}}@media (min-width: 1024px){.container{max-width:1024px}}@media (min-width: 1280px){.container{max-width:1280px}}@media (min-width: 1536px){.container{max-width:1536px}}.relative{position:relative}.mx-auto{margin-left:auto;margin-right:auto}.my-6{margin-top:1.5rem;margin-bottom:1.5rem}.mb-2{margin-bottom:0.5rem}.mb-3{margin-bottom:0.75rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.mt-4{margin-top:1rem}.flex{display:flex}.grid{display:grid}.hidden{display:none}.h-2\.5{height:0.625rem}.h-28{height:7rem}.h-16{height:4rem}.h-3{height:0.75rem}.min-h-screen{min-height:100vh}.w-28{width:7rem}.w-full{width:100%}.max-w-2xl{max-width:42rem}.max-w-4xl{max-width:56rem}.flex-grow{flex-grow:1}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.flex-col{flex-direction:column}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-6{gap:1.5rem}.space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.rounded-xl{border-radius:0.75rem}.border-2{border-width:2px}.border{border-width:1px}.border-t{border-top-width:1px}.border-blue-600{--tw-border-opacity:1;border-color:rgb(37 99 235 / var(--tw-border-opacity, 1))}.border-gray-200{--tw-border-opacity:1;border-color:rgb(229 231 235 / var(--tw-border-opacity, 1))}.border-gray-100{--tw-border-opacity:1;border-color:rgb(243 244 246 / var(--tw-border-opacity, 1))}.bg-blue-600{--tw-bg-opacity:1;background-color:rgb(37 99 235 / var(--tw-bg-opacity, 1))}.bg-gray-100{--tw-bg-opacity:1;background-color:rgb(243 244 246 / var(--tw-bg-opacity, 1))}.bg-gray-200{--tw-bg-opacity:1;background-color:rgb(229 231 235 / var(--tw-bg-opacity, 1))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.bg-purple-600{--tw-bg-opacity:1;background-color:rgb(147 51 234 / var(--tw-bg-opacity, 1))}.p-4{padding:1rem}.p-6{padding:1.5rem}.px-4{padding-left:1rem;padding-right:1rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.py-4{padding-top:1rem;padding-bottom:1rem}.py-6{padding-top:1.5rem;padding-bottom:1.5rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.text-center{text-align:center}.text-2xl{font-size:1.5rem;line-height:2rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.font-bold{font-weight:700}.font-medium{font-weight:500}.font-semibold{font-weight:600}.text-blue-600{--tw-text-opacity:1;color:rgb(37 99 235 / var(--tw-text-opacity, 1))}.text-gray-500{--tw-text-opacity:1;color:rgb(107 114 128 / var(--tw-text-opacity, 1))}.text-gray-600{--tw-text-opacity:1;color:rgb(75 85 99 / var(--tw-text-opacity, 1))}.text-gray-700{--tw-text-opacity:1;color:rgb(55 65 81 / var(--tw-text-opacity, 1))}.text-gray-800{--tw-text-opacity:1;color:rgb(31 41 55 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.text-green-600{--tw-text-opacity:1;color:rgb(22 163 74 / var(--tw-text-opacity, 1))}.text-red-600{--tw-text-opacity:1;color:rgb(220 38 38 / var(--tw-text-opacity, 1))}.shadow-md{--tw-shadow:0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-sm{--tw-shadow:0 1px 2px 0 rgb(0 0 0 / 0.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.hover\:bg-blue-50:hover{--tw-bg-opacity:1;background-color:rgb(239 246 255 / var(--tw-bg-opacity, 1))}.hover\:bg-blue-700:hover{--tw-bg-opacity:1;background-color:rgb(29 78 216 / var(--tw-bg-opacity, 1))}.hover\:bg-gray-200:hover{--tw-bg-opacity:1;background-color:rgb(229 231 235 / var(--tw-bg-opacity, 1))}.hover\:bg-purple-700:hover{--tw-bg-opacity:1;background-color:rgb(126 34 206 / var(--tw-bg-opacity, 1))}.hover\:text-blue-800:hover{--tw-text-opacity:1;color:rgb(30 64 175 / var(--tw-text-opacity, 1))}@media (min-width: 768px){.md\:my-8{margin-top:2rem;margin-bottom:2rem}.md\:mb-8{margin-bottom:2rem}.md\:h-32{height:8rem}.md\:w-32{width:8rem}.md\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.md\:p-8{padding:2rem}.md\:py-8{padding-top:2rem;padding-bottom:2rem}.md\:text-2xl{font-size:1.5rem;line-height:2rem}.md\:text-3xl{font-size:1.875rem;line-height:2.25rem}.md\:text-xl{font-size:1.25rem;line-height:1.75rem}}</style></head>
-<body>
-    <div id="app" class="min-h-screen flex flex-col">
-        <!-- Header -->
-        <header class="bg-white shadow-sm">
-            <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-                <h1 class="text-xl md:text-2xl font-bold text-blue-600">QuizMaster</h1>
-                <button id="homeBtn" class="text-blue-600 hover:text-blue-800 font-medium">Home</button>
-            </div>
-        </header>
-
-        <!-- Main Content -->
-        <main class="flex-grow container mx-auto px-4 py-6 md:py-8">
-            <!-- Quiz Selection Page -->
-            <div id="quizSelectionPage" class="fade-in max-w-4xl mx-auto">
-                <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-6 text-center">Choose a Quiz</h2>
-                
-                <div id="quizList" class="grid grid-cols-1 md:grid-cols-2 gap-6"><div class="quiz-card bg-white rounded-xl shadow-md overflow-hidden border border-gray-100">
-                    <div class="bg-blue-600 h-3"></div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">General Knowledge Quiz</h3>
-                        <p class="text-gray-600 text-sm mb-4 h-16">Test your knowledge with this general knowledge quiz covering various topics from geography to science and history.</p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-sm text-gray-500">10 questions</span>
-                            <span class="text-sm text-red-600">10 to review</span>
-                        </div>
-                        <button class="select-quiz-btn btn-primary w-full mt-4 bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg" data-quiz-id="general">
-                            Select Quiz
-                        </button>
-                    </div>
-                </div><div class="quiz-card bg-white rounded-xl shadow-md overflow-hidden border border-gray-100">
-                    <div class="bg-purple-600 h-3"></div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">Technology Quiz</h3>
-                        <p class="text-gray-600 text-sm mb-4 h-16">Challenge yourself with questions about computers, programming, and the digital world.</p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-sm text-gray-500">10 questions</span>
-                            <span class="text-sm text-green-600">All completed</span>
-                        </div>
-                        <button class="select-quiz-btn btn-primary w-full mt-4 bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 px-4 rounded-lg" data-quiz-id="tech">
-                            Select Quiz
-                        </button>
-                    </div>
-                </div></div>
-            </div>
-
-            <!-- Home Page -->
-            <div id="homePage" class="fade-in max-w-2xl mx-auto bg-white rounded-xl shadow-md p-6 md:p-8 mb-8 hidden">
-                <h2 id="quizTitle" class="text-2xl md:text-3xl font-bold text-gray-800 mb-3">Quiz Title</h2>
-                <p id="quizDescription" class="text-gray-600 mb-6">Quiz description goes here.</p>
-                
-                <div class="space-y-4">
-                    <button id="startQuizBtn" class="btn-primary w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg">
-                        Start New Quiz
-                    </button>
-                    
-                    <button id="retakeMistakesBtn" class="w-full bg-white border-2 border-blue-600 text-blue-600 font-medium py-3 px-6 rounded-lg hover:bg-blue-50 hidden">
-                        Retake Incorrect Questions (<span id="mistakesCount">0</span>)
-                    </button>
-                    
-                    <button id="backToQuizzesBtn" class="w-full bg-gray-100 text-gray-700 font-medium py-3 px-6 rounded-lg hover:bg-gray-200">
-                        Back to All Quizzes
-                    </button>
-                </div>
-            </div>
-
-            <!-- Quiz Page -->
-            <div id="quizPage" class="fade-in max-w-2xl mx-auto bg-white rounded-xl shadow-md p-6 md:p-8 hidden">
-                <div class="mb-6">
-                    <div class="flex justify-between items-center mb-2">
-                        <span class="text-sm font-medium text-gray-600">Question <span id="currentQuestionNum">1</span> of <span id="totalQuestions">10</span></span>
-                        <span class="text-sm font-medium text-gray-600">Score: <span id="currentScore">0</span></span>
-                    </div>
-                    <div class="w-full bg-gray-200 rounded-full h-2.5">
-                        <div id="progressBar" class="progress-bar bg-blue-600 h-2.5 rounded-full" style="width: 0%"></div>
-                    </div>
-                </div>
-                
-                <h3 id="questionText" class="text-lg md:text-xl font-semibold text-gray-800 mb-6">Question text goes here?</h3>
-                
-                <div id="choices" class="space-y-3 mb-6">
-                    <!-- Choices will be inserted here -->
-                </div>
-                
-                <div id="feedback" class="p-4 rounded-lg mb-6 hidden">
-                    <!-- Feedback will be shown here -->
-                </div>
-                
-                <button id="nextBtn" class="btn-primary bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg w-full hidden">
-                    Next Question
-                </button>
-            </div>
-
-            <!-- Results Page -->
-            <div id="resultsPage" class="fade-in max-w-2xl mx-auto bg-white rounded-xl shadow-md p-6 md:p-8 hidden">
-                <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-2">Quiz Results</h2>
-                
-                <div class="flex items-center justify-center my-6 md:my-8">
-                    <div class="relative">
-                        <svg class="w-28 h-28 md:w-32 md:h-32" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="18" cy="18" r="16" fill="none" stroke="#e5e7eb" stroke-width="2"></circle>
-                            <circle id="resultCircle" cx="18" cy="18" r="16" fill="none" stroke="#3b82f6" stroke-width="2" stroke-dasharray="100 100" stroke-dashoffset="0" transform="rotate(-90 18 18)"></circle>
-                            <text x="18" y="18" text-anchor="middle" dominant-baseline="central" font-size="8" font-weight="bold" fill="#1f2937">
-                                <tspan id="scorePercent">0%</tspan>
-                            </text>
-                        </svg>
-                    </div>
-                </div>
-                
-                <p class="text-center text-lg mb-6">
-                    You scored <span id="finalScore">0</span> out of <span id="totalQuestionsResult">10</span>
-                </p>
-                
-                <div id="incorrectQuestionsSection" class="mb-6 md:mb-8 hidden">
-                    <h3 class="text-lg md:text-xl font-semibold text-gray-800 mb-4">Questions to Review:</h3>
-                    <div id="incorrectQuestionsList" class="space-y-4">
-                        <!-- Incorrect questions will be listed here -->
-                    </div>
-                </div>
-                
-                <div class="space-y-4">
-                    <button id="retakeIncorrectBtn" class="btn-primary w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg hidden">
-                        Retake Incorrect Questions
-                    </button>
-                    
-                    <button id="newQuizBtn" class="w-full bg-white border-2 border-blue-600 text-blue-600 font-medium py-3 px-6 rounded-lg hover:bg-blue-50">
-                        Start New Quiz
-                    </button>
-                    
-                    <button id="backToQuizzesResultBtn" class="w-full bg-gray-100 text-gray-700 font-medium py-3 px-6 rounded-lg hover:bg-gray-200">
-                        Back to All Quizzes
-                    </button>
-                </div>
-            </div>
-        </main>
-
-        <!-- Footer -->
-        <footer class="bg-white border-t border-gray-200 py-4">
-            <div class="container mx-auto px-4 text-center text-gray-500 text-sm">
-                © 2023 QuizMaster. All rights reserved.
-            </div>
-        </footer>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.16 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.container{width:100%}@media (min-width: 640px){.container{max-width:640px}}@media (min-width: 768px){.container{max-width:768px}}@media (min-width: 1024px){.container{max-width:1024px}}@media (min-width: 1280px){.container{max-width:1280px}}@media (min-width: 1536px){.container{max-width:1536px}}.relative{position:relative}.sticky{position:sticky}.top-0{top:0px}.z-50{z-index:50}.mx-auto{margin-left:auto;margin-right:auto}.mb-10{margin-bottom:2.5rem}.mb-2{margin-bottom:0.5rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.ml-2{margin-left:0.5rem}.mt-2{margin-top:0.5rem}.mt-4{margin-top:1rem}.block{display:block}.inline-block{display:inline-block}.flex{display:flex}.grid{display:grid}.w-full{width:100%}.max-w-3xl{max-width:48rem}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-4{gap:1rem}.gap-6{gap:1.5rem}.gap-8{gap:2rem}.space-x-4 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(1rem * var(--tw-space-x-reverse));margin-left:calc(1rem * calc(1 - var(--tw-space-x-reverse)))}.space-x-6 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(1.5rem * var(--tw-space-x-reverse));margin-left:calc(1.5rem * calc(1 - var(--tw-space-x-reverse)))}.space-x-8 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(2rem * var(--tw-space-x-reverse));margin-left:calc(2rem * calc(1 - var(--tw-space-x-reverse)))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.border-4{border-width:4px}.border-8{border-width:8px}.border-blue-500{--tw-border-opacity:1;border-color:rgb(59 130 246 / var(--tw-border-opacity, 1))}.border-green-500{--tw-border-opacity:1;border-color:rgb(34 197 94 / var(--tw-border-opacity, 1))}.border-pink-500{--tw-border-opacity:1;border-color:rgb(236 72 153 / var(--tw-border-opacity, 1))}.border-purple-500{--tw-border-opacity:1;border-color:rgb(168 85 247 / var(--tw-border-opacity, 1))}.border-red-500{--tw-border-opacity:1;border-color:rgb(239 68 68 / var(--tw-border-opacity, 1))}.border-yellow-400{--tw-border-opacity:1;border-color:rgb(250 204 21 / var(--tw-border-opacity, 1))}.border-yellow-500{--tw-border-opacity:1;border-color:rgb(234 179 8 / var(--tw-border-opacity, 1))}.bg-black{--tw-bg-opacity:1;background-color:rgb(0 0 0 / var(--tw-bg-opacity, 1))}.bg-blue-300{--tw-bg-opacity:1;background-color:rgb(147 197 253 / var(--tw-bg-opacity, 1))}.bg-green-300{--tw-bg-opacity:1;background-color:rgb(134 239 172 / var(--tw-bg-opacity, 1))}.bg-orange-300{--tw-bg-opacity:1;background-color:rgb(253 186 116 / var(--tw-bg-opacity, 1))}.bg-pink-100{--tw-bg-opacity:1;background-color:rgb(252 231 243 / var(--tw-bg-opacity, 1))}.bg-pink-300{--tw-bg-opacity:1;background-color:rgb(249 168 212 / var(--tw-bg-opacity, 1))}.bg-purple-300{--tw-bg-opacity:1;background-color:rgb(216 180 254 / var(--tw-bg-opacity, 1))}.bg-red-300{--tw-bg-opacity:1;background-color:rgb(252 165 165 / var(--tw-bg-opacity, 1))}.bg-yellow-200{--tw-bg-opacity:1;background-color:rgb(254 240 138 / var(--tw-bg-opacity, 1))}.bg-yellow-300{--tw-bg-opacity:1;background-color:rgb(253 224 71 / var(--tw-bg-opacity, 1))}.p-2{padding:0.5rem}.p-6{padding:1.5rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-4{padding-left:1rem;padding-right:1rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.px-8{padding-left:2rem;padding-right:2rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-10{padding-top:2.5rem;padding-bottom:2.5rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.py-4{padding-top:1rem;padding-bottom:1rem}.py-6{padding-top:1.5rem;padding-bottom:1.5rem}.text-center{text-align:center}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-6xl{font-size:3.75rem;line-height:1}.text-8xl{font-size:6rem;line-height:1}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.font-bold{font-weight:700}.text-blue-300{--tw-text-opacity:1;color:rgb(147 197 253 / var(--tw-text-opacity, 1))}.text-blue-700{--tw-text-opacity:1;color:rgb(29 78 216 / var(--tw-text-opacity, 1))}.text-blue-800{--tw-text-opacity:1;color:rgb(30 64 175 / var(--tw-text-opacity, 1))}.text-blue-900{--tw-text-opacity:1;color:rgb(30 58 138 / var(--tw-text-opacity, 1))}.text-gray-400{--tw-text-opacity:1;color:rgb(156 163 175 / var(--tw-text-opacity, 1))}.text-gray-600{--tw-text-opacity:1;color:rgb(75 85 99 / var(--tw-text-opacity, 1))}.text-green-300{--tw-text-opacity:1;color:rgb(134 239 172 / var(--tw-text-opacity, 1))}.text-green-600{--tw-text-opacity:1;color:rgb(22 163 74 / var(--tw-text-opacity, 1))}.text-green-800{--tw-text-opacity:1;color:rgb(22 101 52 / var(--tw-text-opacity, 1))}.text-pink-800{--tw-text-opacity:1;color:rgb(157 23 77 / var(--tw-text-opacity, 1))}.text-purple-800{--tw-text-opacity:1;color:rgb(107 33 168 / var(--tw-text-opacity, 1))}.text-red-600{--tw-text-opacity:1;color:rgb(220 38 38 / var(--tw-text-opacity, 1))}.text-red-800{--tw-text-opacity:1;color:rgb(153 27 27 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.text-yellow-300{--tw-text-opacity:1;color:rgb(253 224 71 / var(--tw-text-opacity, 1))}.text-yellow-800{--tw-text-opacity:1;color:rgb(133 77 14 / var(--tw-text-opacity, 1))}@media (min-width: 768px){.md\:mb-0{margin-bottom:0px}.md\:w-1\/3{width:33.333333%}.md\:w-2\/3{width:66.666667%}.md\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.md\:grid-cols-4{grid-template-columns:repeat(4, minmax(0, 1fr))}.md\:flex-row{flex-direction:row}.md\:pl-8{padding-left:2rem}}</style></head>
+<body class="relative">
+    <!-- Popup -->
+    <div class="popup" id="popup">
+        <span class="close-popup" onclick="document.getElementById(&#39;popup&#39;).style.display=&#39;none&#39;">X</span>
+        <h3 class="text-2xl font-bold text-red-600 blink">CONGRATULATIONS!!!</h3>
+        <p class="text-blue-700 font-bold">YOU ARE THE 1,000,000th VISITOR!!!</p>
+        <p class="text-green-600 mt-2">Click here to claim your FREE PRIZE!!!</p>
+        <button class="ugly-button mt-4 px-4 py-2 text-xl spin-slow">CLAIM NOW!!!</button>
     </div>
 
-    <script>
-        // Quiz data - would normally be loaded from a JSON file or API
-        const quizzesData = [
-            {
-                id: "general",
-                title: "General Knowledge Quiz",
-                description: "Test your knowledge with this general knowledge quiz covering various topics from geography to science and history.",
-                questions: [
-                    {
-                        id: 1,
-                        question: "What is the capital of France?",
-                        choices: ["London", "Berlin", "Paris", "Madrid"],
-                        correctAnswer: "Paris"
-                    },
-                    {
-                        id: 2,
-                        question: "Which planet is known as the Red Planet?",
-                        choices: ["Venus", "Mars", "Jupiter", "Saturn"],
-                        correctAnswer: "Mars"
-                    },
-                    {
-                        id: 3,
-                        question: "What is the largest ocean on Earth?",
-                        choices: ["Atlantic Ocean", "Indian Ocean", "Arctic Ocean", "Pacific Ocean"],
-                        correctAnswer: "Pacific Ocean"
-                    },
-                    {
-                        id: 4,
-                        question: "Who wrote 'Romeo and Juliet'?",
-                        choices: ["Charles Dickens", "William Shakespeare", "Jane Austen", "Mark Twain"],
-                        correctAnswer: "William Shakespeare"
-                    },
-                    {
-                        id: 5,
-                        question: "What is the chemical symbol for gold?",
-                        choices: ["Go", "Gd", "Au", "Ag"],
-                        correctAnswer: "Au"
-                    },
-                    {
-                        id: 6,
-                        question: "Which country is home to the kangaroo?",
-                        choices: ["New Zealand", "South Africa", "Australia", "Brazil"],
-                        correctAnswer: "Australia"
-                    },
-                    {
-                        id: 7,
-                        question: "What is the largest mammal in the world?",
-                        choices: ["Elephant", "Blue Whale", "Giraffe", "Polar Bear"],
-                        correctAnswer: "Blue Whale"
-                    },
-                    {
-                        id: 8,
-                        question: "In which year did World War II end?",
-                        choices: ["1943", "1945", "1947", "1950"],
-                        correctAnswer: "1945"
-                    },
-                    {
-                        id: 9,
-                        question: "What is the main component of the Sun?",
-                        choices: ["Oxygen", "Carbon", "Helium", "Hydrogen"],
-                        correctAnswer: "Hydrogen"
-                    },
-                    {
-                        id: 10,
-                        question: "Which famous scientist developed the theory of relativity?",
-                        choices: ["Isaac Newton", "Galileo Galilei", "Albert Einstein", "Stephen Hawking"],
-                        correctAnswer: "Albert Einstein"
-                    }
-                ]
-            },
-            {
-                id: "tech",
-                title: "Technology Quiz",
-                description: "Challenge yourself with questions about computers, programming, and the digital world.",
-                questions: [
-                    {
-                        id: 1,
-                        question: "Who is the co-founder of Microsoft?",
-                        choices: ["Steve Jobs", "Bill Gates", "Mark Zuckerberg", "Elon Musk"],
-                        correctAnswer: "Bill Gates"
-                    },
-                    {
-                        id: 2,
-                        question: "What does CPU stand for?",
-                        choices: ["Central Processing Unit", "Computer Personal Unit", "Central Process Utility", "Core Processing Unit"],
-                        correctAnswer: "Central Processing Unit"
-                    },
-                    {
-                        id: 3,
-                        question: "Which programming language is known as the 'mother of all languages'?",
-                        choices: ["Java", "Python", "C", "FORTRAN"],
-                        correctAnswer: "C"
-                    },
-                    {
-                        id: 4,
-                        question: "What year was the first iPhone released?",
-                        choices: ["2005", "2007", "2009", "2010"],
-                        correctAnswer: "2007"
-                    },
-                    {
-                        id: 5,
-                        question: "What does HTML stand for?",
-                        choices: ["Hyper Text Markup Language", "High Tech Modern Language", "Hyper Transfer Markup Language", "Hyper Text Modern Links"],
-                        correctAnswer: "Hyper Text Markup Language"
-                    },
-                    {
-                        id: 6,
-                        question: "Which company developed the Android operating system?",
-                        choices: ["Apple", "Microsoft", "Google", "Samsung"],
-                        correctAnswer: "Google"
-                    },
-                    {
-                        id: 7,
-                        question: "What is the name of the world's first computer programmer?",
-                        choices: ["Ada Lovelace", "Grace Hopper", "Alan Turing", "Charles Babbage"],
-                        correctAnswer: "Ada Lovelace"
-                    },
-                    {
-                        id: 8,
-                        question: "Which social media platform was founded first?",
-                        choices: ["Twitter", "Instagram", "Facebook", "LinkedIn"],
-                        correctAnswer: "LinkedIn"
-                    },
-                    {
-                        id: 9,
-                        question: "What does 'IoT' stand for in technology?",
-                        choices: ["Internet of Things", "Input Output Technology", "Integrated Online Tools", "Internal Operating Terminal"],
-                        correctAnswer: "Internet of Things"
-                    },
-                    {
-                        id: 10,
-                        question: "Which company created the programming language JavaScript?",
-                        choices: ["Microsoft", "Netscape", "Oracle", "IBM"],
-                        correctAnswer: "Netscape"
-                    }
-                ]
-            }
-        ];
+    <!-- Scrolling text -->
+    <div class="scroll-text marquee">
+        <div class="marquee-content">
+            WELCOME TO THE WORST WEBSITE EVER!!! THIS IS THE MOST AMAZING WEBSITE YOU'LL EVER SEE!!! DON'T FORGET TO SIGN MY GUESTBOOK!!! UNDER CONSTRUCTION!!! BEST VIEWED IN INTERNET EXPLORER 6!!!
+        </div>
+    </div>
 
-        // App state
-        let currentState = {
-            selectedQuizId: null,
-            currentQuestionIndex: 0,
-            score: 0,
-            incorrectQuestions: {},  // Object to store incorrect questions by quiz ID
-            isRetakingMode: false,
-            answeredCurrentQuestion: false
-        };
+    <!-- Navigation -->
+    <nav class="horrible-nav sticky top-0 z-50 py-2 px-4">
+        <div class="container mx-auto flex flex-wrap justify-between items-center">
+            <div class="flex items-center">
+                <img src="data:image/svg+xml;utf8,&lt;svg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;50&#39; height=&#39;50&#39; viewBox=&#39;0 0 100 100&#39;&gt;&lt;text y=&#39;50%&#39; x=&#39;50%&#39; dominant-baseline=&#39;middle&#39; text-anchor=&#39;middle&#39; font-size=&#39;80&#39;&gt;%F0%9F%A4%AA&lt;/text&gt;&lt;/svg&gt;" alt="Logo" class="spin-fast">
+                <span class="text-3xl font-bold ml-2 rainbow-text">WORST SITE EVER</span>
+            </div>
+            <div class="flex space-x-4 text-xl">
+                <a href="https://bapjxrfq3850awzm.canva-hosted-embed.com/codelet/AAEAEGJhcGp4cmZxMzg1MGF3em0AAAAAAZalvir4TpW217kCh6bIOM8JnfskppZFuVoz0_AVlx_Iuu8pC0M/#home" class="text-white px-3 py-1 bounce">HOME</a>
+                <a href="https://bapjxrfq3850awzm.canva-hosted-embed.com/codelet/AAEAEGJhcGp4cmZxMzg1MGF3em0AAAAAAZalvir4TpW217kCh6bIOM8JnfskppZFuVoz0_AVlx_Iuu8pC0M/#about" class="text-yellow-300 px-3 py-1 shake">ABOUT</a>
+                <a href="https://bapjxrfq3850awzm.canva-hosted-embed.com/codelet/AAEAEGJhcGp4cmZxMzg1MGF3em0AAAAAAZalvir4TpW217kCh6bIOM8JnfskppZFuVoz0_AVlx_Iuu8pC0M/#gallery" class="text-blue-300 px-3 py-1 float">GALLERY</a>
+                <a href="https://bapjxrfq3850awzm.canva-hosted-embed.com/codelet/AAEAEGJhcGp4cmZxMzg1MGF3em0AAAAAAZalvir4TpW217kCh6bIOM8JnfskppZFuVoz0_AVlx_Iuu8pC0M/#guestbook" class="text-green-300 px-3 py-1 blink">GUESTBOOK</a>
+            </div>
+        </div>
+    </nav>
 
-        // DOM elements
-        const elements = {
-            quizSelectionPage: document.getElementById('quizSelectionPage'),
-            quizList: document.getElementById('quizList'),
-            homePage: document.getElementById('homePage'),
-            quizPage: document.getElementById('quizPage'),
-            resultsPage: document.getElementById('resultsPage'),
-            quizTitle: document.getElementById('quizTitle'),
-            quizDescription: document.getElementById('quizDescription'),
-            startQuizBtn: document.getElementById('startQuizBtn'),
-            retakeMistakesBtn: document.getElementById('retakeMistakesBtn'),
-            mistakesCount: document.getElementById('mistakesCount'),
-            backToQuizzesBtn: document.getElementById('backToQuizzesBtn'),
-            homeBtn: document.getElementById('homeBtn'),
-            currentQuestionNum: document.getElementById('currentQuestionNum'),
-            totalQuestions: document.getElementById('totalQuestions'),
-            currentScore: document.getElementById('currentScore'),
-            progressBar: document.getElementById('progressBar'),
-            questionText: document.getElementById('questionText'),
-            choices: document.getElementById('choices'),
-            feedback: document.getElementById('feedback'),
-            nextBtn: document.getElementById('nextBtn'),
-            finalScore: document.getElementById('finalScore'),
-            totalQuestionsResult: document.getElementById('totalQuestionsResult'),
-            scorePercent: document.getElementById('scorePercent'),
-            resultCircle: document.getElementById('resultCircle'),
-            incorrectQuestionsSection: document.getElementById('incorrectQuestionsSection'),
-            incorrectQuestionsList: document.getElementById('incorrectQuestionsList'),
-            retakeIncorrectBtn: document.getElementById('retakeIncorrectBtn'),
-            newQuizBtn: document.getElementById('newQuizBtn'),
-            backToQuizzesResultBtn: document.getElementById('backToQuizzesResultBtn')
-        };
-
-        // Initialize the app
-        function init() {
-            // Load incorrect questions from local storage if they exist
-            loadIncorrectQuestionsFromStorage();
-            
-            // Set up event listeners
-            elements.startQuizBtn.addEventListener('click', startNewQuiz);
-            elements.retakeMistakesBtn.addEventListener('click', retakeMistakes);
-            elements.homeBtn.addEventListener('click', goToQuizSelection);
-            elements.backToQuizzesBtn.addEventListener('click', goToQuizSelection);
-            elements.backToQuizzesResultBtn.addEventListener('click', goToQuizSelection);
-            elements.nextBtn.addEventListener('click', handleNextQuestion);
-            elements.retakeIncorrectBtn.addEventListener('click', retakeMistakes);
-            elements.newQuizBtn.addEventListener('click', startNewQuiz);
-            
-            // Create quiz selection cards
-            createQuizSelectionCards();
-            
-            // Show quiz selection page initially
-            showPage('quizSelectionPage');
-        }
-
-        // Create quiz selection cards
-        function createQuizSelectionCards() {
-            elements.quizList.innerHTML = '';
-            
-            quizzesData.forEach(quiz => {
-                const incorrectCount = currentState.incorrectQuestions[quiz.id] ? 
-                    currentState.incorrectQuestions[quiz.id].length : 0;
-                
-                const card = document.createElement('div');
-                card.className = 'quiz-card bg-white rounded-xl shadow-md overflow-hidden border border-gray-100';
-                
-                // Create a color based on quiz ID for visual distinction
-                const colors = {
-                    general: 'bg-blue-600',
-                    tech: 'bg-purple-600'
-                };
-                const bgColor = colors[quiz.id] || 'bg-blue-600';
-                
-                card.innerHTML = `
-                    <div class="${bgColor} h-3"></div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">${quiz.title}</h3>
-                        <p class="text-gray-600 text-sm mb-4 h-16">${quiz.description}</p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-sm text-gray-500">${quiz.questions.length} questions</span>
-                            ${incorrectCount > 0 ? 
-                                `<span class="text-sm text-red-600">${incorrectCount} to review</span>` : 
-                                '<span class="text-sm text-green-600">All completed</span>'}
-                        </div>
-                        <button class="select-quiz-btn btn-primary w-full mt-4 bg-${quiz.id === 'tech' ? 'purple' : 'blue'}-600 hover:bg-${quiz.id === 'tech' ? 'purple' : 'blue'}-700 text-white font-medium py-2 px-4 rounded-lg" data-quiz-id="${quiz.id}">
-                            Select Quiz
-                        </button>
+    <!-- Hero Section -->
+    <section id="home" class="py-10">
+        <div class="container mx-auto px-4">
+            <div class="text-center">
+                <h1 class="word-art mb-6">WELCOME TO MY AWESOME WEBSITE!!!</h1>
+                <div class="construction py-4 mb-8">
+                    <span class="text-2xl">🚧 UNDER CONSTRUCTION 🚧</span>
+                    <br>
+                    <span>Please excuse the mess while we renovate!</span>
+                </div>
+                <div class="mb-8">
+                    <span class="visitor-counter">VISITORS: 1,000,042</span>
+                </div>
+                <p class="text-3xl font-bold text-blue-900 mb-6 tilted">This website is best viewed with:</p>
+                <div class="flex justify-center space-x-8 mb-10">
+                    <div class="text-center spin-slow">
+                        <img src="data:image/svg+xml;utf8,&lt;svg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;100&#39; height=&#39;100&#39; viewBox=&#39;0 0 100 100&#39;&gt;&lt;text y=&#39;50%&#39; x=&#39;50%&#39; dominant-baseline=&#39;middle&#39; text-anchor=&#39;middle&#39; font-size=&#39;80&#39;&gt;%F0%9F%8C%90&lt;/text&gt;&lt;/svg&gt;" alt="Internet Explorer">
+                        <p class="mt-2 text-xl font-bold text-blue-800">Internet Explorer 6</p>
                     </div>
-                `;
+                    <div class="text-center spin-reverse">
+                        <img src="data:image/svg+xml;utf8,&lt;svg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;100&#39; height=&#39;100&#39; viewBox=&#39;0 0 100 100&#39;&gt;&lt;text y=&#39;50%&#39; x=&#39;50%&#39; dominant-baseline=&#39;middle&#39; text-anchor=&#39;middle&#39; font-size=&#39;80&#39;&gt;%F0%9F%96%A5%EF%B8%8F&lt;/text&gt;&lt;/svg&gt;" alt="Resolution">
+                        <p class="mt-2 text-xl font-bold text-purple-800">800x600 Resolution</p>
+                    </div>
+                </div>
+                <button class="ugly-button text-2xl px-8 py-4 rounded-full text-white font-bold bounce">ENTER SITE!!!</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-10 flash-bg">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-8 rainbow-text shake">ABOUT ME!!!</h2>
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/3 mb-6 md:mb-0 float">
+                    <img src="data:image/svg+xml;utf8,&lt;svg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;300&#39; height=&#39;300&#39; viewBox=&#39;0 0 100 100&#39;&gt;&lt;rect width=&#39;100&#39; height=&#39;100&#39; fill=&#39;%23ffcccc&#39;/&gt;&lt;text y=&#39;50%&#39; x=&#39;50%&#39; dominant-baseline=&#39;middle&#39; text-anchor=&#39;middle&#39; font-size=&#39;80&#39;&gt;%F0%9F%91%BE&lt;/text&gt;&lt;/svg&gt;" alt="Profile Picture" class="mx-auto border-8 border-yellow-400 rounded-full spin-slow">
+                </div>
+                <div class="md:w-2/3 md:pl-8">
+                    <p class="text-2xl font-bold text-red-600 mb-4 blink">HI THERE!!! MY NAME IS WEBMASTER!!!</p>
+                    <p class="text-xl text-blue-800 mb-4">I made this AWESOME website all by myself using HTML!!! I love computers, video games, and PIZZA!!!</p>
+                    <p class="text-xl text-green-800 mb-6">This is my first website so please sign my GUESTBOOK and tell me what you think!!!</p>
+                    <div class="flex justify-center">
+                        <button class="ugly-button px-6 py-3 text-xl text-white font-bold spin-reverse">ADD ME AS A FRIEND!!!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- My Interests Section -->
+    <section class="py-10" style="background-color: #ff99cc;">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-8 rainbow-text float">MY AWESOME INTERESTS!!!</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Interest 1 -->
+                <div class="ugly-card p-6 rounded-lg text-center bounce">
+                    <div class="text-6xl mb-4 spin-slow">🎮</div>
+                    <h3 class="text-2xl font-bold mb-2 text-white blink">VIDEO GAMES!!!</h3>
+                    <p class="text-yellow-300">I love playing all kinds of video games especially MINECRAFT and FORTNITE!!!</p>
+                </div>
                 
-                elements.quizList.appendChild(card);
+                <!-- Interest 2 -->
+                <div class="ugly-card p-6 rounded-lg text-center shake">
+                    <div class="text-6xl mb-4 spin-reverse">🍕</div>
+                    <h3 class="text-2xl font-bold mb-2 text-white blink">PIZZA!!!</h3>
+                    <p class="text-yellow-300">Pizza is the BEST FOOD EVER!!! I could eat it for EVERY MEAL!!!</p>
+                </div>
                 
-                // Add event listener to the button
-                const selectBtn = card.querySelector('.select-quiz-btn');
-                selectBtn.addEventListener('click', () => selectQuiz(quiz.id));
-            });
-        }
+                <!-- Interest 3 -->
+                <div class="ugly-card p-6 rounded-lg text-center float">
+                    <div class="text-6xl mb-4 spin-fast">💻</div>
+                    <h3 class="text-2xl font-bold mb-2 text-white blink">COMPUTERS!!!</h3>
+                    <p class="text-yellow-300">I love making COOL WEBSITES and learning about HACKING and CODING!!!</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        // Load incorrect questions from local storage
-        function loadIncorrectQuestionsFromStorage() {
-            const storedQuestions = localStorage.getItem('incorrectQuestions');
-            if (storedQuestions) {
-                currentState.incorrectQuestions = JSON.parse(storedQuestions);
-            }
-        }
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-10" style="background-color: #66ffff;">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-8 rainbow-text bounce">MY AWESOME GALLERY!!!</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="border-8 border-yellow-500 p-2 bg-pink-300 spin-slow">
+                    <div class="text-8xl text-center">🐱</div>
+                    <p class="text-center font-bold text-purple-800 mt-2">MY CAT</p>
+                </div>
+                <div class="border-8 border-green-500 p-2 bg-blue-300 spin-reverse">
+                    <div class="text-8xl text-center">🏠</div>
+                    <p class="text-center font-bold text-red-800 mt-2">MY HOUSE</p>
+                </div>
+                <div class="border-8 border-red-500 p-2 bg-yellow-300 float">
+                    <div class="text-8xl text-center">🚗</div>
+                    <p class="text-center font-bold text-green-800 mt-2">MY CAR</p>
+                </div>
+                <div class="border-8 border-purple-500 p-2 bg-green-300 shake">
+                    <div class="text-8xl text-center">👪</div>
+                    <p class="text-center font-bold text-blue-800 mt-2">MY FAMILY</p>
+                </div>
+                <div class="border-8 border-blue-500 p-2 bg-red-300 bounce">
+                    <div class="text-8xl text-center">🎂</div>
+                    <p class="text-center font-bold text-yellow-800 mt-2">MY BIRTHDAY</p>
+                </div>
+                <div class="border-8 border-pink-500 p-2 bg-purple-300 spin-fast">
+                    <div class="text-8xl text-center">🎮</div>
+                    <p class="text-center font-bold text-green-800 mt-2">MY GAMES</p>
+                </div>
+                <div class="border-8 border-yellow-500 p-2 bg-orange-300 float">
+                    <div class="text-8xl text-center">🍔</div>
+                    <p class="text-center font-bold text-purple-800 mt-2">MY LUNCH</p>
+                </div>
+                <div class="border-8 border-green-500 p-2 bg-pink-300 shake">
+                    <div class="text-8xl text-center">👟</div>
+                    <p class="text-center font-bold text-red-800 mt-2">MY SHOES</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        // Save incorrect questions to local storage
-        function saveIncorrectQuestionsToStorage() {
-            localStorage.setItem('incorrectQuestions', JSON.stringify(currentState.incorrectQuestions));
-        }
-
-        // Select a quiz
-        function selectQuiz(quizId) {
-            currentState.selectedQuizId = quizId;
-            const selectedQuiz = getSelectedQuiz();
-            
-            // Update quiz info
-            elements.quizTitle.textContent = selectedQuiz.title;
-            elements.quizDescription.textContent = selectedQuiz.description;
-            
-            // Update mistakes UI
-            updateMistakesUI();
-            
-            // Show home page
-            showPage('homePage');
-        }
-
-        // Get the currently selected quiz
-        function getSelectedQuiz() {
-            return quizzesData.find(quiz => quiz.id === currentState.selectedQuizId);
-        }
-
-        // Update UI elements related to incorrect questions
-        function updateMistakesUI() {
-            const quizId = currentState.selectedQuizId;
-            if (!quizId) return;
-            
-            const incorrectQuestions = currentState.incorrectQuestions[quizId] || [];
-            const count = incorrectQuestions.length;
-            
-            elements.mistakesCount.textContent = count;
-            
-            if (count > 0) {
-                elements.retakeMistakesBtn.classList.remove('hidden');
-            } else {
-                elements.retakeMistakesBtn.classList.add('hidden');
-            }
-        }
-
-        // Start a new quiz
-        function startNewQuiz() {
-            const quizId = currentState.selectedQuizId;
-            if (!quizId) return;
-            
-            currentState = {
-                ...currentState,
-                currentQuestionIndex: 0,
-                score: 0,
-                isRetakingMode: false,
-                answeredCurrentQuestion: false
-            };
-            
-            const selectedQuiz = getSelectedQuiz();
-            elements.totalQuestions.textContent = selectedQuiz.questions.length;
-            updateQuestionUI();
-            showPage('quizPage');
-        }
-
-        // Retake incorrect questions
-        function retakeMistakes() {
-            const quizId = currentState.selectedQuizId;
-            if (!quizId) return;
-            
-            const incorrectQuestions = currentState.incorrectQuestions[quizId] || [];
-            if (incorrectQuestions.length === 0) {
-                return;
-            }
-            
-            currentState = {
-                ...currentState,
-                currentQuestionIndex: 0,
-                score: 0,
-                isRetakingMode: true,
-                answeredCurrentQuestion: false
-            };
-            
-            elements.totalQuestions.textContent = incorrectQuestions.length;
-            updateQuestionUI();
-            showPage('quizPage');
-        }
-
-        // Update the question UI
-        function updateQuestionUI() {
-            const questionData = getCurrentQuestion();
-            
-            elements.currentQuestionNum.textContent = currentState.currentQuestionIndex + 1;
-            elements.currentScore.textContent = currentState.score;
-            
-            // Update progress bar
-            const totalQuestions = getTotalQuestionsForCurrentMode();
-            const progressPercentage = ((currentState.currentQuestionIndex + 1) / totalQuestions) * 100;
-            elements.progressBar.style.width = `${progressPercentage}%`;
-            
-            // Set question text
-            elements.questionText.textContent = questionData.question;
-            
-            // Clear previous choices
-            elements.choices.innerHTML = '';
-            
-            // Add new choices
-            questionData.choices.forEach((choice, index) => {
-                const choiceBtn = document.createElement('button');
-                choiceBtn.className = 'choice-btn w-full text-left bg-white border border-gray-300 p-4 rounded-lg font-medium';
-                choiceBtn.textContent = choice;
-                choiceBtn.addEventListener('click', () => handleChoiceSelection(choice, choiceBtn));
-                elements.choices.appendChild(choiceBtn);
-            });
-            
-            // Hide feedback and next button
-            elements.feedback.classList.add('hidden');
-            elements.nextBtn.classList.add('hidden');
-            
-            // Reset answered state
-            currentState.answeredCurrentQuestion = false;
-        }
-
-        // Get total questions for current mode
-        function getTotalQuestionsForCurrentMode() {
-            if (currentState.isRetakingMode) {
-                const quizId = currentState.selectedQuizId;
-                return (currentState.incorrectQuestions[quizId] || []).length;
-            } else {
-                const selectedQuiz = getSelectedQuiz();
-                return selectedQuiz.questions.length;
-            }
-        }
-
-        // Get the current question based on mode
-        function getCurrentQuestion() {
-            const quizId = currentState.selectedQuizId;
-            const selectedQuiz = getSelectedQuiz();
-            
-            if (currentState.isRetakingMode) {
-                const incorrectQuestions = currentState.incorrectQuestions[quizId] || [];
-                const questionId = incorrectQuestions[currentState.currentQuestionIndex];
-                return selectedQuiz.questions.find(q => q.id === questionId);
-            } else {
-                return selectedQuiz.questions[currentState.currentQuestionIndex];
-            }
-        }
-
-        // Handle choice selection
-        function handleChoiceSelection(selectedChoice, choiceBtn) {
-            if (currentState.answeredCurrentQuestion) {
-                return;
-            }
-            
-            currentState.answeredCurrentQuestion = true;
-            const currentQuestion = getCurrentQuestion();
-            const isCorrect = selectedChoice === currentQuestion.correctAnswer;
-            
-            // Update UI to show correct/incorrect
-            const choiceButtons = elements.choices.querySelectorAll('.choice-btn');
-            choiceButtons.forEach(btn => {
-                if (btn === choiceBtn) {
-                    btn.classList.add(isCorrect ? 'correct' : 'incorrect');
-                }
+    <!-- Guestbook Section -->
+    <section id="guestbook" class="py-10" style="background-color: #ccff99;">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-8 rainbow-text shake">SIGN MY GUESTBOOK!!!</h2>
+            <div class="guestbook max-w-3xl mx-auto mb-8">
+                <h3 class="text-2xl font-bold text-green-800 mb-4 blink">RECENT ENTRIES:</h3>
                 
-                if (btn.textContent === currentQuestion.correctAnswer) {
-                    btn.classList.add('correct');
-                }
+                <div class="guestbook-entry">
+                    <p class="font-bold text-blue-800">CoolDude2000 wrote:</p>
+                    <p>OMG this website is SOOOOO COOL!!! Love the design!!!</p>
+                    <p class="text-sm text-gray-600">Posted on: 4/20/2023</p>
+                </div>
                 
-                // Disable all buttons
-                btn.disabled = true;
-            });
+                <div class="guestbook-entry">
+                    <p class="font-bold text-blue-800">WebsiteFan99 wrote:</p>
+                    <p>This is the BEST website I've ever seen!!! The colors are AMAZING!!!</p>
+                    <p class="text-sm text-gray-600">Posted on: 4/15/2023</p>
+                </div>
+                
+                <div class="guestbook-entry">
+                    <p class="font-bold text-blue-800">InternetExplorer6Lover wrote:</p>
+                    <p>Your website makes my eyes hurt but I LOVE IT!!!</p>
+                    <p class="text-sm text-gray-600">Posted on: 4/10/2023</p>
+                </div>
+            </div>
             
-            // Show feedback
-            elements.feedback.classList.remove('hidden');
-            if (isCorrect) {
-                elements.feedback.className = 'p-4 rounded-lg mb-6 bg-green-100 text-green-800';
-                elements.feedback.innerHTML = '<span class="font-medium">Correct!</span> Great job!';
-                currentState.score++;
-                elements.currentScore.textContent = currentState.score;
-                
-                // If in retake mode, remove this question from incorrect list
-                if (currentState.isRetakingMode) {
-                    const quizId = currentState.selectedQuizId;
-                    const questionId = currentQuestion.id;
-                    currentState.incorrectQuestions[quizId] = (currentState.incorrectQuestions[quizId] || [])
-                        .filter(id => id !== questionId);
-                    
-                    // If no more incorrect questions for this quiz, clean up
-                    if (currentState.incorrectQuestions[quizId].length === 0) {
-                        delete currentState.incorrectQuestions[quizId];
-                    }
-                    
-                    saveIncorrectQuestionsToStorage();
-                }
-            } else {
-                elements.feedback.className = 'p-4 rounded-lg mb-6 bg-red-100 text-red-800';
-                elements.feedback.innerHTML = `<span class="font-medium">Incorrect.</span> The correct answer is ${currentQuestion.correctAnswer}.`;
-                
-                // If not in retake mode, add to incorrect questions
-                if (!currentState.isRetakingMode) {
-                    const quizId = currentState.selectedQuizId;
-                    if (!currentState.incorrectQuestions[quizId]) {
-                        currentState.incorrectQuestions[quizId] = [];
-                    }
-                    
-                    if (!currentState.incorrectQuestions[quizId].includes(currentQuestion.id)) {
-                        currentState.incorrectQuestions[quizId].push(currentQuestion.id);
-                        saveIncorrectQuestionsToStorage();
-                    }
-                }
-            }
-            
-            // Show next button
-            elements.nextBtn.classList.remove('hidden');
-        }
+            <div class="max-w-3xl mx-auto bg-yellow-200 border-4 border-green-500 p-6 rounded-lg">
+                <h3 class="text-2xl font-bold text-center text-purple-800 mb-4 bounce">ADD YOUR COMMENT!!!</h3>
+                <form class="space-y-4">
+                    <div>
+                        <label class="block text-xl font-bold text-red-600 mb-2 blink">YOUR NAME:</label>
+                        <input type="text" class="w-full border-4 border-blue-500 bg-pink-100 p-2 text-lg" placeholder="Type your name here!!!">
+                    </div>
+                    <div>
+                        <label class="block text-xl font-bold text-red-600 mb-2 blink">YOUR EMAIL:</label>
+                        <input type="email" class="w-full border-4 border-blue-500 bg-pink-100 p-2 text-lg" placeholder="Type your email here!!!">
+                    </div>
+                    <div>
+                        <label class="block text-xl font-bold text-red-600 mb-2 blink">YOUR COMMENT:</label>
+                        <textarea rows="4" class="w-full border-4 border-blue-500 bg-pink-100 p-2 text-lg" placeholder="Type your awesome comment here!!!"></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="button" class="ugly-button px-8 py-3 text-xl text-white font-bold spin-slow">SUBMIT COMMENT!!!</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
 
-        // Handle next question button
-        function handleNextQuestion() {
-            currentState.currentQuestionIndex++;
-            
-            const totalQuestions = getTotalQuestionsForCurrentMode();
-                
-            if (currentState.currentQuestionIndex < totalQuestions) {
-                updateQuestionUI();
-            } else {
-                showResults();
-            }
-        }
+    <!-- Links Section -->
+    <section class="py-10" style="background-color: #ff9966;">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-8 rainbow-text float">MY COOL LINKS!!!</h2>
+            <div class="max-w-3xl mx-auto grid grid-cols-2 md:grid-cols-3 gap-6">
+                <a href="https://bapjxrfq3850awzm.canva-hosted-embed.com/codelet/AAEAEGJhcGp4cmZxMzg1MGF3em0AAAAAAZalvir4TpW217kCh6bIOM8JnfskppZFuVoz0_AVlx_Iuu8pC0M/#" class="block text-center">
+                    <div class="text-6xl mb-2 bounce">🎮</div>
+                    <p class="text-xl font-bold text-blue-800 blink">GAMING SITE</p>
+                </a>
+                <a href="https://bapjxrfq3850awzm.canva-hosted-embed.com/codelet/AAEAEGJhcGp4cmZxMzg1MGF3em0AAAAAAZalvir4TpW217kCh6bIOM8JnfskppZFuVoz0_AVlx_Iuu8pC0M/#" class="block text-center">
+                    <div class="text-6xl mb-2 shake">🎵</div>
+                    <p class="text-xl font-bold text-green-800 blink">MUSIC SITE</p>
+                </a>
+                <a href="https://bapjxrfq3850awzm.canva-hosted-embed.com/codelet/AAEAEGJhcGp4cmZxMzg1MGF3em0AAAAAAZalvir4TpW217kCh6bIOM8JnfskppZFuVoz0_AVlx_Iuu8pC0M/#" class="block text-center">
+                    <div class="text-6xl mb-2 float">🍕</div>
+                    <p class="text-xl font-bold text-red-800 blink">PIZZA SITE</p>
+                </a>
+                <a href="https://bapjxrfq3850awzm.canva-hosted-embed.com/codelet/AAEAEGJhcGp4cmZxMzg1MGF3em0AAAAAAZalvir4TpW217kCh6bIOM8JnfskppZFuVoz0_AVlx_Iuu8pC0M/#" class="block text-center">
+                    <div class="text-6xl mb-2 spin-slow">💻</div>
+                    <p class="text-xl font-bold text-purple-800 blink">CODING SITE</p>
+                </a>
+                <a href="https://bapjxrfq3850awzm.canva-hosted-embed.com/codelet/AAEAEGJhcGp4cmZxMzg1MGF3em0AAAAAAZalvir4TpW217kCh6bIOM8JnfskppZFuVoz0_AVlx_Iuu8pC0M/#" class="block text-center">
+                    <div class="text-6xl mb-2 spin-reverse">🎬</div>
+                    <p class="text-xl font-bold text-yellow-800 blink">MOVIE SITE</p>
+                </a>
+                <a href="https://bapjxrfq3850awzm.canva-hosted-embed.com/codelet/AAEAEGJhcGp4cmZxMzg1MGF3em0AAAAAAZalvir4TpW217kCh6bIOM8JnfskppZFuVoz0_AVlx_Iuu8pC0M/#" class="block text-center">
+                    <div class="text-6xl mb-2 bounce">👾</div>
+                    <p class="text-xl font-bold text-pink-800 blink">RETRO SITE</p>
+                </a>
+            </div>
+        </div>
+    </section>
 
-        // Show quiz results
-        function showResults() {
-            const totalQuestions = getTotalQuestionsForCurrentMode();
+    <!-- Footer -->
+    <footer class="py-6 bg-black text-center">
+        <div class="container mx-auto px-4">
+            <div class="mb-4">
+                <img src="data:image/svg+xml;utf8,&lt;svg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;100&#39; height=&#39;100&#39; viewBox=&#39;0 0 100 100&#39;&gt;&lt;text y=&#39;50%&#39; x=&#39;50%&#39; dominant-baseline=&#39;middle&#39; text-anchor=&#39;middle&#39; font-size=&#39;80&#39;&gt;%F0%9F%A4%AA&lt;/text&gt;&lt;/svg&gt;" alt="Logo" class="inline-block spin-fast">
+            </div>
+            <p class="text-2xl font-bold rainbow-text mb-4">© 1999 WORST WEBSITE EVER!!!</p>
+            <p class="text-yellow-300 mb-4 blink">Made with LOVE and HTML!!!</p>
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="https://bapjxrfq3850awzm.canva-hosted-embed.com/codelet/AAEAEGJhcGp4cmZxMzg1MGF3em0AAAAAAZalvir4TpW217kCh6bIOM8JnfskppZFuVoz0_AVlx_Iuu8pC0M/#" class="text-4xl bounce">📧</a>
+                <a href="https://bapjxrfq3850awzm.canva-hosted-embed.com/codelet/AAEAEGJhcGp4cmZxMzg1MGF3em0AAAAAAZalvir4TpW217kCh6bIOM8JnfskppZFuVoz0_AVlx_Iuu8pC0M/#" class="text-4xl shake">📱</a>
+                <a href="https://bapjxrfq3850awzm.canva-hosted-embed.com/codelet/AAEAEGJhcGp4cmZxMzg1MGF3em0AAAAAAZalvir4TpW217kCh6bIOM8JnfskppZFuVoz0_AVlx_Iuu8pC0M/#" class="text-4xl float">🐦</a>
+                <a href="https://bapjxrfq3850awzm.canva-hosted-embed.com/codelet/AAEAEGJhcGp4cmZxMzg1MGF3em0AAAAAAZalvir4TpW217kCh6bIOM8JnfskppZFuVoz0_AVlx_Iuu8pC0M/#" class="text-4xl spin-slow">📘</a>
+            </div>
+            <div class="text-sm text-gray-400">
+                <p>This site is best viewed in Internet Explorer 6 at 800x600 resolution</p>
+                <p>Last updated: April 1, 2023</p>
+                <p class="mt-2">
+                    <img src="data:image/svg+xml;utf8,&lt;svg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;88&#39; height=&#39;31&#39; viewBox=&#39;0 0 88 31&#39;&gt;&lt;rect width=&#39;88&#39; height=&#39;31&#39; fill=&#39;white&#39;/&gt;&lt;text y=&#39;50%&#39; x=&#39;50%&#39; dominant-baseline=&#39;middle&#39; text-anchor=&#39;middle&#39; font-size=&#39;12&#39; fill=&#39;black&#39;&gt;HTML 1.0&lt;/text&gt;&lt;text y=&#39;75%&#39; x=&#39;50%&#39; dominant-baseline=&#39;middle&#39; text-anchor=&#39;middle&#39; font-size=&#39;8&#39; fill=&#39;black&#39;&gt;VALIDATED&lt;/text&gt;&lt;/svg&gt;" alt="HTML Validated" class="inline-block">
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Create random flashing elements
+        function createFlashingElements() {
+            const body = document.body;
+            const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'];
+            
+            setInterval(() => {
+                const flashElement = document.createElement('div');
+                flashElement.style.position = 'fixed';
+                flashElement.style.width = '20px';
+                flashElement.style.height = '20px';
+                flashElement.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                flashElement.style.borderRadius = '50%';
+                flashElement.style.top = Math.random() * window.innerHeight + 'px';
+                flashElement.style.left = Math.random() * window.innerWidth + 'px';
+                flashElement.style.zIndex = '999';
                 
-            elements.finalScore.textContent = currentState.score;
-            elements.totalQuestionsResult.textContent = totalQuestions;
-            
-            // Calculate and display percentage
-            const percentage = Math.round((currentState.score / totalQuestions) * 100);
-            elements.scorePercent.textContent = `${percentage}%`;
-            
-            // Update the circle graph
-            const circumference = 2 * Math.PI * 16;
-            const offset = circumference - (percentage / 100) * circumference;
-            elements.resultCircle.style.strokeDasharray = `${circumference} ${circumference}`;
-            elements.resultCircle.style.strokeDashoffset = offset;
-            
-            // Show incorrect questions if there are any
-            const quizId = currentState.selectedQuizId;
-            const incorrectQuestions = currentState.incorrectQuestions[quizId] || [];
-            
-            if (incorrectQuestions.length > 0) {
-                elements.incorrectQuestionsSection.classList.remove('hidden');
-                elements.retakeIncorrectBtn.classList.remove('hidden');
+                body.appendChild(flashElement);
                 
-                // Clear previous list
-                elements.incorrectQuestionsList.innerHTML = '';
-                
-                // Add each incorrect question
-                const selectedQuiz = getSelectedQuiz();
-                incorrectQuestions.forEach(questionId => {
-                    const question = selectedQuiz.questions.find(q => q.id === questionId);
-                    if (question) {
-                        const questionItem = document.createElement('div');
-                        questionItem.className = 'p-4 bg-red-50 border border-red-200 rounded-lg';
-                        questionItem.innerHTML = `
-                            <p class="font-medium text-gray-800">${question.question}</p>
-                            <p class="text-sm text-gray-600 mt-1">Correct answer: ${question.correctAnswer}</p>
-                        `;
-                        elements.incorrectQuestionsList.appendChild(questionItem);
-                    }
+                setTimeout(() => {
+                    body.removeChild(flashElement);
+                }, 1000);
+            }, 500);
+        }
+        
+        // Add annoying alert
+        function showAnnoyingAlert() {
+            setTimeout(() => {
+                alert("WELCOME TO MY AWESOME WEBSITE!!! DON'T FORGET TO SIGN MY GUESTBOOK!!!");
+            }, 3000);
+        }
+        
+        // Make buttons do something annoying
+        function setupButtons() {
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach(button => {
+                button.addEventListener('click', () => {
+                    alert("THANKS FOR CLICKING!!! YOU'RE AWESOME!!!");
+                    button.innerText = "CLICKED!!!";
+                    button.style.backgroundColor = "#ff00ff";
                 });
-            } else {
-                elements.incorrectQuestionsSection.classList.add('hidden');
-                elements.retakeIncorrectBtn.classList.add('hidden');
-            }
+            });
+        }
+        
+        // Initialize everything
+        window.addEventListener('DOMContentLoaded', () => {
+            createFlashingElements();
+            showAnnoyingAlert();
+            setupButtons();
             
-            showPage('resultsPage');
-            updateMistakesUI();
-        }
-
-        // Go to quiz selection
-        function goToQuizSelection() {
-            createQuizSelectionCards(); // Refresh the cards
-            showPage('quizSelectionPage');
-        }
-
-        // Show a specific page and hide others
-        function showPage(pageId) {
-            elements.quizSelectionPage.classList.add('hidden');
-            elements.homePage.classList.add('hidden');
-            elements.quizPage.classList.add('hidden');
-            elements.resultsPage.classList.add('hidden');
-            
-            elements[pageId].classList.remove('hidden');
-        }
-
-        // Initialize the app when the page loads
-        document.addEventListener('DOMContentLoaded', init);
+            // Auto-play annoying audio (commented out as per requirements)
+            // const audio = new Audio('data:audio/wav;base64,...');
+            // audio.loop = true;
+            // audio.play();
+        });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'93afb87312fefed7',t:'MTc0NjQ0MjY4My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><iframe height="1" width="1" style="position: absolute; top: 0px; left: 0px; border: none; visibility: hidden;" src="./saved_resource.html"></iframe>
-</body></html>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'93b0842ed629fec3',t:'MTc0NjQ1MTAyOC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><iframe height="1" width="1" style="position: absolute; top: 0px; left: 0px; border: none; visibility: hidden;" src="./saved_resource(1).html"></iframe>
+<div style="position: fixed; width: 20px; height: 20px; background-color: rgb(0, 255, 0); border-radius: 50%; top: 625.747px; left: 667.983px; z-index: 999;"></div></body></html>
