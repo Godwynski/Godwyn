@@ -1,15 +1,9 @@
 # Life in Numbers Calculator
 
-<<<<<<< HEAD
-## Overview
-=======
->>>>>>> 8509e90d90d028be452c0d636ab9ac422b310d9d
-
-<<<<<<< HEAD
 Life in Numbers is an interactive web application that calculates and visualizes various statistics about a person's life based on their birth date. The application provides users with fascinating insights about their existence, from basic statistics like days lived and heartbeats to cosmic perspectives and historical context.
 
 ## Features
-
+===================================
 ### Core Functionality
 
 - **Age Calculator**: Converts birth date into days, years, months, hours, and minutes lived  
@@ -148,5 +142,5 @@ Life in Numbers is an interactive web application that calculates and visualizes
 
 *Life in Numbers: A fascinating journey through the numerical story of your existence.*
 
-=======
->>>>>>> 8509e90d90d028be452c0d636ab9ac422b310d9d
+===============================================================
+
