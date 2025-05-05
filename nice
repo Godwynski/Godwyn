@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<!-- saved from url=(0140)https://bapavy81096kmyj0.canva-hosted-embed.com/codelet/AAEAEGJhcGF2eTgxMDk2a215ajAAAAAAAZalPtVw8k7jUFxYQd08H6Z5U580HqNjBgwzWiKVPGvIQ1fGx04/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuizMaster</title>
+    <script src="./saved_resource"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f9ff;
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .btn-primary {
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+        .choice-btn {
+            transition: all 0.2s ease;
+        }
+        .choice-btn:hover:not(.correct):not(.incorrect) {
+            background-color: #dbeafe;
+            transform: translateY(-1px);
+        }
+        .correct {
+            background-color: #d1fae5 !important;
+            border-color: #10b981 !important;
+        }
+        .incorrect {
+            background-color: #fee2e2 !important;
+            border-color: #ef4444 !important;
+        }
+        .progress-bar {
+            transition: width 0.5s ease;
+        }
+        .quiz-card {
+            transition: all 0.3s ease;
+        }
+        .quiz-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.1), 0 10px 10px -5px rgba(59, 130, 246, 0.04);
+        }
+    </style>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.16 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.container{width:100%}@media (min-width: 640px){.container{max-width:640px}}@media (min-width: 768px){.container{max-width:768px}}@media (min-width: 1024px){.container{max-width:1024px}}@media (min-width: 1280px){.container{max-width:1280px}}@media (min-width: 1536px){.container{max-width:1536px}}.relative{position:relative}.mx-auto{margin-left:auto;margin-right:auto}.my-6{margin-top:1.5rem;margin-bottom:1.5rem}.mb-2{margin-bottom:0.5rem}.mb-3{margin-bottom:0.75rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.mt-4{margin-top:1rem}.flex{display:flex}.grid{display:grid}.hidden{display:none}.h-2\.5{height:0.625rem}.h-28{height:7rem}.h-16{height:4rem}.h-3{height:0.75rem}.min-h-screen{min-height:100vh}.w-28{width:7rem}.w-full{width:100%}.max-w-2xl{max-width:42rem}.max-w-4xl{max-width:56rem}.flex-grow{flex-grow:1}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.flex-col{flex-direction:column}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-6{gap:1.5rem}.space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.rounded-xl{border-radius:0.75rem}.border-2{border-width:2px}.border{border-width:1px}.border-t{border-top-width:1px}.border-blue-600{--tw-border-opacity:1;border-color:rgb(37 99 235 / var(--tw-border-opacity, 1))}.border-gray-200{--tw-border-opacity:1;border-color:rgb(229 231 235 / var(--tw-border-opacity, 1))}.border-gray-100{--tw-border-opacity:1;border-color:rgb(243 244 246 / var(--tw-border-opacity, 1))}.bg-blue-600{--tw-bg-opacity:1;background-color:rgb(37 99 235 / var(--tw-bg-opacity, 1))}.bg-gray-100{--tw-bg-opacity:1;background-color:rgb(243 244 246 / var(--tw-bg-opacity, 1))}.bg-gray-200{--tw-bg-opacity:1;background-color:rgb(229 231 235 / var(--tw-bg-opacity, 1))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.bg-purple-600{--tw-bg-opacity:1;background-color:rgb(147 51 234 / var(--tw-bg-opacity, 1))}.p-4{padding:1rem}.p-6{padding:1.5rem}.px-4{padding-left:1rem;padding-right:1rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.py-4{padding-top:1rem;padding-bottom:1rem}.py-6{padding-top:1.5rem;padding-bottom:1.5rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.text-center{text-align:center}.text-2xl{font-size:1.5rem;line-height:2rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.font-bold{font-weight:700}.font-medium{font-weight:500}.font-semibold{font-weight:600}.text-blue-600{--tw-text-opacity:1;color:rgb(37 99 235 / var(--tw-text-opacity, 1))}.text-gray-500{--tw-text-opacity:1;color:rgb(107 114 128 / var(--tw-text-opacity, 1))}.text-gray-600{--tw-text-opacity:1;color:rgb(75 85 99 / var(--tw-text-opacity, 1))}.text-gray-700{--tw-text-opacity:1;color:rgb(55 65 81 / var(--tw-text-opacity, 1))}.text-gray-800{--tw-text-opacity:1;color:rgb(31 41 55 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.text-green-600{--tw-text-opacity:1;color:rgb(22 163 74 / var(--tw-text-opacity, 1))}.text-red-600{--tw-text-opacity:1;color:rgb(220 38 38 / var(--tw-text-opacity, 1))}.shadow-md{--tw-shadow:0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-sm{--tw-shadow:0 1px 2px 0 rgb(0 0 0 / 0.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.hover\:bg-blue-50:hover{--tw-bg-opacity:1;background-color:rgb(239 246 255 / var(--tw-bg-opacity, 1))}.hover\:bg-blue-700:hover{--tw-bg-opacity:1;background-color:rgb(29 78 216 / var(--tw-bg-opacity, 1))}.hover\:bg-gray-200:hover{--tw-bg-opacity:1;background-color:rgb(229 231 235 / var(--tw-bg-opacity, 1))}.hover\:bg-purple-700:hover{--tw-bg-opacity:1;background-color:rgb(126 34 206 / var(--tw-bg-opacity, 1))}.hover\:text-blue-800:hover{--tw-text-opacity:1;color:rgb(30 64 175 / var(--tw-text-opacity, 1))}@media (min-width: 768px){.md\:my-8{margin-top:2rem;margin-bottom:2rem}.md\:mb-8{margin-bottom:2rem}.md\:h-32{height:8rem}.md\:w-32{width:8rem}.md\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.md\:p-8{padding:2rem}.md\:py-8{padding-top:2rem;padding-bottom:2rem}.md\:text-2xl{font-size:1.5rem;line-height:2rem}.md\:text-3xl{font-size:1.875rem;line-height:2.25rem}.md\:text-xl{font-size:1.25rem;line-height:1.75rem}}</style></head>
+<body>
+    <div id="app" class="min-h-screen flex flex-col">
+        <!-- Header -->
+        <header class="bg-white shadow-sm">
+            <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+                <h1 class="text-xl md:text-2xl font-bold text-blue-600">QuizMaster</h1>
+                <button id="homeBtn" class="text-blue-600 hover:text-blue-800 font-medium">Home</button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="flex-grow container mx-auto px-4 py-6 md:py-8">
+            <!-- Quiz Selection Page -->
+            <div id="quizSelectionPage" class="fade-in max-w-4xl mx-auto">
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-6 text-center">Choose a Quiz</h2>
+                
+                <div id="quizList" class="grid grid-cols-1 md:grid-cols-2 gap-6"><div class="quiz-card bg-white rounded-xl shadow-md overflow-hidden border border-gray-100">
+                    <div class="bg-blue-600 h-3"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">General Knowledge Quiz</h3>
+                        <p class="text-gray-600 text-sm mb-4 h-16">Test your knowledge with this general knowledge quiz covering various topics from geography to science and history.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500">10 questions</span>
+                            <span class="text-sm text-red-600">10 to review</span>
+                        </div>
+                        <button class="select-quiz-btn btn-primary w-full mt-4 bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg" data-quiz-id="general">
+                            Select Quiz
+                        </button>
+                    </div>
+                </div><div class="quiz-card bg-white rounded-xl shadow-md overflow-hidden border border-gray-100">
+                    <div class="bg-purple-600 h-3"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Technology Quiz</h3>
+                        <p class="text-gray-600 text-sm mb-4 h-16">Challenge yourself with questions about computers, programming, and the digital world.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500">10 questions</span>
+                            <span class="text-sm text-green-600">All completed</span>
+                        </div>
+                        <button class="select-quiz-btn btn-primary w-full mt-4 bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 px-4 rounded-lg" data-quiz-id="tech">
+                            Select Quiz
+                        </button>
+                    </div>
+                </div></div>
+            </div>
+
+            <!-- Home Page -->
+            <div id="homePage" class="fade-in max-w-2xl mx-auto bg-white rounded-xl shadow-md p-6 md:p-8 mb-8 hidden">
+                <h2 id="quizTitle" class="text-2xl md:text-3xl font-bold text-gray-800 mb-3">Quiz Title</h2>
+                <p id="quizDescription" class="text-gray-600 mb-6">Quiz description goes here.</p>
+                
+                <div class="space-y-4">
+                    <button id="startQuizBtn" class="btn-primary w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg">
+                        Start New Quiz
+                    </button>
+                    
+                    <button id="retakeMistakesBtn" class="w-full bg-white border-2 border-blue-600 text-blue-600 font-medium py-3 px-6 rounded-lg hover:bg-blue-50 hidden">
+                        Retake Incorrect Questions (<span id="mistakesCount">0</span>)
+                    </button>
+                    
+                    <button id="backToQuizzesBtn" class="w-full bg-gray-100 text-gray-700 font-medium py-3 px-6 rounded-lg hover:bg-gray-200">
+                        Back to All Quizzes
+                    </button>
+                </div>
+            </div>
+
+            <!-- Quiz Page -->
+            <div id="quizPage" class="fade-in max-w-2xl mx-auto bg-white rounded-xl shadow-md p-6 md:p-8 hidden">
+                <div class="mb-6">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-sm font-medium text-gray-600">Question <span id="currentQuestionNum">1</span> of <span id="totalQuestions">10</span></span>
+                        <span class="text-sm font-medium text-gray-600">Score: <span id="currentScore">0</span></span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2.5">
+                        <div id="progressBar" class="progress-bar bg-blue-600 h-2.5 rounded-full" style="width: 0%"></div>
+                    </div>
+                </div>
+                
+                <h3 id="questionText" class="text-lg md:text-xl font-semibold text-gray-800 mb-6">Question text goes here?</h3>
+                
+                <div id="choices" class="space-y-3 mb-6">
+                    <!-- Choices will be inserted here -->
+                </div>
+                
+                <div id="feedback" class="p-4 rounded-lg mb-6 hidden">
+                    <!-- Feedback will be shown here -->
+                </div>
+                
+                <button id="nextBtn" class="btn-primary bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg w-full hidden">
+                    Next Question
+                </button>
+            </div>
+
+            <!-- Results Page -->
+            <div id="resultsPage" class="fade-in max-w-2xl mx-auto bg-white rounded-xl shadow-md p-6 md:p-8 hidden">
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-2">Quiz Results</h2>
+                
+                <div class="flex items-center justify-center my-6 md:my-8">
+                    <div class="relative">
+                        <svg class="w-28 h-28 md:w-32 md:h-32" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="18" cy="18" r="16" fill="none" stroke="#e5e7eb" stroke-width="2"></circle>
+                            <circle id="resultCircle" cx="18" cy="18" r="16" fill="none" stroke="#3b82f6" stroke-width="2" stroke-dasharray="100 100" stroke-dashoffset="0" transform="rotate(-90 18 18)"></circle>
+                            <text x="18" y="18" text-anchor="middle" dominant-baseline="central" font-size="8" font-weight="bold" fill="#1f2937">
+                                <tspan id="scorePercent">0%</tspan>
+                            </text>
+                        </svg>
+                    </div>
+                </div>
+                
+                <p class="text-center text-lg mb-6">
+                    You scored <span id="finalScore">0</span> out of <span id="totalQuestionsResult">10</span>
+                </p>
+                
+                <div id="incorrectQuestionsSection" class="mb-6 md:mb-8 hidden">
+                    <h3 class="text-lg md:text-xl font-semibold text-gray-800 mb-4">Questions to Review:</h3>
+                    <div id="incorrectQuestionsList" class="space-y-4">
+                        <!-- Incorrect questions will be listed here -->
+                    </div>
+                </div>
+                
+                <div class="space-y-4">
+                    <button id="retakeIncorrectBtn" class="btn-primary w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg hidden">
+                        Retake Incorrect Questions
+                    </button>
+                    
+                    <button id="newQuizBtn" class="w-full bg-white border-2 border-blue-600 text-blue-600 font-medium py-3 px-6 rounded-lg hover:bg-blue-50">
+                        Start New Quiz
+                    </button>
+                    
+                    <button id="backToQuizzesResultBtn" class="w-full bg-gray-100 text-gray-700 font-medium py-3 px-6 rounded-lg hover:bg-gray-200">
+                        Back to All Quizzes
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-white border-t border-gray-200 py-4">
+            <div class="container mx-auto px-4 text-center text-gray-500 text-sm">
+                © 2023 QuizMaster. All rights reserved.
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Quiz data - would normally be loaded from a JSON file or API
+        const quizzesData = [
+            {
+                id: "general",
+                title: "General Knowledge Quiz",
+                description: "Test your knowledge with this general knowledge quiz covering various topics from geography to science and history.",
+                questions: [
+                    {
+                        id: 1,
+                        question: "What is the capital of France?",
+                        choices: ["London", "Berlin", "Paris", "Madrid"],
+                        correctAnswer: "Paris"
+                    },
+                    {
+                        id: 2,
+                        question: "Which planet is known as the Red Planet?",
+                        choices: ["Venus", "Mars", "Jupiter", "Saturn"],
+                        correctAnswer: "Mars"
+                    },
+                    {
+                        id: 3,
+                        question: "What is the largest ocean on Earth?",
+                        choices: ["Atlantic Ocean", "Indian Ocean", "Arctic Ocean", "Pacific Ocean"],
+                        correctAnswer: "Pacific Ocean"
+                    },
+                    {
+                        id: 4,
+                        question: "Who wrote 'Romeo and Juliet'?",
+                        choices: ["Charles Dickens", "William Shakespeare", "Jane Austen", "Mark Twain"],
+                        correctAnswer: "William Shakespeare"
+                    },
+                    {
+                        id: 5,
+                        question: "What is the chemical symbol for gold?",
+                        choices: ["Go", "Gd", "Au", "Ag"],
+                        correctAnswer: "Au"
+                    },
+                    {
+                        id: 6,
+                        question: "Which country is home to the kangaroo?",
+                        choices: ["New Zealand", "South Africa", "Australia", "Brazil"],
+                        correctAnswer: "Australia"
+                    },
+                    {
+                        id: 7,
+                        question: "What is the largest mammal in the world?",
+                        choices: ["Elephant", "Blue Whale", "Giraffe", "Polar Bear"],
+                        correctAnswer: "Blue Whale"
+                    },
+                    {
+                        id: 8,
+                        question: "In which year did World War II end?",
+                        choices: ["1943", "1945", "1947", "1950"],
+                        correctAnswer: "1945"
+                    },
+                    {
+                        id: 9,
+                        question: "What is the main component of the Sun?",
+                        choices: ["Oxygen", "Carbon", "Helium", "Hydrogen"],
+                        correctAnswer: "Hydrogen"
+                    },
+                    {
+                        id: 10,
+                        question: "Which famous scientist developed the theory of relativity?",
+                        choices: ["Isaac Newton", "Galileo Galilei", "Albert Einstein", "Stephen Hawking"],
+                        correctAnswer: "Albert Einstein"
+                    }
+                ]
+            },
+            {
+                id: "tech",
+                title: "Technology Quiz",
+                description: "Challenge yourself with questions about computers, programming, and the digital world.",
+                questions: [
+                    {
+                        id: 1,
+                        question: "Who is the co-founder of Microsoft?",
+                        choices: ["Steve Jobs", "Bill Gates", "Mark Zuckerberg", "Elon Musk"],
+                        correctAnswer: "Bill Gates"
+                    },
+                    {
+                        id: 2,
+                        question: "What does CPU stand for?",
+                        choices: ["Central Processing Unit", "Computer Personal Unit", "Central Process Utility", "Core Processing Unit"],
+                        correctAnswer: "Central Processing Unit"
+                    },
+                    {
+                        id: 3,
+                        question: "Which programming language is known as the 'mother of all languages'?",
+                        choices: ["Java", "Python", "C", "FORTRAN"],
+                        correctAnswer: "C"
+                    },
+                    {
+                        id: 4,
+                        question: "What year was the first iPhone released?",
+                        choices: ["2005", "2007", "2009", "2010"],
+                        correctAnswer: "2007"
+                    },
+                    {
+                        id: 5,
+                        question: "What does HTML stand for?",
+                        choices: ["Hyper Text Markup Language", "High Tech Modern Language", "Hyper Transfer Markup Language", "Hyper Text Modern Links"],
+                        correctAnswer: "Hyper Text Markup Language"
+                    },
+                    {
+                        id: 6,
+                        question: "Which company developed the Android operating system?",
+                        choices: ["Apple", "Microsoft", "Google", "Samsung"],
+                        correctAnswer: "Google"
+                    },
+                    {
+                        id: 7,
+                        question: "What is the name of the world's first computer programmer?",
+                        choices: ["Ada Lovelace", "Grace Hopper", "Alan Turing", "Charles Babbage"],
+                        correctAnswer: "Ada Lovelace"
+                    },
+                    {
+                        id: 8,
+                        question: "Which social media platform was founded first?",
+                        choices: ["Twitter", "Instagram", "Facebook", "LinkedIn"],
+                        correctAnswer: "LinkedIn"
+                    },
+                    {
+                        id: 9,
+                        question: "What does 'IoT' stand for in technology?",
+                        choices: ["Internet of Things", "Input Output Technology", "Integrated Online Tools", "Internal Operating Terminal"],
+                        correctAnswer: "Internet of Things"
+                    },
+                    {
+                        id: 10,
+                        question: "Which company created the programming language JavaScript?",
+                        choices: ["Microsoft", "Netscape", "Oracle", "IBM"],
+                        correctAnswer: "Netscape"
+                    }
+                ]
+            }
+        ];
+
+        // App state
+        let currentState = {
+            selectedQuizId: null,
+            currentQuestionIndex: 0,
+            score: 0,
+            incorrectQuestions: {},  // Object to store incorrect questions by quiz ID
+            isRetakingMode: false,
+            answeredCurrentQuestion: false
+        };
+
+        // DOM elements
+        const elements = {
+            quizSelectionPage: document.getElementById('quizSelectionPage'),
+            quizList: document.getElementById('quizList'),
+            homePage: document.getElementById('homePage'),
+            quizPage: document.getElementById('quizPage'),
+            resultsPage: document.getElementById('resultsPage'),
+            quizTitle: document.getElementById('quizTitle'),
+            quizDescription: document.getElementById('quizDescription'),
+            startQuizBtn: document.getElementById('startQuizBtn'),
+            retakeMistakesBtn: document.getElementById('retakeMistakesBtn'),
+            mistakesCount: document.getElementById('mistakesCount'),
+            backToQuizzesBtn: document.getElementById('backToQuizzesBtn'),
+            homeBtn: document.getElementById('homeBtn'),
+            currentQuestionNum: document.getElementById('currentQuestionNum'),
+            totalQuestions: document.getElementById('totalQuestions'),
+            currentScore: document.getElementById('currentScore'),
+            progressBar: document.getElementById('progressBar'),
+            questionText: document.getElementById('questionText'),
+            choices: document.getElementById('choices'),
+            feedback: document.getElementById('feedback'),
+            nextBtn: document.getElementById('nextBtn'),
+            finalScore: document.getElementById('finalScore'),
+            totalQuestionsResult: document.getElementById('totalQuestionsResult'),
+            scorePercent: document.getElementById('scorePercent'),
+            resultCircle: document.getElementById('resultCircle'),
+            incorrectQuestionsSection: document.getElementById('incorrectQuestionsSection'),
+            incorrectQuestionsList: document.getElementById('incorrectQuestionsList'),
+            retakeIncorrectBtn: document.getElementById('retakeIncorrectBtn'),
+            newQuizBtn: document.getElementById('newQuizBtn'),
+            backToQuizzesResultBtn: document.getElementById('backToQuizzesResultBtn')
+        };
+
+        // Initialize the app
+        function init() {
+            // Load incorrect questions from local storage if they exist
+            loadIncorrectQuestionsFromStorage();
+            
+            // Set up event listeners
+            elements.startQuizBtn.addEventListener('click', startNewQuiz);
+            elements.retakeMistakesBtn.addEventListener('click', retakeMistakes);
+            elements.homeBtn.addEventListener('click', goToQuizSelection);
+            elements.backToQuizzesBtn.addEventListener('click', goToQuizSelection);
+            elements.backToQuizzesResultBtn.addEventListener('click', goToQuizSelection);
+            elements.nextBtn.addEventListener('click', handleNextQuestion);
+            elements.retakeIncorrectBtn.addEventListener('click', retakeMistakes);
+            elements.newQuizBtn.addEventListener('click', startNewQuiz);
+            
+            // Create quiz selection cards
+            createQuizSelectionCards();
+            
+            // Show quiz selection page initially
+            showPage('quizSelectionPage');
+        }
+
+        // Create quiz selection cards
+        function createQuizSelectionCards() {
+            elements.quizList.innerHTML = '';
+            
+            quizzesData.forEach(quiz => {
+                const incorrectCount = currentState.incorrectQuestions[quiz.id] ? 
+                    currentState.incorrectQuestions[quiz.id].length : 0;
+                
+                const card = document.createElement('div');
+                card.className = 'quiz-card bg-white rounded-xl shadow-md overflow-hidden border border-gray-100';
+                
+                // Create a color based on quiz ID for visual distinction
+                const colors = {
+                    general: 'bg-blue-600',
+                    tech: 'bg-purple-600'
+                };
+                const bgColor = colors[quiz.id] || 'bg-blue-600';
+                
+                card.innerHTML = `
+                    <div class="${bgColor} h-3"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">${quiz.title}</h3>
+                        <p class="text-gray-600 text-sm mb-4 h-16">${quiz.description}</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500">${quiz.questions.length} questions</span>
+                            ${incorrectCount > 0 ? 
+                                `<span class="text-sm text-red-600">${incorrectCount} to review</span>` : 
+                                '<span class="text-sm text-green-600">All completed</span>'}
+                        </div>
+                        <button class="select-quiz-btn btn-primary w-full mt-4 bg-${quiz.id === 'tech' ? 'purple' : 'blue'}-600 hover:bg-${quiz.id === 'tech' ? 'purple' : 'blue'}-700 text-white font-medium py-2 px-4 rounded-lg" data-quiz-id="${quiz.id}">
+                            Select Quiz
+                        </button>
+                    </div>
+                `;
+                
+                elements.quizList.appendChild(card);
+                
+                // Add event listener to the button
+                const selectBtn = card.querySelector('.select-quiz-btn');
+                selectBtn.addEventListener('click', () => selectQuiz(quiz.id));
+            });
+        }
+
+        // Load incorrect questions from local storage
+        function loadIncorrectQuestionsFromStorage() {
+            const storedQuestions = localStorage.getItem('incorrectQuestions');
+            if (storedQuestions) {
+                currentState.incorrectQuestions = JSON.parse(storedQuestions);
+            }
+        }
+
+        // Save incorrect questions to local storage
+        function saveIncorrectQuestionsToStorage() {
+            localStorage.setItem('incorrectQuestions', JSON.stringify(currentState.incorrectQuestions));
+        }
+
+        // Select a quiz
+        function selectQuiz(quizId) {
+            currentState.selectedQuizId = quizId;
+            const selectedQuiz = getSelectedQuiz();
+            
+            // Update quiz info
+            elements.quizTitle.textContent = selectedQuiz.title;
+            elements.quizDescription.textContent = selectedQuiz.description;
+            
+            // Update mistakes UI
+            updateMistakesUI();
+            
+            // Show home page
+            showPage('homePage');
+        }
+
+        // Get the currently selected quiz
+        function getSelectedQuiz() {
+            return quizzesData.find(quiz => quiz.id === currentState.selectedQuizId);
+        }
+
+        // Update UI elements related to incorrect questions
+        function updateMistakesUI() {
+            const quizId = currentState.selectedQuizId;
+            if (!quizId) return;
+            
+            const incorrectQuestions = currentState.incorrectQuestions[quizId] || [];
+            const count = incorrectQuestions.length;
+            
+            elements.mistakesCount.textContent = count;
+            
+            if (count > 0) {
+                elements.retakeMistakesBtn.classList.remove('hidden');
+            } else {
+                elements.retakeMistakesBtn.classList.add('hidden');
+            }
+        }
+
+        // Start a new quiz
+        function startNewQuiz() {
+            const quizId = currentState.selectedQuizId;
+            if (!quizId) return;
+            
+            currentState = {
+                ...currentState,
+                currentQuestionIndex: 0,
+                score: 0,
+                isRetakingMode: false,
+                answeredCurrentQuestion: false
+            };
+            
+            const selectedQuiz = getSelectedQuiz();
+            elements.totalQuestions.textContent = selectedQuiz.questions.length;
+            updateQuestionUI();
+            showPage('quizPage');
+        }
+
+        // Retake incorrect questions
+        function retakeMistakes() {
+            const quizId = currentState.selectedQuizId;
+            if (!quizId) return;
+            
+            const incorrectQuestions = currentState.incorrectQuestions[quizId] || [];
+            if (incorrectQuestions.length === 0) {
+                return;
+            }
+            
+            currentState = {
+                ...currentState,
+                currentQuestionIndex: 0,
+                score: 0,
+                isRetakingMode: true,
+                answeredCurrentQuestion: false
+            };
+            
+            elements.totalQuestions.textContent = incorrectQuestions.length;
+            updateQuestionUI();
+            showPage('quizPage');
+        }
+
+        // Update the question UI
+        function updateQuestionUI() {
+            const questionData = getCurrentQuestion();
+            
+            elements.currentQuestionNum.textContent = currentState.currentQuestionIndex + 1;
+            elements.currentScore.textContent = currentState.score;
+            
+            // Update progress bar
+            const totalQuestions = getTotalQuestionsForCurrentMode();
+            const progressPercentage = ((currentState.currentQuestionIndex + 1) / totalQuestions) * 100;
+            elements.progressBar.style.width = `${progressPercentage}%`;
+            
+            // Set question text
+            elements.questionText.textContent = questionData.question;
+            
+            // Clear previous choices
+            elements.choices.innerHTML = '';
+            
+            // Add new choices
+            questionData.choices.forEach((choice, index) => {
+                const choiceBtn = document.createElement('button');
+                choiceBtn.className = 'choice-btn w-full text-left bg-white border border-gray-300 p-4 rounded-lg font-medium';
+                choiceBtn.textContent = choice;
+                choiceBtn.addEventListener('click', () => handleChoiceSelection(choice, choiceBtn));
+                elements.choices.appendChild(choiceBtn);
+            });
+            
+            // Hide feedback and next button
+            elements.feedback.classList.add('hidden');
+            elements.nextBtn.classList.add('hidden');
+            
+            // Reset answered state
+            currentState.answeredCurrentQuestion = false;
+        }
+
+        // Get total questions for current mode
+        function getTotalQuestionsForCurrentMode() {
+            if (currentState.isRetakingMode) {
+                const quizId = currentState.selectedQuizId;
+                return (currentState.incorrectQuestions[quizId] || []).length;
+            } else {
+                const selectedQuiz = getSelectedQuiz();
+                return selectedQuiz.questions.length;
+            }
+        }
+
+        // Get the current question based on mode
+        function getCurrentQuestion() {
+            const quizId = currentState.selectedQuizId;
+            const selectedQuiz = getSelectedQuiz();
+            
+            if (currentState.isRetakingMode) {
+                const incorrectQuestions = currentState.incorrectQuestions[quizId] || [];
+                const questionId = incorrectQuestions[currentState.currentQuestionIndex];
+                return selectedQuiz.questions.find(q => q.id === questionId);
+            } else {
+                return selectedQuiz.questions[currentState.currentQuestionIndex];
+            }
+        }
+
+        // Handle choice selection
+        function handleChoiceSelection(selectedChoice, choiceBtn) {
+            if (currentState.answeredCurrentQuestion) {
+                return;
+            }
+            
+            currentState.answeredCurrentQuestion = true;
+            const currentQuestion = getCurrentQuestion();
+            const isCorrect = selectedChoice === currentQuestion.correctAnswer;
+            
+            // Update UI to show correct/incorrect
+            const choiceButtons = elements.choices.querySelectorAll('.choice-btn');
+            choiceButtons.forEach(btn => {
+                if (btn === choiceBtn) {
+                    btn.classList.add(isCorrect ? 'correct' : 'incorrect');
+                }
+                
+                if (btn.textContent === currentQuestion.correctAnswer) {
+                    btn.classList.add('correct');
+                }
+                
+                // Disable all buttons
+                btn.disabled = true;
+            });
+            
+            // Show feedback
+            elements.feedback.classList.remove('hidden');
+            if (isCorrect) {
+                elements.feedback.className = 'p-4 rounded-lg mb-6 bg-green-100 text-green-800';
+                elements.feedback.innerHTML = '<span class="font-medium">Correct!</span> Great job!';
+                currentState.score++;
+                elements.currentScore.textContent = currentState.score;
+                
+                // If in retake mode, remove this question from incorrect list
+                if (currentState.isRetakingMode) {
+                    const quizId = currentState.selectedQuizId;
+                    const questionId = currentQuestion.id;
+                    currentState.incorrectQuestions[quizId] = (currentState.incorrectQuestions[quizId] || [])
+                        .filter(id => id !== questionId);
+                    
+                    // If no more incorrect questions for this quiz, clean up
+                    if (currentState.incorrectQuestions[quizId].length === 0) {
+                        delete currentState.incorrectQuestions[quizId];
+                    }
+                    
+                    saveIncorrectQuestionsToStorage();
+                }
+            } else {
+                elements.feedback.className = 'p-4 rounded-lg mb-6 bg-red-100 text-red-800';
+                elements.feedback.innerHTML = `<span class="font-medium">Incorrect.</span> The correct answer is ${currentQuestion.correctAnswer}.`;
+                
+                // If not in retake mode, add to incorrect questions
+                if (!currentState.isRetakingMode) {
+                    const quizId = currentState.selectedQuizId;
+                    if (!currentState.incorrectQuestions[quizId]) {
+                        currentState.incorrectQuestions[quizId] = [];
+                    }
+                    
+                    if (!currentState.incorrectQuestions[quizId].includes(currentQuestion.id)) {
+                        currentState.incorrectQuestions[quizId].push(currentQuestion.id);
+                        saveIncorrectQuestionsToStorage();
+                    }
+                }
+            }
+            
+            // Show next button
+            elements.nextBtn.classList.remove('hidden');
+        }
+
+        // Handle next question button
+        function handleNextQuestion() {
+            currentState.currentQuestionIndex++;
+            
+            const totalQuestions = getTotalQuestionsForCurrentMode();
+                
+            if (currentState.currentQuestionIndex < totalQuestions) {
+                updateQuestionUI();
+            } else {
+                showResults();
+            }
+        }
+
+        // Show quiz results
+        function showResults() {
+            const totalQuestions = getTotalQuestionsForCurrentMode();
+                
+            elements.finalScore.textContent = currentState.score;
+            elements.totalQuestionsResult.textContent = totalQuestions;
+            
+            // Calculate and display percentage
+            const percentage = Math.round((currentState.score / totalQuestions) * 100);
+            elements.scorePercent.textContent = `${percentage}%`;
+            
+            // Update the circle graph
+            const circumference = 2 * Math.PI * 16;
+            const offset = circumference - (percentage / 100) * circumference;
+            elements.resultCircle.style.strokeDasharray = `${circumference} ${circumference}`;
+            elements.resultCircle.style.strokeDashoffset = offset;
+            
+            // Show incorrect questions if there are any
+            const quizId = currentState.selectedQuizId;
+            const incorrectQuestions = currentState.incorrectQuestions[quizId] || [];
+            
+            if (incorrectQuestions.length > 0) {
+                elements.incorrectQuestionsSection.classList.remove('hidden');
+                elements.retakeIncorrectBtn.classList.remove('hidden');
+                
+                // Clear previous list
+                elements.incorrectQuestionsList.innerHTML = '';
+                
+                // Add each incorrect question
+                const selectedQuiz = getSelectedQuiz();
+                incorrectQuestions.forEach(questionId => {
+                    const question = selectedQuiz.questions.find(q => q.id === questionId);
+                    if (question) {
+                        const questionItem = document.createElement('div');
+                        questionItem.className = 'p-4 bg-red-50 border border-red-200 rounded-lg';
+                        questionItem.innerHTML = `
+                            <p class="font-medium text-gray-800">${question.question}</p>
+                            <p class="text-sm text-gray-600 mt-1">Correct answer: ${question.correctAnswer}</p>
+                        `;
+                        elements.incorrectQuestionsList.appendChild(questionItem);
+                    }
+                });
+            } else {
+                elements.incorrectQuestionsSection.classList.add('hidden');
+                elements.retakeIncorrectBtn.classList.add('hidden');
+            }
+            
+            showPage('resultsPage');
+            updateMistakesUI();
+        }
+
+        // Go to quiz selection
+        function goToQuizSelection() {
+            createQuizSelectionCards(); // Refresh the cards
+            showPage('quizSelectionPage');
+        }
+
+        // Show a specific page and hide others
+        function showPage(pageId) {
+            elements.quizSelectionPage.classList.add('hidden');
+            elements.homePage.classList.add('hidden');
+            elements.quizPage.classList.add('hidden');
+            elements.resultsPage.classList.add('hidden');
+            
+            elements[pageId].classList.remove('hidden');
+        }
+
+        // Initialize the app when the page loads
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'93afb87312fefed7',t:'MTc0NjQ0MjY4My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><iframe height="1" width="1" style="position: absolute; top: 0px; left: 0px; border: none; visibility: hidden;" src="./saved_resource.html"></iframe>
+</body></html>
