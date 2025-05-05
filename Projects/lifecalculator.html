@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<!-- saved from url=(0140)https://bapqzzk0b3q2pj15.canva-hosted-embed.com/codelet/AAEAEGJhcHF6emswYjNxMnBqMTUAAAAAAZamDrQ9HCEuhu-1KEsQyxqOtnLKSP5pfGSNJlYr6Q5q-vaCTWI/ -->
+<!-- saved from url=(0140)https://baprkf99s4e3g7sh.canva-hosted-embed.com/codelet/AAEAEGJhcHJrZjk5czRlM2c3c2gAAAAAAZamGHL20gqAPYFinjvpYa8CS8nkXRD8fo3j03qgz2C6R2zLrEg/ -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Life in Numbers</title>
     <script src="./saved_resource"></script>
+    <script src="https://html2canvas.min.js/"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
         
@@ -116,8 +117,68 @@
             border-bottom: 2px solid transparent;
             color: #a0aec0;
         }
+
+        #screenshot-area {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 50;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .screenshot-content {
+            max-width: 800px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            padding: 20px;
+        }
+
+        .screenshot-header {
+            position: relative;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 15px;
+        }
+
+        .close-screenshot {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.1);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .download-btn {
+            background: linear-gradient(90deg, #4299e1, #68d391);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 15px auto 0;
+        }
     </style>
-<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.16 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.col-span-1{grid-column:span 1 / span 1}.mx-auto{margin-left:auto;margin-right:auto}.mb-1\.5{margin-bottom:0.375rem}.mb-2{margin-bottom:0.5rem}.mb-3{margin-bottom:0.75rem}.mb-4{margin-bottom:1rem}.mb-8{margin-bottom:2rem}.mr-3{margin-right:0.75rem}.mr-4{margin-right:1rem}.mt-1{margin-top:0.25rem}.mt-3{margin-top:0.75rem}.mt-4{margin-top:1rem}.block{display:block}.flex{display:flex}.grid{display:grid}.hidden{display:none}.h-10{height:2.5rem}.h-4{height:1rem}.h-5{height:1.25rem}.h-full{height:100%}.w-10{width:2.5rem}.w-4{width:1rem}.w-5{width:1.25rem}.max-w-4xl{max-width:56rem}.flex-1{flex:1 1 0%}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.flex-col{flex-direction:column}.items-start{align-items:flex-start}.items-center{align-items:center}.justify-end{justify-content:flex-end}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-2{gap:0.5rem}.gap-3{gap:0.75rem}.gap-4{gap:1rem}.gap-6{gap:1.5rem}.space-y-2 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.5rem * var(--tw-space-y-reverse))}.space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse))}.space-y-6 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.5rem * var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.rounded-xl{border-radius:0.75rem}.border{border-width:1px}.border-b{border-bottom-width:1px}.border-blue-800\/30{border-color:rgb(30 64 175 / 0.3)}.border-gray-600{--tw-border-opacity:1;border-color:rgb(75 85 99 / var(--tw-border-opacity, 1))}.border-gray-700{--tw-border-opacity:1;border-color:rgb(55 65 81 / var(--tw-border-opacity, 1))}.bg-blue-500\/20{background-color:rgb(59 130 246 / 0.2)}.bg-blue-500\/30{background-color:rgb(59 130 246 / 0.3)}.bg-gray-600{--tw-bg-opacity:1;background-color:rgb(75 85 99 / var(--tw-bg-opacity, 1))}.bg-gray-700\/50{background-color:rgb(55 65 81 / 0.5)}.bg-gray-700\/70{background-color:rgb(55 65 81 / 0.7)}.bg-gray-800\/80{background-color:rgb(31 41 55 / 0.8)}.bg-green-500\/20{background-color:rgb(34 197 94 / 0.2)}.bg-indigo-500\/20{background-color:rgb(99 102 241 / 0.2)}.bg-purple-500\/20{background-color:rgb(168 85 247 / 0.2)}.bg-red-500\/20{background-color:rgb(239 68 68 / 0.2)}.bg-yellow-500\/20{background-color:rgb(234 179 8 / 0.2)}.bg-gradient-to-r{background-image:linear-gradient(to right, var(--tw-gradient-stops))}.from-blue-500{--tw-gradient-from:#3b82f6 var(--tw-gradient-from-position);--tw-gradient-to:rgb(59 130 246 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-blue-900\/40{--tw-gradient-from:rgb(30 58 138 / 0.4) var(--tw-gradient-from-position);--tw-gradient-to:rgb(30 58 138 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.to-green-500{--tw-gradient-to:#22c55e var(--tw-gradient-to-position)}.to-green-900\/40{--tw-gradient-to:rgb(20 83 45 / 0.4) var(--tw-gradient-to-position)}.p-4{padding:1rem}.p-5{padding:1.25rem}.p-6{padding:1.5rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-4{padding-left:1rem;padding-right:1rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.px-8{padding-left:2rem;padding-right:2rem}.py-1\.5{padding-top:0.375rem;padding-bottom:0.375rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-2\.5{padding-top:0.625rem;padding-bottom:0.625rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.text-center{text-align:center}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.font-bold{font-weight:700}.font-medium{font-weight:500}.font-semibold{font-weight:600}.italic{font-style:italic}.text-blue-200{--tw-text-opacity:1;color:rgb(191 219 254 / var(--tw-text-opacity, 1))}.text-blue-400{--tw-text-opacity:1;color:rgb(96 165 250 / var(--tw-text-opacity, 1))}.text-gray-200{--tw-text-opacity:1;color:rgb(229 231 235 / var(--tw-text-opacity, 1))}.text-gray-300{--tw-text-opacity:1;color:rgb(209 213 219 / var(--tw-text-opacity, 1))}.text-gray-400{--tw-text-opacity:1;color:rgb(156 163 175 / var(--tw-text-opacity, 1))}.text-green-400{--tw-text-opacity:1;color:rgb(74 222 128 / var(--tw-text-opacity, 1))}.text-indigo-400{--tw-text-opacity:1;color:rgb(129 140 248 / var(--tw-text-opacity, 1))}.text-purple-400{--tw-text-opacity:1;color:rgb(192 132 252 / var(--tw-text-opacity, 1))}.text-red-400{--tw-text-opacity:1;color:rgb(248 113 113 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.text-yellow-400{--tw-text-opacity:1;color:rgb(250 204 21 / var(--tw-text-opacity, 1))}.shadow-lg{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-md{--tw-shadow:0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.transition-colors{transition-property:color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-opacity{transition-property:opacity;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.hover\:bg-blue-500\/40:hover{background-color:rgb(59 130 246 / 0.4)}.hover\:opacity-90:hover{opacity:0.9}.focus\:border-transparent:focus{border-color:transparent}.focus\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}.focus\:ring-2:focus{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)}.focus\:ring-blue-500:focus{--tw-ring-opacity:1;--tw-ring-color:rgb(59 130 246 / var(--tw-ring-opacity, 1))}@media (min-width: 640px){.sm\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.sm\:flex-row{flex-direction:row}}@media (min-width: 768px){.md\:col-span-2{grid-column:span 2 / span 2}.md\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.md\:p-6{padding:1.5rem}.md\:text-4xl{font-size:2.25rem;line-height:2.5rem}}@media (min-width: 1024px){.lg\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}}</style></head>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.16 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.col-span-1{grid-column:span 1 / span 1}.mx-auto{margin-left:auto;margin-right:auto}.mb-1\.5{margin-bottom:0.375rem}.mb-2{margin-bottom:0.5rem}.mb-3{margin-bottom:0.75rem}.mb-4{margin-bottom:1rem}.mb-8{margin-bottom:2rem}.mr-3{margin-right:0.75rem}.mr-4{margin-right:1rem}.mt-1{margin-top:0.25rem}.mt-3{margin-top:0.75rem}.mt-4{margin-top:1rem}.block{display:block}.flex{display:flex}.grid{display:grid}.hidden{display:none}.h-10{height:2.5rem}.h-4{height:1rem}.h-5{height:1.25rem}.h-full{height:100%}.w-10{width:2.5rem}.w-4{width:1rem}.w-5{width:1.25rem}.max-w-4xl{max-width:56rem}.flex-1{flex:1 1 0%}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.flex-col{flex-direction:column}.items-start{align-items:flex-start}.items-center{align-items:center}.justify-end{justify-content:flex-end}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-2{gap:0.5rem}.gap-3{gap:0.75rem}.gap-4{gap:1rem}.gap-6{gap:1.5rem}.space-y-2 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.5rem * var(--tw-space-y-reverse))}.space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.space-y-6 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.5rem * var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.rounded-xl{border-radius:0.75rem}.border{border-width:1px}.border-b{border-bottom-width:1px}.border-blue-800\/30{border-color:rgb(30 64 175 / 0.3)}.border-gray-600{--tw-border-opacity:1;border-color:rgb(75 85 99 / var(--tw-border-opacity, 1))}.border-gray-700{--tw-border-opacity:1;border-color:rgb(55 65 81 / var(--tw-border-opacity, 1))}.bg-blue-500\/20{background-color:rgb(59 130 246 / 0.2)}.bg-blue-500\/30{background-color:rgb(59 130 246 / 0.3)}.bg-gray-600{--tw-bg-opacity:1;background-color:rgb(75 85 99 / var(--tw-bg-opacity, 1))}.bg-gray-700\/50{background-color:rgb(55 65 81 / 0.5)}.bg-gray-700\/70{background-color:rgb(55 65 81 / 0.7)}.bg-gray-800\/80{background-color:rgb(31 41 55 / 0.8)}.bg-green-500\/20{background-color:rgb(34 197 94 / 0.2)}.bg-indigo-500\/20{background-color:rgb(99 102 241 / 0.2)}.bg-purple-500\/20{background-color:rgb(168 85 247 / 0.2)}.bg-red-500\/20{background-color:rgb(239 68 68 / 0.2)}.bg-yellow-500\/20{background-color:rgb(234 179 8 / 0.2)}.bg-gradient-to-r{background-image:linear-gradient(to right, var(--tw-gradient-stops))}.from-blue-500{--tw-gradient-from:#3b82f6 var(--tw-gradient-from-position);--tw-gradient-to:rgb(59 130 246 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-blue-900\/40{--tw-gradient-from:rgb(30 58 138 / 0.4) var(--tw-gradient-from-position);--tw-gradient-to:rgb(30 58 138 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.to-green-500{--tw-gradient-to:#22c55e var(--tw-gradient-to-position)}.to-green-900\/40{--tw-gradient-to:rgb(20 83 45 / 0.4) var(--tw-gradient-to-position)}.p-4{padding:1rem}.p-5{padding:1.25rem}.p-6{padding:1.5rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-4{padding-left:1rem;padding-right:1rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.px-8{padding-left:2rem;padding-right:2rem}.py-1\.5{padding-top:0.375rem;padding-bottom:0.375rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-2\.5{padding-top:0.625rem;padding-bottom:0.625rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.text-center{text-align:center}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.font-bold{font-weight:700}.font-medium{font-weight:500}.font-semibold{font-weight:600}.italic{font-style:italic}.text-blue-200{--tw-text-opacity:1;color:rgb(191 219 254 / var(--tw-text-opacity, 1))}.text-blue-400{--tw-text-opacity:1;color:rgb(96 165 250 / var(--tw-text-opacity, 1))}.text-gray-200{--tw-text-opacity:1;color:rgb(229 231 235 / var(--tw-text-opacity, 1))}.text-gray-300{--tw-text-opacity:1;color:rgb(209 213 219 / var(--tw-text-opacity, 1))}.text-gray-400{--tw-text-opacity:1;color:rgb(156 163 175 / var(--tw-text-opacity, 1))}.text-green-400{--tw-text-opacity:1;color:rgb(74 222 128 / var(--tw-text-opacity, 1))}.text-indigo-400{--tw-text-opacity:1;color:rgb(129 140 248 / var(--tw-text-opacity, 1))}.text-purple-400{--tw-text-opacity:1;color:rgb(192 132 252 / var(--tw-text-opacity, 1))}.text-red-400{--tw-text-opacity:1;color:rgb(248 113 113 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.text-yellow-400{--tw-text-opacity:1;color:rgb(250 204 21 / var(--tw-text-opacity, 1))}.text-blue-300{--tw-text-opacity:1;color:rgb(147 197 253 / var(--tw-text-opacity, 1))}.shadow-lg{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-md{--tw-shadow:0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.transition-colors{transition-property:color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-opacity{transition-property:opacity;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.hover\:bg-blue-500\/40:hover{background-color:rgb(59 130 246 / 0.4)}.hover\:opacity-90:hover{opacity:0.9}.focus\:border-transparent:focus{border-color:transparent}.focus\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}.focus\:ring-2:focus{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)}.focus\:ring-blue-500:focus{--tw-ring-opacity:1;--tw-ring-color:rgb(59 130 246 / var(--tw-ring-opacity, 1))}@media (min-width: 640px){.sm\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.sm\:flex-row{flex-direction:row}}@media (min-width: 768px){.md\:col-span-2{grid-column:span 2 / span 2}.md\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.md\:p-6{padding:1.5rem}.md\:text-4xl{font-size:2.25rem;line-height:2.5rem}}@media (min-width: 1024px){.lg\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}}</style><script src="./html2canvas.min.js.download"></script></head>
 <body class="p-4 md:p-6">
     <div class="max-w-4xl mx-auto">
         <div class="text-center mb-8">
@@ -135,12 +196,6 @@
                             <label class="block text-gray-300 mb-2 text-sm">When were you born?</label>
                             <div class="flex items-center gap-3">
                                 <input type="date" id="birthday" class="flex-1 px-4 py-2.5 rounded-lg bg-gray-700/70 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent input-date">
-                            </div>
-                        </div>
-                        <div class="flex-1">
-                            <label class="block text-gray-300 mb-2 text-sm">Time (optional)</label>
-                            <div class="flex items-center gap-2">
-                                <input type="time" id="birthtime" class="flex-1 px-4 py-2.5 rounded-lg bg-gray-700/70 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent input-date">
                             </div>
                         </div>
                     </div>
@@ -170,7 +225,7 @@
                     <input type="range" min="0" max="100" value="0" class="slider" id="timeSlider">
                     <div class="flex justify-between text-sm text-gray-400">
                         <span>Your Birth</span>
-                        <span id="sliderDate">Your Birth</span>
+                        <span id="sliderDate">Today</span>
                         <span>+50 Years</span>
                     </div>
                 </div>
@@ -179,9 +234,9 @@
             <!-- Tabs -->
             <div class="bg-gray-800/80 rounded-xl overflow-hidden border border-gray-700 shadow-md">
                 <div class="flex border-b border-gray-700">
-                    <button class="flex-1 py-3 text-center font-medium tab-active" data-tab="basic">Basic Stats</button>
-                    <button class="flex-1 py-3 text-center font-medium tab" data-tab="fun">Fun Facts</button>
-                    <button class="flex-1 py-3 text-center font-medium tab" data-tab="cosmic">Cosmic Perspective</button>
+                    <button class="tab-active flex-1 py-3 text-center font-medium" data-tab="basic">Basic Stats</button>
+                    <button class="tab flex-1 py-3 text-center font-medium" data-tab="fun">Fun Facts</button>
+                    <button class="tab flex-1 py-3 text-center font-medium" data-tab="cosmic">Cosmic Perspective</button>
                 </div>
                 
                 <!-- Basic Stats Tab -->
@@ -197,8 +252,8 @@
                                 </div>
                                 <h3 class="text-lg font-semibold">Days Alive</h3>
                             </div>
-                            <div class="stat-value text-3xl font-bold" id="days">7,670</div>
-                            <p class="text-gray-400 mt-1 text-sm"><span id="years">20</span> years, <span id="months">11</span> months, <span id="extraDays">30</span> days</p>
+                            <div class="stat-value text-3xl font-bold" id="days">7,305</div>
+                            <p class="text-gray-400 mt-1 text-sm"><span id="years">20</span> years, <span id="months">0</span> months, <span id="extraDays">0</span> days</p>
                         </div>
                         
                         <!-- Hours & Minutes -->
@@ -211,8 +266,8 @@
                                 </div>
                                 <h3 class="text-lg font-semibold">Hours &amp; Minutes</h3>
                             </div>
-                            <div class="stat-value text-3xl font-bold" id="hours">184,080</div>
-                            <p class="text-gray-400 mt-1 text-sm">That's <span id="minutes">11,044,800</span> minutes</p>
+                            <div class="stat-value text-3xl font-bold" id="hours">175,320</div>
+                            <p class="text-gray-400 mt-1 text-sm">That's <span id="minutes">10,519,200</span> minutes</p>
                         </div>
                         
                         <!-- Heartbeats -->
@@ -225,7 +280,7 @@
                                 </div>
                                 <h3 class="text-lg font-semibold">💓 Heartbeats</h3>
                             </div>
-                            <div class="stat-value text-3xl font-bold" id="heartbeats">773,136,000</div>
+                            <div class="stat-value text-3xl font-bold" id="heartbeats">736,344,000</div>
                             <p class="text-gray-400 mt-1 text-sm">Based on average 70 beats per minute</p>
                         </div>
                         
@@ -239,7 +294,7 @@
                                 </div>
                                 <h3 class="text-lg font-semibold">💨 Breaths Taken</h3>
                             </div>
-                            <div class="stat-value text-3xl font-bold" id="breaths">176,716,800</div>
+                            <div class="stat-value text-3xl font-bold" id="breaths">168,307,200</div>
                             <p class="text-gray-400 mt-1 text-sm">Based on average 16 breaths per minute</p>
                         </div>
                         
@@ -253,7 +308,7 @@
                                 </div>
                                 <h3 class="text-lg font-semibold">👣 Steps Walked</h3>
                             </div>
-                            <div class="stat-value text-3xl font-bold" id="steps">57,525,000</div>
+                            <div class="stat-value text-3xl font-bold" id="steps">54,787,500</div>
                             <p class="text-gray-400 mt-1 text-sm">Based on average 7,500 steps per day</p>
                         </div>
                         
@@ -267,7 +322,7 @@
                                 </div>
                                 <h3 class="text-lg font-semibold">💤 Time Sleeping</h3>
                             </div>
-                            <div class="stat-value text-3xl font-bold" id="sleep">61,360</div>
+                            <div class="stat-value text-3xl font-bold" id="sleep">58,440</div>
                             <p class="text-gray-400 mt-1 text-sm">Based on average 8 hours per day</p>
                         </div>
                         
@@ -295,7 +350,7 @@
                                 </div>
                                 <h3 class="text-lg font-semibold">🧠 Memories Formed</h3>
                             </div>
-                            <div class="stat-value text-3xl font-bold" id="memories">38,350</div>
+                            <div class="stat-value text-3xl font-bold" id="memories">36,525</div>
                             <p class="text-gray-400 mt-1 text-sm">Based on average 5 memorable events per day</p>
                         </div>
                         
@@ -309,7 +364,7 @@
                                 </div>
                                 <h3 class="text-lg font-semibold">Words Spoken</h3>
                             </div>
-                            <div class="stat-value text-3xl font-bold" id="words">122,720,000</div>
+                            <div class="stat-value text-3xl font-bold" id="words">116,880,000</div>
                             <p class="text-gray-400 mt-1 text-sm">Based on average 16,000 words per day</p>
                         </div>
                     </div>
@@ -331,7 +386,7 @@
                         <!-- Internet Age -->
                         <div class="stat-card bg-gray-700/50 rounded-xl p-4 border border-gray-600 shadow-md">
                             <h3 class="text-lg font-semibold mb-3">The Internet &amp; You</h3>
-                            <p class="text-gray-300 mb-2">The internet was <span id="internetAge" class="font-bold text-white">15</span> years old when you were born</p>
+                            <p class="text-gray-300 mb-2">The internet was <span id="internetAge" class="font-bold text-white">16</span> years old when you were born</p>
                             <p class="text-gray-300">The World Wide Web was created in 1989</p>
                         </div>
                         
@@ -339,29 +394,26 @@
                         <div class="stat-card bg-gray-700/50 rounded-xl p-4 border border-gray-600 shadow-md col-span-1 md:col-span-2">
                             <h3 class="text-lg font-semibold mb-3">Technology Timeline</h3>
                             <div id="techTimeline" class="space-y-2 text-sm"><div class="flex items-center gap-2">
-                            <span class="text-blue-400 font-medium">2004:</span>
-                            <span class="text-gray-300">Facebook launched (In your birth year)</span>
-                        </div><div class="flex items-center gap-2">
                             <span class="text-blue-400 font-medium">2007:</span>
-                            <span class="text-gray-300">First iPhone released (When you were 3 years old)</span>
+                            <span class="text-gray-300">First iPhone released (When you were 2 years old)</span>
                         </div><div class="flex items-center gap-2">
                             <span class="text-blue-400 font-medium">2008:</span>
-                            <span class="text-gray-300">Android released (When you were 4 years old)</span>
+                            <span class="text-gray-300">Android released (When you were 3 years old)</span>
                         </div><div class="flex items-center gap-2">
                             <span class="text-blue-400 font-medium">2010:</span>
-                            <span class="text-gray-300">Instagram launched (When you were 6 years old)</span>
+                            <span class="text-gray-300">Instagram launched (When you were 5 years old)</span>
                         </div><div class="flex items-center gap-2">
                             <span class="text-blue-400 font-medium">2011:</span>
-                            <span class="text-gray-300">Snapchat launched (When you were 7 years old)</span>
+                            <span class="text-gray-300">Snapchat launched (When you were 6 years old)</span>
                         </div><div class="flex items-center gap-2">
                             <span class="text-blue-400 font-medium">2016:</span>
-                            <span class="text-gray-300">Pokemon GO released (When you were 12 years old)</span>
+                            <span class="text-gray-300">Pokemon GO released (When you were 11 years old)</span>
                         </div><div class="flex items-center gap-2">
                             <span class="text-blue-400 font-medium">2020:</span>
-                            <span class="text-gray-300">COVID-19 pandemic begins (When you were 16 years old)</span>
+                            <span class="text-gray-300">COVID-19 pandemic begins (When you were 15 years old)</span>
                         </div><div class="flex items-center gap-2">
                             <span class="text-blue-400 font-medium">2022:</span>
-                            <span class="text-gray-300">ChatGPT launched (When you were 18 years old)</span>
+                            <span class="text-gray-300">ChatGPT launched (When you were 17 years old)</span>
                         </div></div>
                         </div>
                         
@@ -397,7 +449,7 @@
                                 </div>
                                 <h3 class="text-lg font-semibold">Your Age on Mars</h3>
                             </div>
-                            <div class="stat-value text-3xl font-bold" id="marsAge">11.16</div>
+                            <div class="stat-value text-3xl font-bold" id="marsAge">10.63</div>
                             <p class="text-gray-400 mt-1 text-sm">A year on Mars is 687 Earth days</p>
                         </div>
                         
@@ -409,7 +461,7 @@
                                 </div>
                                 <h3 class="text-lg font-semibold">Earth Rotations</h3>
                             </div>
-                            <div class="stat-value text-3xl font-bold" id="earthRotations">7,670</div>
+                            <div class="stat-value text-3xl font-bold" id="earthRotations">7,305</div>
                             <p class="text-gray-400 mt-1 text-sm">Complete rotations of Earth since your birth</p>
                         </div>
                         
@@ -421,7 +473,7 @@
                                 </div>
                                 <h3 class="text-lg font-semibold">Distance in Space</h3>
                             </div>
-                            <div class="stat-value text-3xl font-bold" id="spaceDistance">12,272</div>
+                            <div class="stat-value text-3xl font-bold" id="spaceDistance">11,688</div>
                             <p class="text-gray-400 mt-1 text-sm">Million miles traveled through space</p>
                         </div>
                         
@@ -433,7 +485,7 @@
                                 </div>
                                 <h3 class="text-lg font-semibold">Star Perspective</h3>
                             </div>
-                            <p class="text-gray-300">Light from stars <span id="lightYears">21.00</span> light-years away is just now reaching Earth after starting its journey when you were born</p>
+                            <p class="text-gray-300">Light from stars <span id="lightYears">20.00</span> light-years away is just now reaching Earth after starting its journey when you were born</p>
                         </div>
                         
                         <!-- Universe Scale -->
@@ -454,7 +506,7 @@
                 <div class="flex items-start">
                     <div class="text-4xl text-blue-400 mr-4">❝</div>
                     <div>
-                        <p id="quote" class="text-lg italic text-gray-200 mb-3" style="opacity: 1; transition: opacity 0.5s ease-in-out;">Your time is limited, don't waste it living someone else's life. — Steve Jobs</p>
+                        <p id="quote" class="text-lg italic text-gray-200 mb-3" style="opacity: 1; transition: opacity 0.5s ease-in-out;">Life is either a daring adventure or nothing at all. — Helen Keller</p>
                         <div class="flex justify-end">
                             <button id="new-quote" class="px-4 py-2 bg-blue-500/30 hover:bg-blue-500/40 text-blue-200 rounded-lg text-sm transition-colors flex items-center gap-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -470,7 +522,7 @@
             <!-- Value Your Life Section -->
             <div class="bg-gradient-to-r from-blue-900/40 to-green-900/40 rounded-xl p-6 border border-blue-800/30 shadow-md text-center">
                 <h3 class="text-xl font-semibold mb-3">Make Every Moment Count</h3>
-                <p class="text-gray-300 mb-4">You have approximately <span id="daysLeft" class="font-semibold text-white">21,550</span> of days yet to come. How will you spend them?</p>
+                <p class="text-gray-300 mb-4">You have approximately <span id="daysLeft" class="font-semibold text-white">21,915</span> of days yet to come. How will you spend them?</p>
                 <button id="share-btn" class="px-6 py-2.5 bg-gradient-to-r from-blue-500 to-green-500 text-white font-medium rounded-lg hover:opacity-90 transition-opacity shadow-md">
                     Share Your Life Numbers
                 </button>
@@ -478,18 +530,93 @@
         </div>
     </div>
 
+    <!-- Screenshot Modal -->
+    <div id="screenshot-area" style="display: none;">
+        <div class="screenshot-content">
+            <div class="screenshot-header">
+                <h2 class="text-2xl font-bold">Your Life in Numbers</h2>
+                <div class="close-screenshot" id="close-screenshot">✕</div>
+            </div>
+            <div id="screenshot-summary" class="space-y-4">
+                    <div class="text-center mb-4">
+                        <p class="text-gray-300">Born: <span class="text-white font-medium">20 years old</span></p>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="bg-gray-700/50 rounded-xl p-4 border border-gray-600">
+                            <h3 class="text-lg font-semibold mb-2">Time Alive</h3>
+                            <p class="text-gray-300">Days: <span class="text-white font-medium">7,305</span></p>
+                            <p class="text-gray-300">Hours: <span class="text-white font-medium">175,320</span></p>
+                            <p class="text-gray-300">Minutes: <span class="text-white font-medium">10,519,200</span></p>
+                        </div>
+                        
+                        <div class="bg-gray-700/50 rounded-xl p-4 border border-gray-600">
+                            <h3 class="text-lg font-semibold mb-2">Physical Stats</h3>
+                            <p class="text-gray-300">Heartbeats: <span class="text-white font-medium">736,344,000</span></p>
+                            <p class="text-gray-300">Breaths: <span class="text-white font-medium">168,307,200</span></p>
+                            <p class="text-gray-300">Steps: <span class="text-white font-medium">54,787,500</span></p>
+                        </div>
+                        
+                        <div class="bg-gray-700/50 rounded-xl p-4 border border-gray-600">
+                            <h3 class="text-lg font-semibold mb-2">Life Activities</h3>
+                            <p class="text-gray-300">Sleep: <span class="text-white font-medium">58,440 hours</span></p>
+                            <p class="text-gray-300">Screen Time: <span class="text-white font-medium">26,080 hours</span></p>
+                            <p class="text-gray-300">Words Spoken: <span class="text-white font-medium">116,880,000</span></p>
+                        </div>
+                        
+                        <div class="bg-gray-700/50 rounded-xl p-4 border border-gray-600">
+                            <h3 class="text-lg font-semibold mb-2">Cosmic Perspective</h3>
+                            <p class="text-gray-300">Mars Age: <span class="text-white font-medium">10.63 years</span></p>
+                            <p class="text-gray-300">Earth Rotations: <span class="text-white font-medium">7,305</span></p>
+                            <p class="text-gray-300">Space Travel: <span class="text-white font-medium">11,688 million miles</span></p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4 bg-gray-700/50 rounded-xl p-4 border border-gray-600">
+                        <h3 class="text-lg font-semibold mb-2">Life Journey</h3>
+                        <div class="flex justify-between text-sm mb-1.5">
+                            <span class="text-gray-300">Time spent on Earth:</span>
+                            <span class="text-gray-300">25%</span>
+                        </div>
+                        <div class="progress-bar bg-gray-600 mb-3">
+                            <div class="progress-fill-day h-full" style="width: 25%"></div>
+                        </div>
+                        <p class="text-gray-400 text-sm">Based on a life expectancy of 80 years</p>
+                    </div>
+                    
+                    <div class="mt-4 text-center">
+                        <p class="text-lg text-blue-300 font-medium">You have approximately 21,915 days yet to come.</p>
+                        <p class="text-gray-300 mt-1">Make every moment count!</p>
+                    </div>
+                </div>
+            <button id="download-screenshot" class="download-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                </svg>
+                Download Image
+            </button>
+        </div>
+    </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Load html2canvas dynamically
+            const script = document.createElement('script');
+            script.src = 'https://html2canvas.hertzen.com/dist/html2canvas.min.js';
+            document.head.appendChild(script);
+            
             const calculateBtn = document.getElementById('calculate');
             const resultsDiv = document.getElementById('results');
             const birthdayInput = document.getElementById('birthday');
-            const birthtimeInput = document.getElementById('birthtime');
             const ageInput = document.getElementById('age');
             const newQuoteBtn = document.getElementById('new-quote');
             const shareBtn = document.getElementById('share-btn');
             const timeSlider = document.getElementById('timeSlider');
             const sliderDateDisplay = document.getElementById('sliderDate');
             const tabs = document.querySelectorAll('[data-tab]');
+            const screenshotArea = document.getElementById('screenshot-area');
+            const closeScreenshot = document.getElementById('close-screenshot');
+            const downloadScreenshot = document.getElementById('download-screenshot');
             
             // Technology timeline events
             const techEvents = [
@@ -548,8 +675,10 @@
             birthdayInput.addEventListener('change', () => ageInput.value = '');
             ageInput.addEventListener('input', () => birthdayInput.value = '');
             newQuoteBtn.addEventListener('click', displayRandomQuote);
-            shareBtn.addEventListener('click', shareResults);
+            shareBtn.addEventListener('click', createShareableImage);
             timeSlider.addEventListener('input', updateTimeSlider);
+            closeScreenshot.addEventListener('click', () => screenshotArea.style.display = 'none');
+            downloadScreenshot.addEventListener('click', downloadImage);
             
             // Tab switching
             tabs.forEach(tab => {
@@ -581,12 +710,6 @@
                 // Check which input method was used
                 if (birthdayInput.value) {
                     birthDate = new Date(birthdayInput.value);
-                    
-                    // Add time if provided
-                    if (birthtimeInput.value) {
-                        const [hours, minutes] = birthtimeInput.value.split(':');
-                        birthDate.setHours(parseInt(hours), parseInt(minutes));
-                    }
                 } else if (ageInput.value) {
                     const age = parseInt(ageInput.value);
                     if (isNaN(age) || age < 0 || age > 120) {
@@ -610,12 +733,20 @@
                     return;
                 }
                 
-                // Reset time slider
+                // Reset time slider to birth (0)
                 timeSlider.value = 0;
-                updateStats(birthDate, now);
+                sliderDateDisplay.textContent = "Your Birth";
+                
+                // Update stats with birth date
+                updateStats(birthDate, birthDate);
                 
                 // Show results
                 resultsDiv.classList.remove('hidden');
+                
+                // Animate slider from birth to today
+                setTimeout(() => {
+                    animateSlider(birthDate, now);
+                }, 500);
                 
                 // Scroll to results with a small delay to ensure smooth animation
                 setTimeout(() => {
@@ -623,17 +754,61 @@
                 }, 100);
             }
             
+            function animateSlider(birthDate, now) {
+                const duration = 2000; // Animation duration in ms
+                const startTime = performance.now();
+                const startValue = 0;
+                const endValue = 50; // Middle of slider represents "today"
+                
+                function updateSlider(currentTime) {
+                    const elapsedTime = currentTime - startTime;
+                    const progress = Math.min(elapsedTime / duration, 1);
+                    
+                    // Easing function for smoother animation
+                    const easeOutQuad = progress * (2 - progress);
+                    
+                    const currentValue = startValue + (endValue - startValue) * easeOutQuad;
+                    timeSlider.value = currentValue;
+                    
+                    // Calculate date based on slider position
+                    const targetDate = calculateDateFromSlider(birthDate, now, currentValue);
+                    updateStats(birthDate, targetDate);
+                    
+                    if (progress < 1) {
+                        requestAnimationFrame(updateSlider);
+                    } else {
+                        // When animation completes, set to today
+                        sliderDateDisplay.textContent = "Today";
+                    }
+                }
+                
+                requestAnimationFrame(updateSlider);
+            }
+            
+            function calculateDateFromSlider(birthDate, now, sliderValue) {
+                if (sliderValue === 0) {
+                    return new Date(birthDate);
+                } else if (sliderValue === 50) {
+                    return new Date(now);
+                } else if (sliderValue < 50) {
+                    // Between birth and today
+                    const progress = sliderValue / 50;
+                    const timeDiff = now - birthDate;
+                    return new Date(birthDate.getTime() + (timeDiff * progress));
+                } else {
+                    // Future projection (between today and +50 years)
+                    const progress = (sliderValue - 50) / 50;
+                    const futureYears = 50; // 50 years into the future
+                    const msPerYear = 365.25 * 24 * 60 * 60 * 1000;
+                    return new Date(now.getTime() + (progress * futureYears * msPerYear));
+                }
+            }
+            
             function updateTimeSlider() {
                 // Get birth date
                 let birthDate;
                 if (birthdayInput.value) {
                     birthDate = new Date(birthdayInput.value);
-                    
-                    // Add time if provided
-                    if (birthtimeInput.value) {
-                        const [hours, minutes] = birthtimeInput.value.split(':');
-                        birthDate.setHours(parseInt(hours), parseInt(minutes));
-                    }
                 } else if (ageInput.value) {
                     const age = parseInt(ageInput.value);
                     birthDate = new Date();
@@ -646,23 +821,14 @@
                 const sliderValue = parseInt(timeSlider.value);
                 
                 // Calculate date based on slider position
-                // 0 = birth date, 50 = now, 100 = 50 years in the future
-                let targetDate;
+                const targetDate = calculateDateFromSlider(birthDate, now, sliderValue);
                 
+                // Update slider date display
                 if (sliderValue === 0) {
-                    targetDate = new Date(birthDate);
                     sliderDateDisplay.textContent = "Your Birth";
                 } else if (sliderValue === 50) {
-                    targetDate = new Date(now);
                     sliderDateDisplay.textContent = "Today";
                 } else {
-                    const totalRange = 100;
-                    const yearsFromBirth = (sliderValue / 50) * (((now - birthDate) / (1000 * 60 * 60 * 24 * 365.25)) + 50);
-                    
-                    targetDate = new Date(birthDate);
-                    targetDate.setFullYear(birthDate.getFullYear() + Math.floor(yearsFromBirth));
-                    targetDate.setMonth(birthDate.getMonth() + Math.floor((yearsFromBirth % 1) * 12));
-                    
                     // Format date for display
                     sliderDateDisplay.textContent = targetDate.toLocaleDateString(undefined, { 
                         year: 'numeric', 
@@ -767,20 +933,20 @@
                 // Days left (estimated)
                 const daysLeft = Math.max(0, Math.floor((lifeExpectancy * 365.25) - daysLived));
                 
-                // Update the DOM with animations
-                animateNumber('days', 0, daysLived);
-                animateNumber('years', 0, years);
-                animateNumber('months', 0, months);
-                animateNumber('extraDays', 0, extraDays);
-                animateNumber('hours', 0, hoursLived);
-                animateNumber('minutes', 0, minutesLived);
-                animateNumber('heartbeats', 0, heartbeats);
-                animateNumber('breaths', 0, breaths);
-                animateNumber('words', 0, words);
-                animateNumber('steps', 0, steps);
-                animateNumber('sleep', 0, sleepHours);
-                animateNumber('screenTime', 0, screenHours);
-                animateNumber('memories', 0, memories);
+                // Update the DOM
+                document.getElementById('days').textContent = formatNumber(daysLived);
+                document.getElementById('years').textContent = years;
+                document.getElementById('months').textContent = months;
+                document.getElementById('extraDays').textContent = extraDays;
+                document.getElementById('hours').textContent = formatNumber(hoursLived);
+                document.getElementById('minutes').textContent = formatNumber(minutesLived);
+                document.getElementById('heartbeats').textContent = formatNumber(heartbeats);
+                document.getElementById('breaths').textContent = formatNumber(breaths);
+                document.getElementById('words').textContent = formatNumber(words);
+                document.getElementById('steps').textContent = formatNumber(steps);
+                document.getElementById('sleep').textContent = formatNumber(sleepHours);
+                document.getElementById('screenTime').textContent = formatNumber(screenHours);
+                document.getElementById('memories').textContent = formatNumber(memories);
                 
                 // Cosmic perspective
                 document.getElementById('marsAge').textContent = marsAge;
@@ -797,9 +963,9 @@
                 document.getElementById('lifePercentage').textContent = lifePercentage;
                 document.getElementById('daysLeft').textContent = formatNumber(daysLeft);
                 
-                // Animate progress bars
-                animateProgressBar('lifeProgress', Math.min(lifePercentage, 100));
-                animateProgressBar('centuryProgress', Math.min(centuryPercent, 100));
+                // Update progress bars
+                document.getElementById('lifeProgress').style.width = `${Math.min(lifePercentage, 100)}%`;
+                document.getElementById('centuryProgress').style.width = `${Math.min(centuryPercent, 100)}%`;
                 
                 // Cosmic scale - your life as a fraction of cosmic year
                 const cosmicYear = 13.8 * 1000000000; // 13.8 billion years
@@ -837,66 +1003,109 @@
                 }, 50);
             }
             
-            function shareResults() {
-                // This would typically use the Web Share API
-                // For this demo, we'll just show an alert
-                alert('This would share your life statistics on social media. In a real implementation, this would use the Web Share API or create a shareable image.');
+            function createShareableImage() {
+                // Create summary content for the screenshot
+                const screenshotSummary = document.getElementById('screenshot-summary');
+                
+                // Get birth date for header
+                let birthDateText = "";
+                if (birthdayInput.value) {
+                    const date = new Date(birthdayInput.value);
+                    birthDateText = date.toLocaleDateString(undefined, { 
+                        year: 'numeric', 
+                        month: 'long', 
+                        day: 'numeric' 
+                    });
+                } else if (ageInput.value) {
+                    birthDateText = `${ageInput.value} years old`;
+                }
+                
+                // Create summary HTML
+                screenshotSummary.innerHTML = `
+                    <div class="text-center mb-4">
+                        <p class="text-gray-300">Born: <span class="text-white font-medium">${birthDateText}</span></p>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="bg-gray-700/50 rounded-xl p-4 border border-gray-600">
+                            <h3 class="text-lg font-semibold mb-2">Time Alive</h3>
+                            <p class="text-gray-300">Days: <span class="text-white font-medium">${document.getElementById('days').textContent}</span></p>
+                            <p class="text-gray-300">Hours: <span class="text-white font-medium">${document.getElementById('hours').textContent}</span></p>
+                            <p class="text-gray-300">Minutes: <span class="text-white font-medium">${document.getElementById('minutes').textContent}</span></p>
+                        </div>
+                        
+                        <div class="bg-gray-700/50 rounded-xl p-4 border border-gray-600">
+                            <h3 class="text-lg font-semibold mb-2">Physical Stats</h3>
+                            <p class="text-gray-300">Heartbeats: <span class="text-white font-medium">${document.getElementById('heartbeats').textContent}</span></p>
+                            <p class="text-gray-300">Breaths: <span class="text-white font-medium">${document.getElementById('breaths').textContent}</span></p>
+                            <p class="text-gray-300">Steps: <span class="text-white font-medium">${document.getElementById('steps').textContent}</span></p>
+                        </div>
+                        
+                        <div class="bg-gray-700/50 rounded-xl p-4 border border-gray-600">
+                            <h3 class="text-lg font-semibold mb-2">Life Activities</h3>
+                            <p class="text-gray-300">Sleep: <span class="text-white font-medium">${document.getElementById('sleep').textContent} hours</span></p>
+                            <p class="text-gray-300">Screen Time: <span class="text-white font-medium">${document.getElementById('screenTime').textContent} hours</span></p>
+                            <p class="text-gray-300">Words Spoken: <span class="text-white font-medium">${document.getElementById('words').textContent}</span></p>
+                        </div>
+                        
+                        <div class="bg-gray-700/50 rounded-xl p-4 border border-gray-600">
+                            <h3 class="text-lg font-semibold mb-2">Cosmic Perspective</h3>
+                            <p class="text-gray-300">Mars Age: <span class="text-white font-medium">${document.getElementById('marsAge').textContent} years</span></p>
+                            <p class="text-gray-300">Earth Rotations: <span class="text-white font-medium">${document.getElementById('earthRotations').textContent}</span></p>
+                            <p class="text-gray-300">Space Travel: <span class="text-white font-medium">${document.getElementById('spaceDistance').textContent} million miles</span></p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4 bg-gray-700/50 rounded-xl p-4 border border-gray-600">
+                        <h3 class="text-lg font-semibold mb-2">Life Journey</h3>
+                        <div class="flex justify-between text-sm mb-1.5">
+                            <span class="text-gray-300">Time spent on Earth:</span>
+                            <span class="text-gray-300">${document.getElementById('lifePercentage').textContent}%</span>
+                        </div>
+                        <div class="progress-bar bg-gray-600 mb-3">
+                            <div class="progress-fill-day h-full" style="width: ${document.getElementById('lifePercentage').textContent}%"></div>
+                        </div>
+                        <p class="text-gray-400 text-sm">Based on a life expectancy of ${document.getElementById('lifeExpectancy').textContent} years</p>
+                    </div>
+                    
+                    <div class="mt-4 text-center">
+                        <p class="text-lg text-blue-300 font-medium">You have approximately ${document.getElementById('daysLeft').textContent} days yet to come.</p>
+                        <p class="text-gray-300 mt-1">Make every moment count!</p>
+                    </div>
+                `;
+                
+                // Show the screenshot area
+                screenshotArea.style.display = 'flex';
+            }
+            
+            function downloadImage() {
+                if (typeof html2canvas !== 'function') {
+                    alert('Screenshot functionality is loading. Please try again in a moment.');
+                    return;
+                }
+                
+                const screenshotContent = document.querySelector('.screenshot-content');
+                
+                html2canvas(screenshotContent, {
+                    backgroundColor: '#1a202c',
+                    scale: 2, // Higher quality
+                    logging: false
+                }).then(canvas => {
+                    // Create download link
+                    const link = document.createElement('a');
+                    link.download = 'my-life-in-numbers.png';
+                    link.href = canvas.toDataURL('image/png');
+                    link.click();
+                }).catch(err => {
+                    console.error('Error generating screenshot:', err);
+                    alert('There was an error creating your image. Please try again.');
+                });
             }
             
             function formatNumber(num) {
                 return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
             }
-            
-            function animateNumber(elementId, start, end) {
-                const element = document.getElementById(elementId);
-                if (!element) return;
-                
-                const duration = 1500; // Animation duration in ms
-                const startTime = performance.now();
-                
-                function updateNumber(currentTime) {
-                    const elapsedTime = currentTime - startTime;
-                    const progress = Math.min(elapsedTime / duration, 1);
-                    
-                    // Easing function for smoother animation
-                    const easeOutQuad = progress * (2 - progress);
-                    
-                    const currentValue = Math.floor(start + (end - start) * easeOutQuad);
-                    element.textContent = formatNumber(currentValue);
-                    
-                    if (progress < 1) {
-                        requestAnimationFrame(updateNumber);
-                    }
-                }
-                
-                requestAnimationFrame(updateNumber);
-            }
-            
-            function animateProgressBar(elementId, percentage) {
-                const element = document.getElementById(elementId);
-                if (!element) return;
-                
-                const duration = 1500; // Animation duration in ms
-                const startTime = performance.now();
-                
-                function updateWidth(currentTime) {
-                    const elapsedTime = currentTime - startTime;
-                    const progress = Math.min(elapsedTime / duration, 1);
-                    
-                    // Easing function for smoother animation
-                    const easeOutQuad = progress * (2 - progress);
-                    
-                    const currentWidth = easeOutQuad * percentage;
-                    element.style.width = `${currentWidth}%`;
-                    
-                    if (progress < 1) {
-                        requestAnimationFrame(updateWidth);
-                    }
-                }
-                
-                requestAnimationFrame(updateWidth);
-            }
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'93b104fda4f1fec3',t:'MTc0NjQ1NjMwNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><iframe height="1" width="1" style="position: absolute; top: 0px; left: 0px; border: none; visibility: hidden;" src="./saved_resource.html"></iframe>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'93b1149621f9fec5',t:'MTc0NjQ1Njk0My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><iframe height="1" width="1" style="position: absolute; top: 0px; left: 0px; border: none; visibility: hidden;" src="./saved_resource.html"></iframe>
 </body></html>
