@@ -2,6 +2,8 @@
 
 Life in Numbers is an interactive web application that calculates and visualizes various statistics about a person's life based on their birth date. The application provides users with fascinating insights about their existence, from basic statistics like days lived and heartbeats to cosmic perspectives and historical context.
 
+https://alabangsti-my.sharepoint.com/:w:/g/personal/neri_376375_alabang_sti_edu_ph/EUsQmP5KUoRPro_OdyMDR9kByBHfA7v1HFt_ECRr7Qg5IQ?e=upr2dx
+
 ## Features
 ===================================
 ### Core Functionality
